@@ -1,1 +1,1 @@
-export const BACKEND_URL="https://ecommerce-website-backend-9kfe.onrender.com"
+export const BASE_URL="https://ecommerce-website-backend-9kfe.onrender.com"
