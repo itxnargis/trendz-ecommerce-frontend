@@ -59,9 +59,9 @@ function App() {
       }
     });
 
-    dispatch(loadUser());
-    getStripeApiKey();
-  }, [dispatch]);
+    store.dispatch(loadUser());
+
+  }, []);
 
   window.addEventListener("contextmenu", (e) => e.preventDefault());
 
