@@ -126,7 +126,6 @@ font-size: 1vmax;
         font-size: 1.7vmax;
     }
     .banner::after {
-        content: "";
     width: 100vw;
     height: 100vmin;
     background-color: #fff;
