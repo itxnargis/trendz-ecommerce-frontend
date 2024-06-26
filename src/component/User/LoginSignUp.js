@@ -5,7 +5,6 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import FaceIcon from "@material-ui/icons/Face";
-
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, login, register } from "../../actions/userAction";
 import { useAlert } from "react-alert";
@@ -15,17 +14,13 @@ const LoginSignUp = () => {
     const alert = useAlert();
     const navigate = useNavigate();
     const location = useLocation();
-
     const { error, loading, isAuthenticated } = useSelector((state) => state.user);
-
     const loginTab = useRef(null);
     const registerTab = useRef(null);
     const switcherTab = useRef(null);
-
     const [loginEmail, setLoginEmail] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
     const [loginError, setLoginError] = useState("");
-
     const [user, setUser] = useState({
         name: "",
         email: "",
@@ -33,11 +28,9 @@ const LoginSignUp = () => {
     });
 
     const { name, email, password } = user;
-
     const [avatar, setAvatar] = useState("");
     const [avatarPreview, setAvatarPreview] = useState("./Profile.png");
     const [registerError, setRegisterError] = useState("");
-
     const loginSubmit = (e) => {
         e.preventDefault();
         if (!loginEmail || !loginPassword) {
@@ -46,15 +39,12 @@ const LoginSignUp = () => {
         }
         dispatch(login(loginEmail, loginPassword));
     };
-
     const registerSubmit = (e) => {
         e.preventDefault();
-
         if (!name || !email || !password) {
             setRegisterError("Please fill in all fields");
             return;
         }
-
         const myForm = new FormData();
         myForm.set("name", name);
         myForm.set("email", email);
@@ -64,10 +54,8 @@ const LoginSignUp = () => {
         } else {
             myForm.append("avatar", "");
         }
-
         dispatch(register(myForm));
     };
-
     const registerDataChange = (e) => {
         if (e.target.name === "avatar") {
             const file = e.target.files[0];
@@ -83,15 +71,12 @@ const LoginSignUp = () => {
             setUser({ ...user, [e.target.name]: e.target.value });
         }
     };
-
     const redirect = location.search ? location.search.split("=")[1] : "/account";
-
     useEffect(() => {
         if (error) {
             alert.error(error);
             dispatch(clearErrors());
         }
-
         if (isAuthenticated) {
             navigate(redirect);
         }
@@ -102,7 +87,6 @@ const LoginSignUp = () => {
         setLoginPassword("");
         setLoginError("");
     };
-
     const resetRegisterFields = () => {
         setUser({
             name: "",
@@ -118,21 +102,16 @@ const LoginSignUp = () => {
         if (tab === "login") {
             switcherTab.current.classList.add("shiftToNeutral");
             switcherTab.current.classList.remove("shiftToRight");
-
             registerTab.current.classList.remove("shiftToNeutralForm");
             loginTab.current.classList.remove("shiftToLeft");
             registerTab.current.classList.remove("shiftToLeft");
-
             resetLoginFields();
         }
-
         if (tab === "register") {
             switcherTab.current.classList.add("shiftToRight");
             switcherTab.current.classList.remove("shiftToNeutral");
-
             registerTab.current.classList.add("shiftToNeutralForm");
             loginTab.current.classList.add("shiftToLeft");
-
             resetRegisterFields();
         }
     };
@@ -164,7 +143,6 @@ const LoginSignUp = () => {
                                     onChange={(e) => setLoginEmail(e.target.value)}
                                 />
                             </div>
-
                             <div className="login-password">
                                 <LockOpenIcon />
                                 <input
@@ -197,7 +175,6 @@ const LoginSignUp = () => {
                                     onChange={registerDataChange}
                                 />
                             </div>
-
                             <div className="signup-email">
                                 <MailOutlineIcon />
                                 <input
@@ -209,7 +186,6 @@ const LoginSignUp = () => {
                                     onChange={registerDataChange}
                                 />
                             </div>
-
                             <div className="signup-password">
                                 <LockOpenIcon />
                                 <input
@@ -221,7 +197,6 @@ const LoginSignUp = () => {
                                     onChange={registerDataChange}
                                 />
                             </div>
-
                             <div id="register-image">
                                 <img src={avatarPreview} alt="Avatar Preview" />
                                 <input
@@ -231,7 +206,6 @@ const LoginSignUp = () => {
                                     onChange={registerDataChange}
                                 />
                             </div>
-
                             <input type="submit" value="Register" className="signup-btn" />
                         </form>
                     </div>

@@ -16,11 +16,11 @@ const UpdateProfile = () => {
   const navigate = useNavigate();
 
   const { user } = useSelector((state) => state.user);
-  const { error = null, isUpdated = false, loading = false } = useSelector((state) => state.profile || {});
+  const { error, isUpdated, loading } = useSelector((state) => state.profile);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [avatar, setAvatar] = useState();
+  const [avatar, setAvatar] = useState("");
   const [avatarPreview, setAvatarPreview] = useState("/Profile.png");
 
   const updateProfileSubmit = (e) => {
@@ -29,21 +29,22 @@ const UpdateProfile = () => {
     const myForm = new FormData();
     myForm.set("name", name);
     myForm.set("email", email);
-    myForm.set("avatar", avatar);
+    if (avatar) {
+      myForm.set("avatar", avatar);
+    }
     dispatch(updateProfile(myForm));
   };
 
   const updateProfileDataChange = useCallback((e) => {
-    const reader = new FileReader();
-
-    reader.onload = () => {
-      if (reader.readyState === 2) {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
         setAvatarPreview(reader.result);
-        setAvatar(reader.result);
-      }
-    };
-
-    reader.readAsDataURL(e.target.files[0]);
+        setAvatar(file);
+      };
+      reader.readAsDataURL(file);
+    }
   }, []);
 
   useEffect(() => {
@@ -62,7 +63,6 @@ const UpdateProfile = () => {
       alert.success("Profile Updated Successfully");
       dispatch(loadUser());
       navigate("/account");
-
       dispatch({ type: UPDATE_PROFILE_RESET });
     }
   }, [dispatch, error, alert, navigate, user, isUpdated]);
