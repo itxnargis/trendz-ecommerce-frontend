@@ -145,7 +145,7 @@
     }
 
     .banner::after {
-        clip-path: polygon(100% 75%, 0 100%, 100% 100%);
+        clip-path: polygon(100% 90%, 0 100%, 100% 100%); /* Adjusted for smaller screens */
     }
 
     .home-heading {
