@@ -62,6 +62,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:8000"
+  "proxy": "https://ecommerce-website-backend-9kfe.onrender.com"
 
 }
