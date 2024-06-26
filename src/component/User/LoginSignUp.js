@@ -24,6 +24,7 @@ const LoginSignUp = () => {
 
     const [loginEmail, setLoginEmail] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
+    const [loginError, setLoginError] = useState("");
 
     const [user, setUser] = useState({
         name: "",
@@ -35,14 +36,24 @@ const LoginSignUp = () => {
 
     const [avatar, setAvatar] = useState("");
     const [avatarPreview, setAvatarPreview] = useState("./Profile.png");
+    const [registerError, setRegisterError] = useState("");
 
     const loginSubmit = (e) => {
         e.preventDefault();
+        if (!loginEmail || !loginPassword) {
+            setLoginError("Please fill in all fields");
+            return;
+        }
         dispatch(login(loginEmail, loginPassword));
     };
 
     const registerSubmit = (e) => {
         e.preventDefault();
+
+        if (!name || !email || !password) {
+            setRegisterError("Please fill in all fields");
+            return;
+        }
 
         const myForm = new FormData();
         myForm.set("name", name);
@@ -86,6 +97,23 @@ const LoginSignUp = () => {
         }
     }, [dispatch, error, alert, navigate, isAuthenticated, redirect]);
 
+    const resetLoginFields = () => {
+        setLoginEmail("");
+        setLoginPassword("");
+        setLoginError("");
+    };
+
+    const resetRegisterFields = () => {
+        setUser({
+            name: "",
+            email: "",
+            password: "",
+        });
+        setAvatar("");
+        setAvatarPreview("./Profile.png");
+        setRegisterError("");
+    };
+
     const switchTabs = (e, tab) => {
         if (tab === "login") {
             switcherTab.current.classList.add("shiftToNeutral");
@@ -94,6 +122,8 @@ const LoginSignUp = () => {
             registerTab.current.classList.remove("shiftToNeutralForm");
             loginTab.current.classList.remove("shiftToLeft");
             registerTab.current.classList.remove("shiftToLeft");
+
+            resetLoginFields();
         }
 
         if (tab === "register") {
@@ -102,6 +132,8 @@ const LoginSignUp = () => {
 
             registerTab.current.classList.add("shiftToNeutralForm");
             loginTab.current.classList.add("shiftToLeft");
+
+            resetRegisterFields();
         }
     };
 
@@ -121,6 +153,7 @@ const LoginSignUp = () => {
                         </div>
 
                         <form className="login-form" ref={loginTab} onSubmit={loginSubmit}>
+                            {loginError && <span className="error-message">{loginError}</span>}
                             <div className="login-email">
                                 <MailOutlineIcon />
                                 <input
@@ -152,6 +185,7 @@ const LoginSignUp = () => {
                             encType="multipart/form-data"
                             onSubmit={registerSubmit}
                         >
+                            {registerError && <span className="error-message">{registerError}</span>}
                             <div className="signup-name">
                                 <FaceIcon />
                                 <input
