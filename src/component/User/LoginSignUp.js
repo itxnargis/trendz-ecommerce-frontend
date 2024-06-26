@@ -14,7 +14,7 @@ const LoginSignUp = () => {
     const dispatch = useDispatch();
     const alert = useAlert();
     const navigate = useNavigate();
-    const location = useLocation(); // Use the useLocation hook
+    const location = useLocation();
 
     const { error, loading, isAuthenticated } = useSelector((state) => state.user);
 
@@ -33,7 +33,7 @@ const LoginSignUp = () => {
 
     const { name, email, password } = user;
 
-    const [avatar, setAvatar] = useState(null);
+    const [avatar, setAvatar] = useState("");
     const [avatarPreview, setAvatarPreview] = useState("./Profile.png");
 
     const loginSubmit = (e) => {
@@ -48,21 +48,26 @@ const LoginSignUp = () => {
         myForm.set("name", name);
         myForm.set("email", email);
         myForm.set("password", password);
-        myForm.set("avatar", avatar);
+        if (avatar) {
+            myForm.append("avatar", avatar);
+        } else {
+            myForm.append("avatar", "");
+        }
 
         dispatch(register(myForm));
     };
 
     const registerDataChange = (e) => {
         if (e.target.name === "avatar") {
-            const reader = new FileReader();
-            reader.onload = () => {
-                if (reader.readyState === 2) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onloadend = () => {
                     setAvatarPreview(reader.result);
                     setAvatar(reader.result);
-                }
-            };
-            reader.readAsDataURL(e.target.files[0]);
+                };
+                reader.readAsDataURL(file);
+            }
         } else {
             setUser({ ...user, [e.target.name]: e.target.value });
         }
