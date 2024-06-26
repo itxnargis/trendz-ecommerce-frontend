@@ -126,11 +126,7 @@ font-size: 1vmax;
         font-size: 1.7vmax;
     }
     .banner::after {
-    width: 100vw;
-    height: 100vmin;
-    background-color: #fff;
-    position: absolute;
-    max-width: 100%;
+   display: none;
     }
 
     .productCard > div {
