@@ -1,61 +1,58 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { newProductReducer,
-    newReviewReducer,
+import {
+    productsReducer,
     productDetailsReducer,
+    newReviewReducer,
+    newProductReducer,
     productReducer,
     productReviewsReducer,
-    productsReducer,
-    reviewReducer,
-   } from "./reducers/productReducer";
-
-import { allUsersReducer,
-    forgotPasswordReducer,
+    reviewReducer
+} from "./reducers/productReducer";
+import {
+    userReducer,
     profileReducer,
-    userDetailsReducer,
-    userReducer, }
-    from "./reducers/userReducer";
-
-import { cartReducer }
-from "./reducers/cartReducer";
-
-import { allOrdersReducer,
-    myOrdersReducer,
+    forgotPasswordReducer,
+    allUsersReducer,
+    userDetailsReducer
+} from "./reducers/userReducer";
+import { cartReducer } from "./reducers/cartReducer";
+import {
     newOrderReducer,
+    myOrdersReducer,
     orderDetailsReducer,
-    orderReducer, }
-    from "./reducers/orderReducer";
-
+    allOrdersReducer,
+    orderReducer
+} from "./reducers/orderReducer";
 
 const reducer = combineReducers({
     products: productsReducer,
-  productDetails: productDetailsReducer,
-  user: userReducer,
-  profile: profileReducer,
-  forgotPassword: forgotPasswordReducer,
-  cart: cartReducer,
-  newOrder: newOrderReducer,
-  myOrders: myOrdersReducer,
-  orderDetails: orderDetailsReducer,
-  newReview: newReviewReducer,
-  newProduct: newProductReducer,
-  product: productReducer,
-  allOrders: allOrdersReducer,
-  order: orderReducer,
-  allUsers: allUsersReducer,
-  userDetails: userDetailsReducer,
-  productReviews: productReviewsReducer,
-  review: reviewReducer,
+    productDetails: productDetailsReducer,
+    user: userReducer,
+    profile: profileReducer,
+    forgotPassword: forgotPasswordReducer,
+    cart: cartReducer,
+    newOrder: newOrderReducer,
+    myOrders: myOrdersReducer,
+    orderDetails: orderDetailsReducer,
+    newReview: newReviewReducer,
+    newProduct: newProductReducer,
+    product: productReducer,
+    allOrders: allOrdersReducer,
+    order: orderReducer,
+    allUsers: allUsersReducer,
+    userDetails: userDetailsReducer,
+    productReviews: productReviewsReducer,
+    review: reviewReducer
 });
 
 let initialState = {
-
     cart: {
         cartItems: localStorage.getItem("cartItems")
             ? JSON.parse(localStorage.getItem("cartItems"))
             : [],
-            shoppingInfo: localStorage.getItem("shippingInfo")
+        shippingInfo: localStorage.getItem("shippingInfo")
             ? JSON.parse(localStorage.getItem("shippingInfo"))
             : {},
     },

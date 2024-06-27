@@ -59,9 +59,9 @@ function App() {
       }
     });
 
-    store.dispatch(loadUser());
+    dispatch(loadUser());
 
-  }, []);
+  }, [dispatch]);
 
   window.addEventListener("contextmenu", (e) => e.preventDefault());
 
