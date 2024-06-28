@@ -48,7 +48,7 @@ To run this project locally, follow these steps:
    
 2. **Install dependencies:**
 
-  ```bash
+   ```bash
    npm install
    ```
 
@@ -56,21 +56,21 @@ To run this project locally, follow these steps:
 
  Create a .env file in the root directory and add your environment variables. You might need to set the REACT_APP_BACKEND_URL for the backend API.
 
-```bash
-  REACT_APP_BACKEND_URL=http://localhost:5000
-```
+   ```bash
+   REACT_APP_BACKEND_URL=http://localhost:5000
+   ```
 
 4. **Run the application:**
 
-```bash
-  npm start
-```
+   ```bash
+   npm start
+   ```
 
 5. **Open the browser:**
 
-```bash
- Navigate to http://localhost:3000 to see the application running.
- ```
+   ```bash
+   Navigate to http://localhost:3000 to see the application running.
+   ```
 
 ## Usage
 
