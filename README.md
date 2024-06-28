@@ -49,12 +49,12 @@ To run this project locally, follow these steps:
 2. **Install dependencies:**
 
   ```bash
-  npm install
-```
+   npm install
+   ```
 
 3. **Set up environment variables:**
 
-Create a .env file in the root directory and add your environment variables. You might need to set the REACT_APP_BACKEND_URL for the backend API.
+ Create a .env file in the root directory and add your environment variables. You might need to set the REACT_APP_BACKEND_URL for the backend API.
 
 ```bash
   REACT_APP_BACKEND_URL=http://localhost:5000
@@ -63,18 +63,16 @@ Create a .env file in the root directory and add your environment variables. You
 4. **Run the application:**
 
 ```bash
-npm start
-
+  npm start
 ```
 
 5. **Open the browser:**
 
 ```bash
-Navigate to http://localhost:3000 to see the application running.
+ Navigate to http://localhost:3000 to see the application running.
+ ```
 
-```
-
-##Usage
+## Usage
 
 - Home Page: Browse featured products and search for specific items.
 - Product Details: View detailed information about a product, including reviews and ratings.
@@ -82,7 +80,7 @@ Navigate to http://localhost:3000 to see the application running.
 - Authentication: Register and log in to your account.
 - Admin Dashboard: Manage products, orders, and users (available for admin users).**
 
-##Contributing
+## Contributing
 
 Contributions are welcome! Please follow these steps to contribute:
 
@@ -93,7 +91,7 @@ Contributions are welcome! Please follow these steps to contribute:
 - Push to the branch (git push origin feature-branch).
 - Open a pull request.
 
-##License
+## License
 
 Feel free to copy and paste this into your `README.md` file and customize it as needed.
 
