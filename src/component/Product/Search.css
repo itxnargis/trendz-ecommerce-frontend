@@ -1,6 +1,8 @@
-.searchBox{
-     position: relative;
-    }
+.searchBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .searchBox > input[type="text"] {
     box-shadow: 0 0 5px rgba(0, 0, 0, .637);
     background-color: white;
