@@ -2,10 +2,16 @@ footer {
   background: var(--eerie-black);
   padding: 30px 0;
 }
+.footer-container {
+  padding: 0 20px;
+}
 .footer-nav {
   border-bottom: 1px solid var(--onyx);
   padding-bottom: 30px;
   margin-bottom: 30px;
+}
+.footer-nav-list {
+  list-style: none;
 }
 .footer-nav-list:not(:last-child) {
   margin-bottom: 20px;
@@ -93,7 +99,7 @@ footer {
   }
 }
 @media (min-width: 768px) {
-  .footer-nav .container {
+  .footer-nav .footer-container {
     display: flex;
     flex-wrap: wrap;
     row-gap: 50px;

@@ -9,7 +9,7 @@ const Footer = () => {
     return (
         <footer>
             <div class="footer-nav">
-                <div class="container">
+                <div class="footer-container">
                     <ul class="footer-nav-list">
                         <li class="footer-nav-item">
                             <h2 class="nav-title">Popular Categories</h2>
@@ -107,7 +107,7 @@ const Footer = () => {
                             <IoMailOutline />
                             </div>
                             <a href="mailto:itxnargiskhatun@gmail.com" title="My gmail account"
-                                aria-label="Gmail-icon" id="iconLink">
+                                aria-label="Gmail-icon" className="footer-nav-link">
                                 GMail
                             </a>
                         </li>
@@ -120,20 +120,20 @@ const Footer = () => {
                             <ul class="social-link">
                                 <li class="footer-nav-item">
                                     <a href="https://github.com/itxnargis" title="Connect to github"
-                                        aria-label="Github-icon" id="iconLink">
-                                        Github
+                                        aria-label="Github-icon" className="footer-nav-link">
+                                        <AiFillGithub/>
                                     </a>
                                 </li>
                                 <li class="footer-nav-item">
                                     <a href="https://x.com/81283nargis?s=09" title="My personal twitter account"
-                                        aria-label="Twitter-icon" id="iconLink">
-                                        Twitter
+                                        aria-label="Twitter-icon" className="footer-nav-link">
+                                        <AiOutlineTwitter />
                                     </a>
                                 </li>
                                 <li class="footer-nav-item">
                                     <a href="https://www.linkedin.com/in/nargis-khatun-4008ab2a9/"
-                                        title="My linkedin account" aria-label="Linkedin-icon" id="iconLink">
-                                        Linkedin
+                                        title="My linkedin account" aria-label="Linkedin-icon" className="footer-nav-link">
+                                        <AiFillLinkedin />
                                     </a>
                                 </li>
                             </ul>
@@ -142,7 +142,7 @@ const Footer = () => {
                 </div>
             </div>
             <div class="footer-bottom">
-                <div class="container">
+                <div class="footer-container">
                     <img src={logo} alt="payment method" className="payment-img" />
                     <p class="copyright">
                         Copyright &copy; <a href="#">Ecommerce</a> all rights reserved.
