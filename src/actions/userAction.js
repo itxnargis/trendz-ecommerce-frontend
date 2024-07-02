@@ -39,11 +39,7 @@ import {
   USER_DETAILS_FAIL,
   CLEAR_ERRORS
 } from "../constants/userConstant";
-
-// Get auth token from localStorage
-const getAuthToken = () => {
-  return localStorage.getItem('token');
-};
+import { getAuthToken } from "../utils/authUtils";
 
 // Login User
 export const login = (email, password) => async (dispatch) => {

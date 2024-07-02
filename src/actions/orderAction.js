@@ -21,11 +21,7 @@ import {
   ORDER_DETAILS_FAIL,
   CLEAR_ERRORS,
 } from "../constants/orderConstant";
-
-// Get auth token from localStorage
-const getAuthToken = () => {
-  return localStorage.getItem('token');
-};
+import { getAuthToken } from "../utils/authUtils";
 
 // Create Order
 export const createOrder = (order) => async (dispatch) => {

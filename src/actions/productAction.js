@@ -30,11 +30,7 @@ import {
     DELETE_REVIEW_FAIL,
     CLEAR_ERRORS
 } from "../constants/productConstant";
-
-// Get auth token from localStorage
-const getAuthToken = () => {
-    return localStorage.getItem('token');
-};
+import { getAuthToken } from "../utils/authUtils";
 
 export const getProduct = (keyword = "", currentPage = 1, price = [0, 25000], category, ratings = 0) => async (dispatch) => {
     try {
