@@ -67,7 +67,7 @@
     width: 10vmax;
     position: absolute;
     top: 10vmax;
-    left: 4vmax;
+    left: 3vmax;
 }
 .categoryBox {
     padding: 0%;
@@ -78,7 +78,7 @@
     font: 400 1.7vmax "Roboto";
     margin: .8vmax;
     cursor: pointer;
-    font-size: 2vmax;
+    font-size: 1.7vmax;
     transition: all .5s;
 }
 .category-link:hover {
@@ -94,10 +94,13 @@
         position: static;
         margin: auto;
     }
+    .products {
+        padding-left: 0;
+    }
     .page-link {
         font: 300 1.7vmax "Roboto";
     }
     .category-link{
-        font: 400 1.8vmax "Roboto";
+        font: 400 2vmax "Roboto";
     }
 }

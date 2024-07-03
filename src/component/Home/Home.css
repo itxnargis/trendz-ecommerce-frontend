@@ -165,16 +165,17 @@ button {
   flex-direction: column;
   text-decoration: none;
   color: rgb(48, 48, 48);
-  margin: 2vmax;
+  margin: .7vmax;
   border-radius: .7rem;
   border: 1px solid rgba(0, 0, 0, 0.2);
   background: #fff;
   transition: all 0.5s;
-  padding: 2.5vmax;
+  padding: 2vmax;
   padding-bottom: 0.5vmax;
 }
 .productCard > img {
   width: 14vmax;
+  padding-bottom: 1rem;
 }
 .productCardSpan {
   margin: 0.5vmax;
@@ -188,6 +189,7 @@ button {
 .productCard > div > span {
   margin: 0.5vmax;
   font: 300 0.7vmax "Roboto";
+  font-size: 1.080vmax;
 }
 .productCard > p {
   font-family: "Roboto";
