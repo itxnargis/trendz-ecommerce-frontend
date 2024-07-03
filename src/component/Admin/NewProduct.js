@@ -18,9 +18,7 @@ const NewProduct = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
   const navigate = useNavigate();
-
   const { loading, error, success } = useSelector((state) => state.newProduct);
-
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState("");
@@ -39,7 +37,6 @@ const NewProduct = () => {
     "Camera",
     "SmartPhones",
   ];
-
   useEffect(() => {
     if (error) {
       alert.error(error);
