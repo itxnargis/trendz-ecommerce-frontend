@@ -166,7 +166,11 @@ button {
   text-decoration: none;
   color: rgb(48, 48, 48);
   margin: 2vmax;
+  border-radius: .7rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background: #fff;
   transition: all 0.5s;
+  padding: 2.5vmax;
   padding-bottom: 0.5vmax;
 }
 .productCard > img {

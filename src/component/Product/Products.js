@@ -72,7 +72,7 @@ const Products = () => {
                     </div>
 
                     <div className="filterBox">
-                        <Typography>Price</Typography>
+                        <Typography className="customFontSize">Price</Typography>
 
                         <Slider
                             value={price}
@@ -83,7 +83,7 @@ const Products = () => {
                             max={25000}
                         />
 
-                        <Typography>Categories</Typography>
+                        <Typography className="customFontSize">Categories</Typography>
                         <ul className="categoryBox">
                             {
                                 categories.map((category) => (
