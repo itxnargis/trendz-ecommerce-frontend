@@ -39,7 +39,7 @@ footer {
 .footer-nav-link,
 .footer-nav-item .content {
   width: max-content;
-  color: var(--sonic-silver);
+  color: #ccc;
   text-decoration: none;
   font-size: var(--fs-7);
   text-transform: capitalize;

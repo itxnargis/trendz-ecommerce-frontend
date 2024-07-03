@@ -133,6 +133,7 @@
     text-align: center;
     border-bottom: 1px solid rgba(0, 0, 0, .226);
     padding: 1vmax;
+    padding-top: 10vmax;
     width: 20vmax;
     margin: auto;
     margin-bottom: 4vmax;
@@ -140,17 +141,17 @@
 .reviews{
     display: flex;
     overflow: auto;
+    margin-bottom: 10vmax;
 }
 .reviewCard {
     flex: none;
-
     box-shadow: 0 0 5px rgba(0, 0, 0, .226);
     border: 1px solid rgba(56, 56, 56, .116);
     width: 30vmax;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 1vmax;
+    margin: 1vmax 3vmax;
     padding: 3vmax;
 }
 .reviewCard > img {

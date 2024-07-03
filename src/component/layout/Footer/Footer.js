@@ -99,7 +99,7 @@ const Footer = () => {
                             <IoLocationOutline />
                             </div>
                             <address class="content">
-                                Vedram Colony, Gali No. 8, Sehatpur, Faridabad, Haryana, 121003
+                                Faridabad, Haryana, Pin Code - 121003
                             </address>
                         </li>
                         <li class="footer-nav-item flex">

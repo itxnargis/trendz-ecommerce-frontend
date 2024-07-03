@@ -17,11 +17,12 @@
     height: 8%;
 }
 .searchBox > input[type="submit"] {
+    box-shadow: 0 0 5px rgba(0, 0, 0, .637);
     height: 8%;
     border-radius: 0%;
     background-color: tomato;
     border: none;
-    padding: 1vmax;
+    padding: 1vmax 2vmax;
     width: 10%;
     font: 300 1.1vmax "Roboto";
     cursor: pointer;
@@ -29,5 +30,5 @@
     transition: all .5s;
 }
 .searchBox > input[type="submit"]:hover {
-    background-color: blueviolet;
+    background-color: rgb(39, 141, 61);
 }

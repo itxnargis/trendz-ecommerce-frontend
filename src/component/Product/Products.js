@@ -15,8 +15,9 @@ const categories = [
     "Laptop",
     "Footwear",
     "Bottom",
-    "Top",
-    "Attire",
+    "Tops",
+    "Jewellery",
+    "Watches",
     "Camera",
     "SmartPhones",
 ]
@@ -28,8 +29,8 @@ const Products = () => {
 
     const [currentPage, setCurrentPage] = useState(1);
     const [price, setPrice] = useState([0, 25000]);
-    const[category, setCategory] = useState("");
-    const[ratings, setRatings] = useState(0);
+    const [category, setCategory] = useState("");
+    const [ratings, setRatings] = useState(0);
 
     const { products, loading, error, productsCount, resultPerPage, filteredProductsCount } =
         useSelector((state) => state.products
@@ -46,7 +47,7 @@ const Products = () => {
     }
 
     useEffect(() => {
-        if(error) {
+        if (error) {
             alert.error(error);
             dispatch(clearErrors());
         }
@@ -74,12 +75,12 @@ const Products = () => {
                         <Typography>Price</Typography>
 
                         <Slider
-                        value={price}
-                        onChange={priceHandler}
-                        valueLabelDisplay="auto"
-                        aria-labelledby="range-slider"
-                        min={0}
-                        max={25000}
+                            value={price}
+                            onChange={priceHandler}
+                            valueLabelDisplay="auto"
+                            aria-labelledby="range-slider"
+                            min={0}
+                            max={25000}
                         />
 
                         <Typography>Categories</Typography>
@@ -87,9 +88,9 @@ const Products = () => {
                             {
                                 categories.map((category) => {
                                     <li
-                                    className="category-link"
-                                    key={category}
-                                    onClick={() => setCategory(category)}
+                                        className="category-link"
+                                        key={category}
+                                        onClick={() => setCategory(category)}
                                     >
                                         {category}
                                     </li>
@@ -100,14 +101,14 @@ const Products = () => {
                         <fieldset>
                             <Typography component="legend">Ratings Above</Typography>
                             <Slider
-                            value={ratings}
-                            onChange={(e, newRating) => {
-                                setRatings(newRating);
-                            }}
-                            aria-labelledby="continuous-slider"
-                            min={0}
-                            max={5}
-                            valueLabelDisplay="auto"
+                                value={ratings}
+                                onChange={(e, newRating) => {
+                                    setRatings(newRating);
+                                }}
+                                aria-labelledby="continuous-slider"
+                                min={0}
+                                max={5}
+                                valueLabelDisplay="auto"
                             />
                         </fieldset>
 
