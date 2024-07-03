@@ -34,7 +34,7 @@ const NewProduct = () => {
     "Footwear",
     "Bottom",
     "Tops",
-    "Attire",
+    "Jewellery",
     "Watches",
     "Camera",
     "SmartPhones",
