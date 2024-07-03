@@ -86,7 +86,7 @@ const Products = () => {
                         <Typography>Categories</Typography>
                         <ul className="categoryBox">
                             {
-                                categories.map((category) => {
+                                categories.map((category) => (
                                     <li
                                         className="category-link"
                                         key={category}
@@ -94,9 +94,10 @@ const Products = () => {
                                     >
                                         {category}
                                     </li>
-                                })
+                                ))
                             }
                         </ul>
+
 
                         <fieldset>
                             <Typography component="legend">Ratings Above</Typography>
