@@ -75,7 +75,7 @@
 .category-link {
     list-style: none;
     color: #060202e0;
-    font: 400 1.7vmax "Roboto";
+    font: 400 1.3vmax "Roboto";
     margin: .8vmax;
     cursor: pointer;
     font-size: 1.7vmax;
@@ -101,6 +101,6 @@
         font: 300 1.7vmax "Roboto";
     }
     .category-link{
-        font: 400 2vmax "Roboto";
+        font: 400 1.7vmax "Roboto";
     }
 }
