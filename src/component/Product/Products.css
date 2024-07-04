@@ -2,7 +2,8 @@
 .productsHeading {
     margin: 3vmax auto;
     width: fit-content;
-    padding: 2vmax;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.171);
+  padding: 2vmax;
     color: rgba(0, 0, 0, .678);
     font: 500 1.5vmax "Roboto";
     text-align: center;
@@ -17,22 +18,33 @@
     margin: 1vmax auto;
     width: fit-content;
     cursor: pointer;
+    align-items: center;
+    justify-content: center;
 }
 
 @media screen and (max-width: 600px) {
     .underline {
         display: block;
         border-bottom: 1px solid rgba(0, 0, 0, 0.171);
-        width: 80%;
-        margin: 0 auto;
+        width: 100%;
+        margin-bottom: 2vmax;
     }
-
+    .filterIcon p {
+        margin: 0;
+        margin-right: 1px;
+        font-size: 1rem;
+    }
     .filterIcon {
         display: block;
     }
 
     .filterBox {
         display: none;
+    }
+    .filterContent {
+        width: 90vw;
+        max-width: none;
+        padding: 2vmax;
     }
 }
 
@@ -182,4 +194,3 @@
         font-size: 1.7vmax;
     }
 }
-

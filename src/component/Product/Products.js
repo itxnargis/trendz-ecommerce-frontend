@@ -125,7 +125,9 @@ const Products = () => {
                     <h2 className="productsHeading">Products</h2>
                     <div className="underline"></div>
                     <div className="filterIcon" onClick={handleOpen}>
-                        <FaFilter size={30} />
+                        <p>Filters</p>
+                        <FaFilter size={15} />
+                        
                     </div>
                     <div className="underline"></div>
                     <div className="products">
