@@ -5,12 +5,12 @@ import { clearErrors, getProduct } from "../../actions/productAction";
 import Loader from "../layout/Loader/Loader";
 import Product from "../Home/Product.js";
 import Pagination from "react-js-pagination";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useAlert } from "react-alert";
 import Slider from "@material-ui/core/Slider";
 import Typography from "@material-ui/core/Typography";
 import MetaData from "../layout/metaData";
-import { FaFilter } from "react-icons/fa"; // Import the filter icon
+import { FaFilter, FaSignInAlt } from "react-icons/fa"; // Import the login icon
 import Modal from '@material-ui/core/Modal'; // Import Modal component
 
 const categories = [
@@ -124,10 +124,15 @@ const Products = () => {
                     <MetaData title="PRODUCTS --- ECOMMERCE" />
                     <h2 className="productsHeading">Products</h2>
                     <div className="underline"></div>
-                    <div className="filterIcon" onClick={handleOpen}>
-                        <p>Filters</p>
-                        <FaFilter size={15} />
-                        
+                    <div className="iconsContainer">
+                        <div className="filterIcon" onClick={handleOpen}>
+                            <p>Filters</p>
+                            <FaFilter size={15} />
+                        </div>
+                        <Link to="/login" className="loginIcon">
+                            <FaSignInAlt size={15} />
+                            <p>Login</p>
+                        </Link>
                     </div>
                     <div className="underline"></div>
                     <div className="products">
