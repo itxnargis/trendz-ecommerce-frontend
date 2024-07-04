@@ -139,7 +139,7 @@ const Products = () => {
             ) : (
                 <Fragment>
                     <MetaData title="PRODUCTS --- ECOMMERCE" />
-                    <h2 className="productsHeading" id="product">Products</h2>
+                    <h2 className="productsHeading">Products</h2>
                     <div className="underline"></div>
                     <div className="iconsContainer">
                         <div className="filterIcon" onClick={handleOpen}>
@@ -152,7 +152,7 @@ const Products = () => {
                         </Link>
                     </div>
                     <div className="underline"></div>
-                    <div className="products">
+                    <div className="products" id="product">
                         {products && products.map((product) => (
                             <Product key={product._id} product={product} />
                         ))}
