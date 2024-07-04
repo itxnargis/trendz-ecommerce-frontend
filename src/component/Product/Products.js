@@ -10,8 +10,8 @@ import { useAlert } from "react-alert";
 import Slider from "@material-ui/core/Slider";
 import Typography from "@material-ui/core/Typography";
 import MetaData from "../layout/metaData";
-import { FaFilter, FaSignInAlt } from "react-icons/fa"; // Import the login icon
-import Modal from '@material-ui/core/Modal'; // Import Modal component
+import { FaFilter, FaSignInAlt } from "react-icons/fa";
+import Modal from '@material-ui/core/Modal';
 
 const categories = [
     "Laptop",
@@ -33,7 +33,13 @@ const Products = () => {
     const [price, setPrice] = useState([0, 25000]);
     const [category, setCategory] = useState("");
     const [ratings, setRatings] = useState(0);
-    const [open, setOpen] = useState(false); // State to handle modal visibility
+    const [open, setOpen] = useState(false);
+
+    const [appliedFilters, setAppliedFilters] = useState({
+        price: [0, 25000],
+        category: "",
+        ratings: 0,
+    });
 
     const { products, loading, error, productsCount, resultPerPage, filteredProductsCount } =
         useSelector((state) => state.products
@@ -58,17 +64,26 @@ const Products = () => {
     }
 
     const applyFilters = () => {
+        setAppliedFilters({ price, category, ratings });
         handleClose();
         dispatch(getProduct(keyword, currentPage, price, category, ratings));
-    }
+    };
+
+    const clearFilters = () => {
+        setPrice([0, 25000]);
+        setCategory("");
+        setRatings(0);
+        setAppliedFilters({ price: [0, 25000], category: "", ratings: 0 });
+        dispatch(getProduct(keyword, currentPage, [0, 25000], "", 0));
+    };
 
     useEffect(() => {
         if (error) {
             alert.error(error);
             dispatch(clearErrors());
         }
-        dispatch(getProduct(keyword, currentPage, price, category, ratings));
-    }, [dispatch, keyword, currentPage, price, category, ratings, alert, error]);
+        dispatch(getProduct(keyword, currentPage, appliedFilters.price, appliedFilters.category, appliedFilters.ratings));
+    }, [dispatch, keyword, currentPage, appliedFilters.price, appliedFilters.category, appliedFilters.ratings, alert, error]);
 
     let count = filteredProductsCount;
 
@@ -110,7 +125,7 @@ const Products = () => {
             </fieldset>
             <div className="filterButtons">
                 <button onClick={applyFilters} className="applyButton">Done</button>
-                <button onClick={handleClose} className="cancelButton">Cancel</button>
+                <button onClick={handleClose} className="cancelButton">clear Filters</button>
             </div>
         </div>
     );
