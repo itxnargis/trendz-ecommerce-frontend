@@ -10,8 +10,8 @@ import { useAlert } from "react-alert";
 import Slider from "@material-ui/core/Slider";
 import Typography from "@material-ui/core/Typography";
 import MetaData from "../layout/metaData";
-import { FaFilter, FaSignInAlt } from "react-icons/fa"; // Import the login icon
-import Modal from '@material-ui/core/Modal'; // Import Modal component
+import { FaFilter, FaSignInAlt } from "react-icons/fa";
+import Modal from '@material-ui/core/Modal';
 
 const categories = [
     "Laptop",
@@ -32,43 +32,40 @@ const Products = () => {
     const [price, setPrice] = useState([0, 25000]);
     const [category, setCategory] = useState("");
     const [ratings, setRatings] = useState(0);
-    const [open, setOpen] = useState(false); // State to handle modal visibility
-    const [filtersApplied, setFiltersApplied] = useState(false); // State to track if filters are applied
+    const [open, setOpen] = useState(false);
+    const [filtersApplied, setFiltersApplied] = useState(false); // Track if filters are applied
 
     const { products, loading, error, productsCount, resultPerPage, filteredProductsCount } =
-        useSelector((state) => state.products
-        );
+        useSelector((state) => state.products);
 
     const { keyword } = useParams();
 
     const setCurrentPageNo = (e) => {
         setCurrentPage(e);
-    }
+    };
 
     const priceHandler = (event, newPrice) => {
         setPrice(newPrice);
-    }
+    };
 
     const handleOpen = () => {
         setOpen(true);
-    }
+    };
 
     const handleClose = () => {
+        setPrice([0, 25000]);
+        setCategory("");
+        setRatings(0);
+        setFiltersApplied(false); // Reset filters
         setOpen(false);
-        if (!filtersApplied) {
-            // Reset filters if they were not applied
-            setPrice([0, 25000]);
-            setCategory("");
-            setRatings(0);
-            dispatch(getProduct(keyword, currentPage, [0, 25000], "", 0));
-        }
-    }
+        dispatch(getProduct(keyword, currentPage, [0, 25000], "", 0)); // Fetch products without filters
+    };
 
     const applyFilters = () => {
         setFiltersApplied(true);
-        handleClose();
-        dispatch(getProduct(keyword, currentPage, price, category, ratings));
-    }
+        setOpen(false);
+        dispatch(getProduct(keyword, currentPage, price, category, ratings)); // Apply filters
+    };
 
     useEffect(() => {
         if (error) {
@@ -77,51 +74,6 @@ const Products = () => {
         }
         dispatch(getProduct(keyword, currentPage, price, category, ratings));
     }, [dispatch, keyword, currentPage, price, category, ratings, alert, error]);
-
-    let count = filteredProductsCount;
-
-    const filterContent = (
-        <div className="filterContent">
-            <Typography className="customFontSize">Price</Typography>
-            <Slider
-                value={price}
-                onChange={priceHandler}
-                valueLabelDisplay="auto"
-                aria-labelledby="range-slider"
-                min={0}
-                max={25000}
-            />
-            <Typography className="customFontSize">Categories</Typography>
-            <ul className="categoryBox">
-                {categories.map((category) => (
-                    <li
-                        className="category-link"
-                        key={category}
-                        onClick={() => setCategory(category)}
-                    >
-                        {category}
-                    </li>
-                ))}
-            </ul>
-            <fieldset>
-                <Typography component="legend">Ratings Above</Typography>
-                <Slider
-                    value={ratings}
-                    onChange={(e, newRating) => {
-                        setRatings(newRating);
-                    }}
-                    aria-labelledby="continuous-slider"
-                    min={0}
-                    max={5}
-                    valueLabelDisplay="auto"
-                />
-            </fieldset>
-            <div className="filterButtons">
-                <button onClick={applyFilters} className="applyButton">Done</button>
-                <button onClick={handleClose} className="cancelButton">Cancel</button>
-            </div>
-        </div>
-    );
 
     return (
         <Fragment>
@@ -134,8 +86,8 @@ const Products = () => {
                     <div className="underline"></div>
                     <div className="iconsContainer">
                         <div className="filterIcon" onClick={handleOpen}>
-                            <p>Filters</p>
                             <FaFilter size={15} />
+                            <p>Filters</p>
                         </div>
                         <Link to="/login" className="loginIcon">
                             <FaSignInAlt size={15} />
@@ -149,44 +101,7 @@ const Products = () => {
                         ))}
                     </div>
 
-                    <div className="filterBox">
-                        <Typography className="customFontSize">Price</Typography>
-                        <Slider
-                            value={price}
-                            onChange={priceHandler}
-                            valueLabelDisplay="auto"
-                            aria-labelledby="range-slider"
-                            min={0}
-                            max={25000}
-                        />
-                        <Typography className="customFontSize">Categories</Typography>
-                        <ul className="categoryBox">
-                            {categories.map((category) => (
-                                <li
-                                    className="category-link"
-                                    key={category}
-                                    onClick={() => setCategory(category)}
-                                >
-                                    {category}
-                                </li>
-                            ))}
-                        </ul>
-                        <fieldset>
-                            <Typography component="legend">Ratings Above</Typography>
-                            <Slider
-                                value={ratings}
-                                onChange={(e, newRating) => {
-                                    setRatings(newRating);
-                                }}
-                                aria-labelledby="continuous-slider"
-                                min={0}
-                                max={5}
-                                valueLabelDisplay="auto"
-                            />
-                        </fieldset>
-                    </div>
-
-                    {resultPerPage < count && (
+                    {resultPerPage < filteredProductsCount && (
                         <div className="PaginationBox">
                             <Pagination
                                 activePage={currentPage}
@@ -210,7 +125,46 @@ const Products = () => {
                         aria-labelledby="simple-modal-title"
                         aria-describedby="simple-modal-description"
                     >
-                        {filterContent}
+                        <div className="filterContent">
+                            <Typography className="customFontSize">Price</Typography>
+                            <Slider
+                                value={price}
+                                onChange={priceHandler}
+                                valueLabelDisplay="auto"
+                                aria-labelledby="range-slider"
+                                min={0}
+                                max={25000}
+                            />
+                            <Typography className="customFontSize">Categories</Typography>
+                            <ul className="categoryBox">
+                                {categories.map((category) => (
+                                    <li
+                                        className="category-link"
+                                        key={category}
+                                        onClick={() => setCategory(category)}
+                                    >
+                                        {category}
+                                    </li>
+                                ))}
+                            </ul>
+                            <fieldset>
+                                <Typography component="legend">Ratings Above</Typography>
+                                <Slider
+                                    value={ratings}
+                                    onChange={(e, newRating) => {
+                                        setRatings(newRating);
+                                    }}
+                                    aria-labelledby="continuous-slider"
+                                    min={0}
+                                    max={5}
+                                    valueLabelDisplay="auto"
+                                />
+                            </fieldset>
+                            <div className="filterButtons">
+                                <button onClick={applyFilters} className="applyButton">Done</button>
+                                <button onClick={handleClose} className="cancelButton">Cancel</button>
+                            </div>
+                        </div>
                     </Modal>
                 </Fragment>
             )}
