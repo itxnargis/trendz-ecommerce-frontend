@@ -210,7 +210,7 @@ button {
 
 @media screen and (max-width: 600px) {
   .productCard {
-    padding: 2.6vmax;
+    padding: 1vmax;
   }
 
   .productCard > p {
