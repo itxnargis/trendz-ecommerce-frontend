@@ -72,37 +72,91 @@ const Products = () => {
 
     let count = filteredProductsCount;
 
+    const filterContent = (
+        <div className="filterContent">
+            <Typography className="customFontSize">Price</Typography>
+            <Slider
+                value={price}
+                onChange={priceHandler}
+                valueLabelDisplay="auto"
+                aria-labelledby="range-slider"
+                min={0}
+                max={25000}
+            />
+            <Typography className="customFontSize">Categories</Typography>
+            <ul className="categoryBox">
+                {categories.map((category) => (
+                    <li
+                        className="category-link"
+                        key={category}
+                        onClick={() => setCategory(category)}
+                    >
+                        {category}
+                    </li>
+                ))}
+            </ul>
+            <fieldset>
+                <Typography component="legend">Ratings Above</Typography>
+                <Slider
+                    value={ratings}
+                    onChange={(e, newRating) => {
+                        setRatings(newRating);
+                    }}
+                    aria-labelledby="continuous-slider"
+                    min={0}
+                    max={5}
+                    valueLabelDisplay="auto"
+                />
+            </fieldset>
+            <div className="filterButtons">
+                <button onClick={applyFilters} className="applyButton">Done</button>
+                <button onClick={handleClose} className="cancelButton">Cancel</button>
+            </div>
+        </div>
+    );
+
     return (
         <Fragment>
-            {loading ? <Loader /> : (
+            {loading ? (
+                <Loader />
+            ) : (
                 <Fragment>
-                    <MetaData title="PRODUCTS -- ECOMMERCE" />
+                    <MetaData title="PRODUCTS --- ECOMMERCE" />
                     <h2 className="productsHeading">Products</h2>
                     <div className="underline"></div>
-                    <FaFilter className="filterIcon" onClick={handleOpen} />
-                    <Modal open={open} onClose={handleClose}>
-                        <div className="filterContent">
-                            <Typography>Price</Typography>
-                            <Slider
-                                value={price}
-                                onChange={priceHandler}
-                                valueLabelDisplay="auto"
-                                aria-labelledby="range-slider"
-                                min={0}
-                                max={25000}
-                            />
-                            <Typography>Categories</Typography>
-                            <ul className="categoryBox">
-                                {categories.map((category) => (
-                                    <li
-                                        className="category-link"
-                                        key={category}
-                                        onClick={() => setCategory(category)}
-                                    >
-                                        {category}
-                                    </li>
-                                ))}
-                            </ul>
+                    <div className="filterIcon" onClick={handleOpen}>
+                        <FaFilter size={30} />
+                    </div>
+                    <div className="underline"></div>
+                    <div className="products">
+                        {products && products.map((product) => (
+                            <Product key={product._id} product={product} />
+                        ))}
+                    </div>
+
+                    <div className="filterBox">
+                        <Typography className="customFontSize">Price</Typography>
+                        <Slider
+                            value={price}
+                            onChange={priceHandler}
+                            valueLabelDisplay="auto"
+                            aria-labelledby="range-slider"
+                            min={0}
+                            max={25000}
+                        />
+                        <Typography className="customFontSize">Categories</Typography>
+                        <ul className="categoryBox">
+                            {categories.map((category) => (
+                                <li
+                                    className="category-link"
+                                    key={category}
+                                    onClick={() => setCategory(category)}
+                                >
+                                    {category}
+                                </li>
+                            ))}
+                        </ul>
+                        <fieldset>
                             <Typography component="legend">Ratings Above</Typography>
                             <Slider
                                 value={ratings}
@@ -110,20 +164,11 @@ const Products = () => {
                                     setRatings(newRating);
                                 }}
                                 aria-labelledby="continuous-slider"
-                                valueLabelDisplay="auto"
                                 min={0}
                                 max={5}
+                                valueLabelDisplay="auto"
                             />
-                            <div className="filterButtons">
-                                <button className="applyButton" onClick={applyFilters}>Apply</button>
-                                <button className="cancelButton" onClick={handleClose}>Cancel</button>
-                            </div>
-                        </div>
-                    </Modal>
-                    <div className="products">
-                        {products && products.map((product) => (
-                            <Product key={product._id} product={product} />
-                        ))}
+                        </fieldset>
                     </div>
 
                     {resultPerPage < count && (
@@ -144,10 +189,18 @@ const Products = () => {
                             />
                         </div>
                     )}
+                    <Modal
+                        open={open}
+                        onClose={handleClose}
+                        aria-labelledby="simple-modal-title"
+                        aria-describedby="simple-modal-description"
+                    >
+                        {filterContent}
+                    </Modal>
                 </Fragment>
             )}
         </Fragment>
-    )
-}
+    );
+};
 
 export default Products;
