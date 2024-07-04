@@ -76,6 +76,7 @@ const Products = () => {
         setAppliedFilters({ price: [0, 25000], category: "", ratings: 0 });
         setCurrentPage(1);
         dispatch(getProduct(keyword, 1, [0, 25000], "", 0));
+        handleClose();
     };
 
     useEffect(() => {
