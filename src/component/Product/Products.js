@@ -139,7 +139,7 @@ const Products = () => {
             ) : (
                 <Fragment>
                     <MetaData title="PRODUCTS --- ECOMMERCE" />
-                    <h2 className="productsHeading">Products</h2>
+                    <h2 className="productsHeading" id="product">Products</h2>
                     <div className="underline"></div>
                     <div className="iconsContainer">
                         <div className="filterIcon" onClick={handleOpen}>

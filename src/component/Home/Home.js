@@ -58,7 +58,7 @@ const Home = () => {
                     <p class="banner-text">
                     FIND AMAZING PRODUCTS BELOW
                     </p>
-                    <a href="#container">
+                    <a href="#product">
                             <button>
                                 SHOP NOW
                             </button>
