@@ -1,213 +1,217 @@
-
 .productsHeading {
-    margin: 3vmax auto;
-    width: fit-content;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.171);
+  margin: 3vmax auto;
+  width: fit-content;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.171);
   padding: 2vmax;
-    color: rgba(0, 0, 0, .678);
-    font: 500 1.5vmax "Roboto";
-    text-align: center;
+  color: rgba(0, 0, 0, 0.678);
+  font: 500 1.5vmax "Roboto";
+  text-align: center;
 }
 
 .underline {
-    display: none;
+  display: none;
+}
+.loginIcon {
+  display: none;
 }
 
 .filterIcon {
-    display: none;
-    margin: 1vmax auto;
-    width: fit-content;
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
+  display: none;
 }
 
 @media screen and (max-width: 600px) {
-    .underline {
-        display: block;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.171);
-        width: 100%;
-        margin-bottom: 2vmax;
-    }
+  .underline {
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.171);
+    width: 100%;
+    margin-bottom: 2vmax;
+  }
 
-.iconsContainer {
+  .iconsContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 1vmax auto;
     width: 90%;
-}
-    .filterIcon p {
-        margin: 0;
-        margin-right: 1px;
-        font-size: 1rem;
-    }
+  }
+  .filterIcon p {
+    margin: 0;
+    margin-right: 1px;
+    font-size: 1rem;
+  }
 
-    .filterIcon, .loginIcon {
-        display: flex;
-        border: 1px solid black;
-        align-items: center;
-        cursor: pointer;
-        padding: 1vmax;
-    }
+  .filterIcon,
+  .loginIcon {
+    margin: 1vmax auto;
+    width: fit-content;
+    justify-content: center;
+    display: flex;
+    border: 1px solid black;
+    align-items: center;
+    cursor: pointer;
+    padding: 1vmax;
+  }
 
-    .filterIcon p, .loginIcon p {
-        margin: 0 5px;
-        font-size: 1rem;
-    }
+  .filterIcon p,
+  .loginIcon p {
+    margin: 0 5px;
+    font-size: 1rem;
+  }
 
-    .filterBox {
-        display: none;
-    }
-    .filterContent {
-        width: 90vw;
-        max-width: none;
-        padding: 2vmax;
-    }
+  .filterBox {
+    display: none;
+  }
+  .filterContent {
+    width: 90vw;
+    max-width: none;
+    padding: 2vmax;
+  }
 }
 .products {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    min-height: 30vh;
-    padding-left: 10vmax;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  min-height: 30vh;
+  padding-left: 10vmax;
 }
 
 .PaginationBox {
-    display: flex;
-    justify-content: center;
-    margin: 6vmax;
-    background: #eee;
+  display: flex;
+  justify-content: center;
+  margin: 6vmax;
+  background: #eee;
 }
 
 .pagination {
-    display: flex;
-    justify-content: center;
-    padding: 0;
-    background: #eee;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  background: #eee;
 }
 
 .page-item {
-    background-color: rgb(255, 255, 255);
-    list-style: none;
-    border: 1px solid rgba(0, 0, 0, .178);
-    padding: 1vmax 1.5vmax;
-    transition: all .5s;
-    cursor: pointer;
+  background-color: rgb(255, 255, 255);
+  list-style: none;
+  border: 1px solid rgba(0, 0, 0, 0.178);
+  padding: 1vmax 1.5vmax;
+  transition: all 0.5s;
+  cursor: pointer;
 }
 
 .page-item:first-child {
-    border-radius: 5px 0 0 5px;
+  border-radius: 5px 0 0 5px;
 }
 
 .page-item:last-child {
-    border-radius: 0 5px 5px 0;
+  border-radius: 0 5px 5px 0;
 }
 
 .page-link {
-    text-decoration: none;
-    font: 300 .7vmax "Roboto";
-    color: rgb(80, 80, 80);
-    transition: all .3s;
+  text-decoration: none;
+  font: 300 0.7vmax "Roboto";
+  color: rgb(80, 80, 80);
+  transition: all 0.3s;
 }
 
 .page-item:hover {
-    background-color: rgb(230, 230, 230);
+  background-color: rgb(230, 230, 230);
 }
 
 .page-item:hover .page-link {
-    color: rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
 }
 
 .pageItemActive {
-    background-color: tomato;
+  background-color: tomato;
 }
 
 .pageLinkActive {
-    color: white;
+  color: white;
 }
 
 .customFontSize {
-    font-size: 2.5vmax;
+  font-size: 2.5vmax;
 }
 
 .filterBox {
-    width: 10vmax;
-    position: absolute;
-    top: 10vmax;
-    left: 3vmax;
+  width: 10vmax;
+  position: absolute;
+  top: 10vmax;
+  left: 3vmax;
 }
 
 .categoryBox {
-    padding: 0%;
+  padding: 0%;
 }
 
 .category-link {
-    list-style: none;
-    color: #060202e0;
-    font: 400 1.3vmax "Roboto";
-    margin: .8vmax;
-    cursor: pointer;
-    font-size: 1vmax;
-    transition: all .5s;
+  list-style: none;
+  color: #060202e0;
+  font: 400 1.3vmax "Roboto";
+  margin: 0.8vmax;
+  cursor: pointer;
+  font-size: 1vmax;
+  transition: all 0.5s;
 }
 
 .category-link:hover {
-    color: tomato;
+  color: tomato;
 }
 
 .filterBox > fieldset {
-    border: 1px solid rgba(0, 0, 0, 0.329);
-    padding: 1vmax;
+  border: 1px solid rgba(0, 0, 0, 0.329);
+  padding: 1vmax;
 }
 
 .filterContent {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80vw;
-    max-width: 400px;
-    background-color: white;
-    padding: 2vmax;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    outline: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  max-width: 400px;
+  background-color: white;
+  padding: 2vmax;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  outline: none;
 }
 
 .filterButtons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 2vmax;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2vmax;
 }
 
-.applyButton, .cancelButton {
-    padding: 0.5vmax 2vmax;
-    border: none;
-    background-color: tomato;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
+.applyButton,
+.cancelButton {
+  padding: 0.5vmax 2vmax;
+  border: none;
+  background-color: tomato;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
-.applyButton:hover, .cancelButton:hover {
-    background-color: darkred;
+.applyButton:hover,
+.cancelButton:hover {
+  background-color: darkred;
 }
 
 @media screen and (max-width: 600px) {
-    .filterBox {
-        width: 20vmax;
-        position: static;
-        margin: auto;
-    }
+  .filterBox {
+    width: 20vmax;
+    position: static;
+    margin: auto;
+  }
 
-    .products {
-        padding-left: 0;
-    }
+  .products {
+    padding-left: 0;
+  }
 
-    .page-link {
-        font: 300 1.7vmax "Roboto";
-    }
-    .category-link {
-        font-size: 1.7vmax;
-    }
+  .page-link {
+    font: 300 1.7vmax "Roboto";
+  }
+  .category-link {
+    font-size: 1.7vmax;
+  }
 }
