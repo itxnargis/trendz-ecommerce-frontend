@@ -42,7 +42,6 @@
 
   .filterIcon,
   .loginIcon {
-    margin: 1vmax auto;
     width: fit-content;
     justify-content: center;
     display: flex;
@@ -50,6 +49,9 @@
     align-items: center;
     cursor: pointer;
     padding: 1vmax;
+    text-decoration: none;
+    color: #000;
+
   }
 
   .filterIcon p,

@@ -126,8 +126,8 @@ const Products = () => {
                     <div className="underline"></div>
                     <div className="iconsContainer">
                         <div className="filterIcon" onClick={handleOpen}>
-                            <p>Filters</p>
                             <FaFilter size={15} />
+                            <p>Filters</p>
                         </div>
                         <Link to="/login" className="loginIcon">
                             <FaSignInAlt size={15} />
