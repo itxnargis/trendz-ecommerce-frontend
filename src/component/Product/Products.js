@@ -74,7 +74,8 @@ const Products = () => {
         setCategory("");
         setRatings(0);
         setAppliedFilters({ price: [0, 25000], category: "", ratings: 0 });
-        dispatch(getProduct(keyword, currentPage, [0, 25000], "", 0));
+        setCurrentPage(1);
+        dispatch(getProduct(keyword, 1, [0, 25000], "", 0));
     };
 
     useEffect(() => {
@@ -125,7 +126,7 @@ const Products = () => {
             </fieldset>
             <div className="filterButtons">
                 <button onClick={applyFilters} className="applyButton">Done</button>
-                <button onClick={handleClose} className="cancelButton">clear Filters</button>
+                <button onClick={clearFilters} className="cancelButton">clear Filters</button>
             </div>
         </div>
     );
