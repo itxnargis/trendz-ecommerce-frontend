@@ -153,7 +153,7 @@ button {
 }
 .container {
   display: flex;
-  margin: 2vmax auto;
+  margin: 3vmax auto;
   width: 80vw;
   flex-wrap: wrap;
   justify-content: center;
@@ -211,7 +211,6 @@ button {
 @media screen and (max-width: 600px) {
   .productCard {
     padding: 1vmax;
-    margin: 1.7vmax;
   }
 
   .productCard > p {
