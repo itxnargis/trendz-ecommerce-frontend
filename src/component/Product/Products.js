@@ -22,10 +22,9 @@ const categories = [
     "Watches",
     "Camera",
     "SmartPhones",
-]
+];
 
 const Products = () => {
-
     const dispatch = useDispatch();
     const alert = useAlert();
 
@@ -41,32 +40,31 @@ const Products = () => {
         ratings: 0,
     });
 
-    const { products, loading, error, productsCount, resultPerPage, filteredProductsCount } =
-        useSelector((state) => state.products
-        );
+    const { products, loading, error, productsCount, resultPerPage, filteredProductsCount } = useSelector((state) => state.products);
 
     const { keyword } = useParams();
 
-    const setCurrentPageNo = (e) => {
-        setCurrentPage(e);
-    }
+    const setCurrentPageNo = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
 
     const priceHandler = (event, newPrice) => {
         setPrice(newPrice);
-    }
+    };
 
     const handleOpen = () => {
         setOpen(true);
-    }
+    };
 
     const handleClose = () => {
         setOpen(false);
-    }
+    };
 
     const applyFilters = () => {
         setAppliedFilters({ price, category, ratings });
+        setCurrentPage(1); // Reset to the first page when filters are applied
+        dispatch(getProduct(keyword, 1, price, category, ratings));
         handleClose();
-        dispatch(getProduct(keyword, currentPage, price, category, ratings));
     };
 
     const clearFilters = () => {
@@ -74,7 +72,7 @@ const Products = () => {
         setCategory("");
         setRatings(0);
         setAppliedFilters({ price: [0, 25000], category: "", ratings: 0 });
-        setCurrentPage(1);
+        setCurrentPage(1); // Reset to the first page when filters are cleared
         dispatch(getProduct(keyword, 1, [0, 25000], "", 0));
         handleClose();
     };
@@ -86,8 +84,6 @@ const Products = () => {
         }
         dispatch(getProduct(keyword, currentPage, appliedFilters.price, appliedFilters.category, appliedFilters.ratings));
     }, [dispatch, keyword, currentPage, appliedFilters.price, appliedFilters.category, appliedFilters.ratings, alert, error]);
-
-    let count = filteredProductsCount;
 
     const filterContent = (
         <div className="filterContent">
@@ -127,7 +123,7 @@ const Products = () => {
             </fieldset>
             <div className="filterButtons">
                 <button onClick={applyFilters} className="applyButton">Done</button>
-                <button onClick={clearFilters} className="cancelButton">clear Filters</button>
+                <button onClick={clearFilters} className="cancelButton">Clear Filters</button>
             </div>
         </div>
     );
@@ -158,49 +154,12 @@ const Products = () => {
                         ))}
                     </div>
 
-                    <div className="filterBox">
-                        <Typography className="customFontSize">Price</Typography>
-                        <Slider
-                            value={price}
-                            onChange={priceHandler}
-                            valueLabelDisplay="auto"
-                            aria-labelledby="range-slider"
-                            min={0}
-                            max={25000}
-                        />
-                        <Typography className="customFontSize">Categories</Typography>
-                        <ul className="categoryBox">
-                            {categories.map((category) => (
-                                <li
-                                    className="category-link"
-                                    key={category}
-                                    onClick={() => setCategory(category)}
-                                >
-                                    {category}
-                                </li>
-                            ))}
-                        </ul>
-                        <fieldset>
-                            <Typography component="legend">Ratings Above</Typography>
-                            <Slider
-                                value={ratings}
-                                onChange={(e, newRating) => {
-                                    setRatings(newRating);
-                                }}
-                                aria-labelledby="continuous-slider"
-                                min={0}
-                                max={5}
-                                valueLabelDisplay="auto"
-                            />
-                        </fieldset>
-                    </div>
-
-                    {resultPerPage < count && (
+                    {resultPerPage < filteredProductsCount && (
                         <div className="PaginationBox">
                             <Pagination
                                 activePage={currentPage}
                                 itemsCountPerPage={resultPerPage}
-                                totalItemsCount={productsCount}
+                                totalItemsCount={filteredProductsCount}
                                 onChange={setCurrentPageNo}
                                 nextPageText="Next"
                                 prevPageText="Prev"
