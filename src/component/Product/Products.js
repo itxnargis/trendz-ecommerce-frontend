@@ -123,9 +123,11 @@ const Products = () => {
                 <Fragment>
                     <MetaData title="PRODUCTS --- ECOMMERCE" />
                     <h2 className="productsHeading">Products</h2>
+                    <div className="underline"></div>
                     <div className="filterIcon" onClick={handleOpen}>
                         <FaFilter size={30} />
                     </div>
+                    <div className="underline"></div>
                     <div className="products">
                         {products && products.map((product) => (
                             <Product key={product._id} product={product} />
