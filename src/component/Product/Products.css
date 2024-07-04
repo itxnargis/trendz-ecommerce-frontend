@@ -35,9 +35,10 @@
         font-size: 1rem;
     }
     .filterIcon {
-        display: block;
+        border: 1px solid black;
+        display: flex;
+        padding: 1vmax;
     }
-
     .filterBox {
         display: none;
     }
@@ -47,7 +48,6 @@
         padding: 2vmax;
     }
 }
-
 .products {
     display: flex;
     flex-wrap: wrap;
