@@ -104,3 +104,59 @@
         font-size: 1.7vmax;
     }
 }
+
+/* Products.css */
+
+.filterIcon {
+    display: none;
+    position: fixed;
+    bottom: 10vmax;
+    right: 10vmax;
+    z-index: 1000;
+    background-color: tomato;
+    padding: 1vmax;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+    .filterIcon {
+        display: block;
+    }
+
+    .filterBox {
+        display: none;
+    }
+}
+
+.filterContent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw;
+    max-width: 400px;
+    background-color: white;
+    padding: 2vmax;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    outline: none;
+}
+
+.filterButtons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2vmax;
+}
+
+.applyButton, .cancelButton {
+    padding: 0.5vmax 2vmax;
+    border: none;
+    background-color: tomato;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.applyButton:hover, .cancelButton:hover {
+    background-color: darkred;
+}
