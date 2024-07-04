@@ -22,10 +22,9 @@ const categories = [
     "Watches",
     "Camera",
     "SmartPhones",
-]
+];
 
 const Products = () => {
-
     const dispatch = useDispatch();
     const alert = useAlert();
 
@@ -34,6 +33,7 @@ const Products = () => {
     const [category, setCategory] = useState("");
     const [ratings, setRatings] = useState(0);
     const [open, setOpen] = useState(false); // State to handle modal visibility
+    const [filtersApplied, setFiltersApplied] = useState(false); // State to track if filters are applied
 
     const { products, loading, error, productsCount, resultPerPage, filteredProductsCount } =
         useSelector((state) => state.products
@@ -55,9 +55,17 @@ const Products = () => {
 
     const handleClose = () => {
         setOpen(false);
+        if (!filtersApplied) {
+            // Reset filters if they were not applied
+            setPrice([0, 25000]);
+            setCategory("");
+            setRatings(0);
+            dispatch(getProduct(keyword, currentPage, [0, 25000], "", 0));
+        }
     }
 
     const applyFilters = () => {
+        setFiltersApplied(true);
         handleClose();
         dispatch(getProduct(keyword, currentPage, price, category, ratings));
     }
@@ -126,8 +134,8 @@ const Products = () => {
                     <div className="underline"></div>
                     <div className="iconsContainer">
                         <div className="filterIcon" onClick={handleOpen}>
-                            <FaFilter size={15} />
                             <p>Filters</p>
+                            <FaFilter size={15} />
                         </div>
                         <Link to="/login" className="loginIcon">
                             <FaSignInAlt size={15} />
