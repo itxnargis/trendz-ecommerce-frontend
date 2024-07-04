@@ -22,9 +22,10 @@ const categories = [
     "Watches",
     "Camera",
     "SmartPhones",
-];
+]
 
 const Products = () => {
+
     const dispatch = useDispatch();
     const alert = useAlert();
 
@@ -33,77 +34,43 @@ const Products = () => {
     const [category, setCategory] = useState("");
     const [ratings, setRatings] = useState(0);
     const [open, setOpen] = useState(false); // State to handle modal visibility
-    const [appliedFilters, setAppliedFilters] = useState({
-        price: [0, 25000],
-        category: "",
-        ratings: 0,
-    });
 
-    const {
-        products,
-        loading,
-        error,
-        productsCount,
-        resultPerPage,
-        filteredProductsCount,
-    } = useSelector((state) => state.products);
+    const { products, loading, error, productsCount, resultPerPage, filteredProductsCount } =
+        useSelector((state) => state.products
+        );
 
     const { keyword } = useParams();
 
     const setCurrentPageNo = (e) => {
         setCurrentPage(e);
-    };
+    }
 
     const priceHandler = (event, newPrice) => {
         setPrice(newPrice);
-    };
+    }
 
     const handleOpen = () => {
         setOpen(true);
-    };
+    }
 
     const handleClose = () => {
         setOpen(false);
-    };
+    }
 
     const applyFilters = () => {
-        setAppliedFilters({ price, category, ratings });
         handleClose();
         dispatch(getProduct(keyword, currentPage, price, category, ratings));
-    };
-
-    const clearFilters = () => {
-        setPrice([0, 25000]);
-        setCategory("");
-        setRatings(0);
-        setAppliedFilters({ price: [0, 25000], category: "", ratings: 0 });
-        dispatch(getProduct(keyword, currentPage, [0, 25000], "", 0));
-    };
+    }
 
     useEffect(() => {
         if (error) {
             alert.error(error);
             dispatch(clearErrors());
         }
-        dispatch(
-            getProduct(
-                keyword,
-                currentPage,
-                appliedFilters.price,
-                appliedFilters.category,
-                appliedFilters.ratings
-            )
-        );
-    }, [
-        dispatch,
-        keyword,
-        currentPage,
-        appliedFilters.price,
-        appliedFilters.category,
-        appliedFilters.ratings,
-        alert,
-        error,
-    ]);
+        dispatch(getProduct(keyword, currentPage, price, category, ratings));
+    }, [dispatch, keyword, currentPage, price, category, ratings, alert, error]);
+
+    let count = filteredProductsCount;
 
     const filterContent = (
         <div className="filterContent">
@@ -118,15 +85,13 @@ const Products = () => {
             />
             <Typography className="customFontSize">Categories</Typography>
             <ul className="categoryBox">
-                {categories.map((cat) => (
+                {categories.map((category) => (
                     <li
-                        className={`category-link ${
-                            category === cat ? "active" : ""
-                        }`}
-                        key={cat}
-                        onClick={() => setCategory(cat)}
+                        className="category-link"
+                        key={category}
+                        onClick={() => setCategory(category)}
                     >
-                        {cat}
+                        {category}
                     </li>
                 ))}
             </ul>
@@ -144,12 +109,8 @@ const Products = () => {
                 />
             </fieldset>
             <div className="filterButtons">
-                <button onClick={applyFilters} className="applyButton">
-                    Done
-                </button>
-                <button onClick={clearFilters} className="cancelButton">
-                    Cancel
-                </button>
+                <button onClick={applyFilters} className="applyButton">Done</button>
+                <button onClick={handleClose} className="cancelButton">Cancel</button>
             </div>
         </div>
     );
@@ -175,15 +136,49 @@ const Products = () => {
                     </div>
                     <div className="underline"></div>
                     <div className="products">
-                        {products &&
-                            products.map((product) => (
-                                <Product
-                                    key={product._id}
-                                    product={product}
-                                />
-                            ))}
+                        {products && products.map((product) => (
+                            <Product key={product._id} product={product} />
+                        ))}
                     </div>
-                    {resultPerPage < filteredProductsCount && (
+
+                    <div className="filterBox">
+                        <Typography className="customFontSize">Price</Typography>
+                        <Slider
+                            value={price}
+                            onChange={priceHandler}
+                            valueLabelDisplay="auto"
+                            aria-labelledby="range-slider"
+                            min={0}
+                            max={25000}
+                        />
+                        <Typography className="customFontSize">Categories</Typography>
+                        <ul className="categoryBox">
+                            {categories.map((category) => (
+                                <li
+                                    className="category-link"
+                                    key={category}
+                                    onClick={() => setCategory(category)}
+                                >
+                                    {category}
+                                </li>
+                            ))}
+                        </ul>
+                        <fieldset>
+                            <Typography component="legend">Ratings Above</Typography>
+                            <Slider
+                                value={ratings}
+                                onChange={(e, newRating) => {
+                                    setRatings(newRating);
+                                }}
+                                aria-labelledby="continuous-slider"
+                                min={0}
+                                max={5}
+                                valueLabelDisplay="auto"
+                            />
+                        </fieldset>
+                    </div>
+
+                    {resultPerPage < count && (
                         <div className="PaginationBox">
                             <Pagination
                                 activePage={currentPage}
