@@ -9,9 +9,7 @@
 }
 
 .underline {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.171);
-    width: 80%;
-    margin: 0 auto;
+    display: none;
 }
 
 .filterIcon {
@@ -22,6 +20,13 @@
 }
 
 @media screen and (max-width: 600px) {
+    .underline {
+        display: block;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.171);
+        width: 80%;
+        margin: 0 auto;
+    }
+
     .filterIcon {
         display: block;
     }
