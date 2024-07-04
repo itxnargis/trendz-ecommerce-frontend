@@ -33,7 +33,7 @@ const Products = () => {
     const [category, setCategory] = useState("");
     const [ratings, setRatings] = useState(0);
     const [open, setOpen] = useState(false);
-    const [filtersApplied, setFiltersApplied] = useState(false); // Track if filters are applied
+    const [filtersApplied, setFiltersApplied] = useState(false); 
 
     const { products, loading, error, productsCount, resultPerPage, filteredProductsCount } =
         useSelector((state) => state.products);
@@ -56,9 +56,9 @@ const Products = () => {
         setPrice([0, 25000]);
         setCategory("");
         setRatings(0);
-        setFiltersApplied(false); // Reset filters
+        setFiltersApplied(false);
         setOpen(false);
-        dispatch(getProduct(keyword, currentPage, [0, 25000], "", 0)); // Fetch products without filters
+        dispatch(getProduct(keyword, currentPage, [0, 25000], "", 0));
     };
 
     const applyFilters = () => {
@@ -162,7 +162,7 @@ const Products = () => {
                             </fieldset>
                             <div className="filterButtons">
                                 <button onClick={applyFilters} className="applyButton">Done</button>
-                                <button onClick={handleClose} className="cancelButton">Cancel</button>
+                                <button onClick={handleClose} className="cancelButton">Clear Filters</button>
                             </div>
                         </div>
                     </Modal>
