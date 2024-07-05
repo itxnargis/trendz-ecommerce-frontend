@@ -49,7 +49,7 @@ const Products = () => {
 
     const setCurrentPageNo = (e) => {
         setCurrentPage(e);
-    }
+    };
 
     const priceHandler = (event, newPrice) => {
         setPrice(newPrice);
@@ -86,6 +86,7 @@ const Products = () => {
         }
         dispatch(getProduct(keyword, currentPage, appliedFilters.price, appliedFilters.category, appliedFilters.ratings));
     }, [dispatch, keyword, currentPage, appliedFilters.price, appliedFilters.category, appliedFilters.ratings, alert, error]);
+
 
     let count = filteredProductsCount;
 
@@ -196,23 +197,24 @@ const Products = () => {
                     </div>
 
                     {resultPerPage < count && (
-                        <div className="PaginationBox">
-                            <Pagination
-                                activePage={currentPage}
-                                itemsCountPerPage={resultPerPage}
-                                totalItemsCount={productsCount}
-                                onChange={setCurrentPageNo}
-                                nextPageText="Next"
-                                prevPageText="Prev"
-                                firstPageText="1st"
-                                lastPageText="Last"
-                                itemClass="page-item"
-                                linkClass="page-link"
-                                activeClass="pageItemActive"
-                                activeLinkClass="pageLinkActive"
-                            />
-                        </div>
-                    )}
+    <div className="PaginationBox">
+        <Pagination
+            activePage={currentPage}
+            itemsCountPerPage={resultPerPage}
+            totalItemsCount={filteredProductsCount}
+            onChange={setCurrentPageNo}
+            nextPageText="Next"
+            prevPageText="Prev"
+            firstPageText="1st"
+            lastPageText="Last"
+            itemClass="page-item"
+            linkClass="page-link"
+            activeClass="pageItemActive"
+            activeLinkClass="pageLinkActive"
+        />
+    </div>
+)}
+
                     <Modal
                         open={open}
                         onClose={handleClose}
