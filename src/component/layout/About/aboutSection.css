@@ -42,7 +42,11 @@
     display: flex;
     width: 100%;
   }
-.iconLink {
+  .about-info {
+    display: flex;
+    flex-direction: column;
+  }
+#iconLink {
   color: #000;
 }
 .btn-container {
@@ -55,8 +59,8 @@
   padding: 0.5rem 1.5rem;
   letter-spacing: 0.2em;
   font-size: 0.9rem;
-  background: #275c82;
-  color: #a52323;
+  background: #e0590b;
+  color: #fff;
   font-weight: bold;
   cursor: pointer;
   text-decoration: none;
@@ -64,9 +68,10 @@
   .aboutSectionContainer > div > div {
     width: 100%;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    padding: 2vmax;
+    justify-content: center;
+    padding: 1.5vmax;
+    gap: 1.5vmax;
     box-sizing: border-box;
   }
 

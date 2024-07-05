@@ -37,6 +37,7 @@ const About = () => {
             high-quality results, I'm eager to contribute to exciting projects
             and collaborate with fellow developers.
           </Typography>
+          <Typography component="h2">Follow me </Typography>
           <div className="icons">
             <div className="social-icons">
               <a
