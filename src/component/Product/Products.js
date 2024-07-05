@@ -25,7 +25,6 @@ const categories = [
 ]
 
 const Products = () => {
-
     const dispatch = useDispatch();
     const alert = useAlert();
 
@@ -34,6 +33,7 @@ const Products = () => {
     const [category, setCategory] = useState("");
     const [ratings, setRatings] = useState(0);
     const [open, setOpen] = useState(false);
+    const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 600);
 
     const [appliedFilters, setAppliedFilters] = useState({
         price: [0, 25000],
@@ -41,9 +41,7 @@ const Products = () => {
         ratings: 0,
     });
 
-    const { products, loading, error, productsCount, resultPerPage, filteredProductsCount } =
-        useSelector((state) => state.products
-        );
+    const { products, loading, error, productsCount, resultPerPage, filteredProductsCount } = useSelector((state) => state.products);
 
     const { keyword } = useParams();
 
@@ -65,8 +63,11 @@ const Products = () => {
 
     const applyFilters = () => {
         setAppliedFilters({ price, category, ratings });
+        setCurrentPage(1);
+        if (isLargeScreen) {
+            dispatch(getProduct(keyword, 1, price, category, ratings));
+        }
         handleClose();
-        dispatch(getProduct(keyword, currentPage, price, category, ratings));
     };
 
     const clearFilters = () => {
@@ -85,8 +86,18 @@ const Products = () => {
             dispatch(clearErrors());
         }
         dispatch(getProduct(keyword, currentPage, appliedFilters.price, appliedFilters.category, appliedFilters.ratings));
-    }, [dispatch, keyword, currentPage, appliedFilters.price, appliedFilters.category, appliedFilters.ratings, alert, error]);
+    }, [dispatch, keyword, currentPage, appliedFilters, alert, error]);
 
+    useEffect(() => {
+        const handleResize = () => {
+            setIsLargeScreen(window.innerWidth > 600);
+        };
+
+        window.addEventListener("resize", handleResize);
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
 
     let count = filteredProductsCount;
 
@@ -128,7 +139,7 @@ const Products = () => {
             </fieldset>
             <div className="filterButtons">
                 <button onClick={applyFilters} className="applyButton">Done</button>
-                <button onClick={clearFilters} className="cancelButton">clear Filters</button>
+                <button onClick={clearFilters} className="cancelButton">Clear Filters</button>
             </div>
         </div>
     );
@@ -197,23 +208,23 @@ const Products = () => {
                     </div>
 
                     {resultPerPage < count && (
-    <div className="PaginationBox">
-        <Pagination
-            activePage={currentPage}
-            itemsCountPerPage={resultPerPage}
-            totalItemsCount={filteredProductsCount}
-            onChange={setCurrentPageNo}
-            nextPageText="Next"
-            prevPageText="Prev"
-            firstPageText="1st"
-            lastPageText="Last"
-            itemClass="page-item"
-            linkClass="page-link"
-            activeClass="pageItemActive"
-            activeLinkClass="pageLinkActive"
-        />
-    </div>
-)}
+                        <div className="PaginationBox">
+                            <Pagination
+                                activePage={currentPage}
+                                itemsCountPerPage={resultPerPage}
+                                totalItemsCount={filteredProductsCount}
+                                onChange={setCurrentPageNo}
+                                nextPageText="Next"
+                                prevPageText="Prev"
+                                firstPageText="1st"
+                                lastPageText="Last"
+                                itemClass="page-item"
+                                linkClass="page-link"
+                                activeClass="pageItemActive"
+                                activeLinkClass="pageLinkActive"
+                            />
+                        </div>
+                    )}
 
                     <Modal
                         open={open}
