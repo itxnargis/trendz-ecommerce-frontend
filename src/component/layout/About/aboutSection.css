@@ -35,9 +35,13 @@
   .aboutSectionContainer > h1 {
     font: 400 3vmax "Roboto";
     color: tomato;
-    margin: 2vmax;
+    margin: 1vmax;
   }
-
+.aboutSectionContainer > h5 {
+  color: tomato;
+  font: 400 1vmax "Roboto";
+  margin: .3vmax;
+}
   .aboutSectionContainer > div {
     display: flex;
     width: 100%;
@@ -70,7 +74,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1.5vmax;
     gap: 1.5vmax;
     box-sizing: border-box;
   }
