@@ -103,6 +103,10 @@
     font: 100 2vmax "Roboto";
     margin: 2vmax;
   }
+  .about-content {
+    font: 100 1vmax "Roboto";
+    font-size: 2vmax;
+  }
 
   .aboutSectionContainer2 > a > svg {
     font-size: 4vmax;
@@ -144,6 +148,7 @@
     }
     .about-content {
       font-size: 1vmax;
+      font: 100 1vmax "Roboto";
     }
 
     .aboutSectionContainer2 > a > svg {
