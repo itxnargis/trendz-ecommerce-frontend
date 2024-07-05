@@ -103,10 +103,6 @@
     font: 100 2vmax "Roboto";
     margin: 2vmax;
   }
-  .about-content {
-    font: 100 2vmax "Roboto";
-    margin: 1vmax;
-}
 
   .aboutSectionContainer2 > a > svg {
     font-size: 4vmax;
@@ -119,6 +115,18 @@
   .instagramSvgIcon {
     color: rgb(144, 81, 202);
   }
+
+  .aboutSectionContainer > div > div > p {
+    font: 100 1vmax "Roboto";
+    margin: 1vmax;
+  }
+
+  @media screen and (max-width: 600px) {
+    .aboutSectionContainer > div > div > p {
+      font: 100 2vmax "Roboto";
+    }
+  }
+
 
   @media screen and (max-width: 600px) {
     .aboutSectionContainer > div {
