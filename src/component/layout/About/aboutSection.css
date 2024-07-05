@@ -37,7 +37,7 @@
     color: tomato;
     margin: 1vmax;
   }
-.aboutSectionContainer > h5 {
+.h5 {
   color: tomato;
   font: 400 1vmax "Roboto";
   margin: .3vmax;
@@ -123,7 +123,6 @@
 
     .aboutSectionContainer > h1 {
       font: 400 5vmax "Roboto";
-      margin: 3vmax;
     }
 
     .aboutSectionContainer > div > div > p {
@@ -142,6 +141,9 @@
     .aboutSectionContainer2 > h2 {
       font: 100 3vmax "Roboto";
       margin: 2vmax;
+    }
+    .about-content {
+      font-size: 1vmax;
     }
 
     .aboutSectionContainer2 > a > svg {

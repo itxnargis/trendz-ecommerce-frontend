@@ -28,7 +28,7 @@ const About = () => {
           <Typography component="h3" className="bio">
             And I'm a <span>WEB DEVELOPER</span>
           </Typography>
-          <Typography component="p" className="about-content">
+          <p className="about-content">
             Aspiring frontend developer with expertise in <b>HTML, CSS</b>,
             JavaScript, Tailwind CSS, React, and C++. Currently pursuing a{" "}
             <b>Bachelor of Computer Applications (BCA)</b>. I'm passionate
@@ -36,7 +36,7 @@ const About = () => {
             With a keen eye for detail and a commitment to delivering
             high-quality results, I'm eager to contribute to exciting projects
             and collaborate with fellow developers.
-          </Typography>
+          </p>
           <Typography component="h5">Follow me </Typography>
           <div className="icons">
             <div className="social-icons">
