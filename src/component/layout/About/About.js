@@ -13,6 +13,7 @@ const About = () => {
       <div className="aboutSectionGradient"></div>
       <div className="aboutSectionContainer">
         <Typography component="h1">About Me</Typography>
+        <div className="about-info">
         <div>
           <Avatar
             style={{ width: "10vmax", height: "10vmax", margin: "2vmax 0" }}
@@ -20,8 +21,6 @@ const About = () => {
             alt="Founder"
           />
         </div>
-
-        <div className="about-info">
           <Typography component="h4" className="intro-text">
             Hi, Myself
           </Typography>
