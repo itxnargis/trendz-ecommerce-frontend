@@ -25,5 +25,4 @@ const Product = ({ product }) => {
         </Link>
     );
 };
-
 export default Product;
