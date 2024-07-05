@@ -12,14 +12,12 @@ const Product = ({ product }) => {
     return (
         <Link className="productCard" to={`/product/${product._id}`}>
             <img src={product.images[0].url} alt={product.name} />
-            <div className="details">
             <p>{product.name}</p>
             <div>
                 <Rating {...options} />{" "}
                 <span className="productCardSpan">({product.numOfReviews} Reviews)</span>
             </div>
             <span>{`Rs${product.price}`}</span>
-            </div>
         </Link>
     );
 };

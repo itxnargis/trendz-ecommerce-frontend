@@ -182,9 +182,7 @@ button {
   padding-bottom: 1rem;
   border-radius: 0.5rem; /* Optional: Adds rounding to corners */
 }
-.details {
-  border-top: 1px solid #000;
-}
+
 
 .productCardSpan {
   margin: 0.5vmax;
