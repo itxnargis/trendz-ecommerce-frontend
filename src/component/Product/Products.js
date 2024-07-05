@@ -51,23 +51,40 @@ const Products = () => {
 
     const priceHandler = (event, newPrice) => {
         setPrice(newPrice);
-    }
+        if (isLargeScreen) {
+            applyFilters(newPrice, category, ratings);
+        }
+    };
+
+    const categoryHandler = (category) => {
+        setCategory(category);
+        if (isLargeScreen) {
+            applyFilters(price, category, ratings);
+        }
+    };
+
+    const ratingsHandler = (event, newRating) => {
+        setRatings(newRating);
+        if (isLargeScreen) {
+            applyFilters(price, category, newRating);
+        }
+    };
 
     const handleOpen = () => {
         setOpen(true);
-    }
+    };
 
     const handleClose = () => {
         setOpen(false);
-    }
+    };
 
-    const applyFilters = () => {
+    const applyFilters = (price, category, ratings) => {
         setAppliedFilters({ price, category, ratings });
         setCurrentPage(1);
-        if (isLargeScreen) {
-            dispatch(getProduct(keyword, 1, price, category, ratings));
+        dispatch(getProduct(keyword, 1, price, category, ratings));
+        if (!isLargeScreen) {
+            handleClose();
         }
-        handleClose();
     };
 
     const clearFilters = () => {
@@ -118,7 +135,7 @@ const Products = () => {
                     <li
                         className="category-link"
                         key={category}
-                        onClick={() => setCategory(category)}
+                        onClick={() => categoryHandler(category)}
                     >
                         {category}
                     </li>
@@ -128,9 +145,7 @@ const Products = () => {
                 <Typography component="legend">Ratings Above</Typography>
                 <Slider
                     value={ratings}
-                    onChange={(e, newRating) => {
-                        setRatings(newRating);
-                    }}
+                    onChange={ratingsHandler}
                     aria-labelledby="continuous-slider"
                     min={0}
                     max={5}
@@ -138,7 +153,7 @@ const Products = () => {
                 />
             </fieldset>
             <div className="filterButtons">
-                <button onClick={applyFilters} className="applyButton">Done</button>
+                <button onClick={() => applyFilters(price, category, ratings)} className="applyButton">Done</button>
                 <button onClick={clearFilters} className="cancelButton">Clear Filters</button>
             </div>
         </div>
@@ -186,7 +201,7 @@ const Products = () => {
                                 <li
                                     className="category-link"
                                     key={category}
-                                    onClick={() => setCategory(category)}
+                                    onClick={() => categoryHandler(category)}
                                 >
                                     {category}
                                 </li>
@@ -196,9 +211,7 @@ const Products = () => {
                             <Typography component="legend">Ratings Above</Typography>
                             <Slider
                                 value={ratings}
-                                onChange={(e, newRating) => {
-                                    setRatings(newRating);
-                                }}
+                                onChange={ratingsHandler}
                                 aria-labelledby="continuous-slider"
                                 min={0}
                                 max={5}
