@@ -171,8 +171,7 @@ button {
   border: 2px solid rgba(0, 0, 0, 0.2);
   background: #fff;
   transition: all 0.5s;
-  padding: 2vmax;
-  padding-bottom: 0.5vmax;
+  padding: 2vmax 0;
 }
 
 .productCard > img {
@@ -201,18 +200,18 @@ button {
   font-size: 1.080vmax;
 }
 
-.productCard > p {
+.productCard>p {
   font-family: "Roboto";
   font-size: 1.2vmax;
-  margin: 1vmax 0.5vmax;
+  margin: 1vmax;
   margin-bottom: 0;
 }
 
-.productCard > span {
-  margin: 0.5vmax;
+.productCard>span {
   color: tomato;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: Franklin Gothic Medium, Arial Narrow, Arial, sans-serif;
   font-size: 1vmax;
+  margin: 0 1vmax;
 }
 
 .productCard:hover {
@@ -221,21 +220,19 @@ button {
 }
 
 @media screen and (max-width: 600px) {
-  .productCard {
-      padding: 1vmax;
-  }
 
   .productCard > p {
       font-size: 1.7vmax;
   }
 
-  .productCard > div {
-      margin: 0vmax;
-      display: block;
-  }
+  .productCard>div {
+    display: block;
+    margin: 0 .5vmax;
+}
 
   .productCard > span {
       font-size: 1.5vmax;
+      margin: 0 1.2vmax;
   }
 
   .productCard > div > span {
