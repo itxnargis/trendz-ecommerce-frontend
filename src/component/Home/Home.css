@@ -179,7 +179,7 @@ button {
   height: 100px; /* Fixed height for images */
   object-fit: contain; /* Ensures the whole image is visible without cropping */
   padding-bottom: 1rem;
-  border-radius: 0.5rem; /* Optional: Adds rounding to corners */
+  border-bottom: 1px solid #ccc;
 }
 
 
