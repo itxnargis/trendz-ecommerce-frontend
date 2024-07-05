@@ -116,13 +116,13 @@
     color: rgb(144, 81, 202);
   }
 
-  .about-content {
+  .aboutSectionContainer > div > div > p {
     font: 100 1vmax "Roboto";
     margin: 1vmax;
   }
 
   @media screen and (max-width: 600px) {
-    .about-content {
+    .aboutSectionContainer > div > div > p {
       font: 100 2vmax "Roboto";
     }
   }
