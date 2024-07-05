@@ -75,6 +75,7 @@
   justify-content: center;
   min-height: 30vh;
   padding-left: 10vmax;
+  margin-bottom: 12vmax;
 }
 
 .PaginationBox {
