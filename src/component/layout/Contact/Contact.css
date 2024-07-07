@@ -8,21 +8,76 @@
     position: fixed;
   }
 
-  .mailBtn {
-    text-decoration: none;
-    transform: translateX(-100vw);
-    animation: mailBtnAnimation 2s forwards;
+  .contact {
+    padding: 100px 0;
+  }
+  .contact-heading {
+    margin-bottom: 3rem;
+    text-align: center;
+    font-size: 30px;
+  }
+  .container-box {
+    border-radius: 10px;
+    background: #196265;
+    width: 90vw;
+    margin: auto;
+    padding: 2rem;
+    max-width: max(60vw, 320px);
   }
 
-  .mailBtn > button {
-    text-decoration: none;
-    font: 200 2vmax "Roboto";
-    cursor: url("https://img.icons8.com/color/48/000000/edit--v2.png"), pointer;
-    padding: 2vmax;
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .form-info {
+    padding-bottom: 0.5rem;
+    width: 100%;
   }
 
-  @keyframes mailBtnAnimation {
-    to {
-      transform: translateX(0);
+  .contact-forms {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  label {
+    margin-bottom: 0.5rem;
+    color: #fff;
+    letter-spacing: 0.06rem;
+  }
+  input {
+    border-radius: 7px;
+    box-shadow: 0 0 5px 0 rgba(109, 94, 94, 0.9);
+    width: 100%;
+    padding: 0.7rem;
+    border: 2px solid rgb(51, 83, 143);
+  }
+  .input-width {
+    width: 100%;
+  }
+  textarea {
+    width: 100%;
+    padding: 0.7rem;
+    border-radius: 8px;
+    border: 2px solid rgb(51, 83, 143);
+  }
+
+  @media screen and (min-width: 767px) {
+    .form-info:nth-child(1),
+    .form-info:nth-child(2) {
+      width: calc(50% - 0.5rem);
     }
+  }
+  .contact-button {
+    margin-top: 1rem;
+    border-radius: 5rem;
+    padding: 0.5rem 1.5rem;
+    letter-spacing: 0.2em;
+    font-size: 0.9rem;
+    background: #275c82;
+    border: 1px solid #fff;
+    color: var(--white);
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
   }

@@ -107,7 +107,7 @@ const Footer = () => {
                             <IoMailOutline />
                             </div>
                             <a href="mailto:itxnargiskhatun@gmail.com" title="My gmail account"
-                                aria-label="Gmail-icon" className="footer-nav-link">itxnargiskhatun@gmail.com
+                                aria-label="Gmail-icon" className="footer-nav-link link">itxnargiskhatun@gmail.com
                             </a>
                         </li>
                     </ul>

@@ -45,6 +45,9 @@ footer {
   text-transform: capitalize;
   transition: var(--transition-timing);
 }
+.link {
+text-transform: lowercase;
+}
 .footer-nav-link:hover {
   color: var(--salmon-pink);
 }
