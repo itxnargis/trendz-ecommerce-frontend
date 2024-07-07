@@ -12,7 +12,7 @@
     padding: 100px 0;
   }
   .contact-heading {
-    margin: 3vmax auto;
+    margin: 2vmax auto;
     width: fit-content;
     border-bottom: 1px solid rgba(0, 0, 0, 0.171);
     padding: 2vmax;
@@ -27,7 +27,7 @@
     border: 1px solid #e0d2d2;
     max-width: max(60vw, 320px);
     padding: 2rem;
-    width: 90vw;
+    width:80vw;
 }
 
   form {
