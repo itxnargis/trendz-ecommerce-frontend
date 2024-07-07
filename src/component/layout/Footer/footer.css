@@ -53,7 +53,7 @@ text-transform: lowercase;
 }
 .footer-nav-item.flex {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 10px;
 }
 .footer-nav-item .content {
@@ -63,6 +63,8 @@ text-transform: lowercase;
 .footer-nav-item .icon-box {
   color: var(--sonic-silver);
   font-size: 25px;
+  display: flex;
+    align-items: center;
 }
 .footer-nav-item .icon-box ion-icon {
   --ionicon-stroke-width: 30px;
