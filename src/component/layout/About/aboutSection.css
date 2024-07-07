@@ -34,20 +34,20 @@
 
 .aboutSectionContainer > h1 {
   font: 400 3vmax "Roboto";
-  color: tomato;
+  color: #e0590b;
   margin: 1vmax;
 }
 
 .name {
-  font: 400 2.5vmax "Roboto";
-  color: tomato;
+  font: 600 2.5vmax "Roboto";
+  color: #e0590b;
   margin: 1vmax;
 }
 
 .follow-me {
-  font: 400 2vmax "Roboto";
-  color: tomato;
-  margin: 1vmax;
+  font: 600 2vmax "Roboto";
+  color: rgb(19, 18, 18);
+  padding-top: 1rem;
 }
 
 .aboutSectionContainer > div {
