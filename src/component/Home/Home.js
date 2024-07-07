@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Loader from "../layout/Loader/Loader";
 import { useAlert } from 'react-alert';
 import banner from "../../images/banner.jpg";
+import { Link } from "react-router-dom";
 import logo from "../../images/logo.png";
 
 
@@ -42,7 +43,7 @@ const Home = () => {
               <a href="#" className="header-logo">
                 <img src={logo} alt="Anon's logo" width="120" height="36" />
               </a>
-             <Search/>
+              <Search />
             </div>
           </div>
 
@@ -56,13 +57,14 @@ const Home = () => {
                     <p class="banner-subtitle">Trending item</p>
                     <h2 class="banner-title">Explore latest fashion sale</h2>
                     <p class="banner-text">
-                    FIND AMAZING PRODUCTS BELOW
+                      FIND AMAZING PRODUCTS BELOW
                     </p>
-                    <a href="#product">
-                            <button>
-                                SHOP NOW
-                            </button>
-                        </a>
+                    <Link to="/products">
+                      <button>
+                        SHOP NOW
+                      </button>
+                    </Link>
+
                   </div>
                 </div>
               </div>
