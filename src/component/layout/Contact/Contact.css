@@ -4,7 +4,7 @@
     max-width: 100%;
     display: grid;
     place-items: center;
-    background-color: #ccc;
+    background-color: #eee;
     position: fixed;
   }
 
@@ -17,13 +17,14 @@
     font-size: 30px;
   }
   .container-box {
-    border-radius: 10px;
     background: #fff;
-    width: 90vw;
+    border-radius: .4rem;
     margin: auto;
-    padding: 2rem;
+    border: 1px solid #e0d2d2;
     max-width: max(60vw, 320px);
-  }
+    padding: 2rem;
+    width: 90vw;
+}
 
   form {
     display: flex;
@@ -46,23 +47,27 @@
     margin-bottom: .5rem;
 }
   input {
-    border-radius: 7px;
-    box-shadow: 0 0 5px 0 rgba(109, 94, 94, 0.9);
     width: 100%;
-    background: #ccc;
-    padding: 0.7rem;
-    border: 2px solid #000;
+    background: #d9d6d633;
+    padding: 0.7rem .4rem;
+    border: transparent;
+    border-radius: .4rem;
+    box-shadow: 0 0 2px 0 #6d5e5ee6;
+    color: #000;
   }
+
   .input-width {
     width: 100%;
   }
   textarea {
-    width: 100%;
-    padding: 0.7rem;
+    border: transparent;
     border-radius: 8px;
-    border: 2px solid #000;
     color: #000;
-  }
+    width: 100%;
+    background: #d9d6d633;
+    box-shadow: 0 0 2px 0 #6d5e5ee6;
+    padding: .7rem;
+}
 
   @media screen and (min-width: 767px) {
     .form-info:nth-child(1),
@@ -76,6 +81,9 @@
     padding: 0.5rem 1.5rem;
     letter-spacing: 0.2em;
     font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: .3rem;
     background: #e0590b;
     border: 1px solid #fff;
     color: var(--white);
