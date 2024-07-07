@@ -37,11 +37,7 @@
     color: tomato;
     margin: 1vmax;
   }
-.h5 {
-  color: tomato;
-  font: 400 1vmax "Roboto";
-  margin: .3vmax;
-}
+
   .aboutSectionContainer > div {
     display: flex;
     width: 100%;
@@ -153,6 +149,7 @@
     .aboutSectionContainer2 > h2 {
       font: 100 3vmax "Roboto";
       margin: 2vmax;
+      color: #e0590b;
     }
     .aboutSectionContainer2 > a > svg {
       font-size: 6vmax;

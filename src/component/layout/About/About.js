@@ -17,7 +17,7 @@ const About = () => {
           <div>
             <Avatar
               style={{ width: "10vmax", height: "10vmax", margin: "2vmax 0" }}
-              src="" // Add your image source here
+              src=""
               alt="Founder"
             />
           </div>
@@ -37,7 +37,7 @@ const About = () => {
             high-quality results, I'm eager to contribute to exciting projects
             and collaborate with fellow developers.
           </p>
-          <Typography component="h5">Follow me </Typography>
+          <Typography component="h2">Follow me </Typography>
           <div className="icons">
             <div className="social-icons">
               <a

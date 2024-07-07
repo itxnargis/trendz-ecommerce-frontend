@@ -139,6 +139,7 @@ button {
   margin-top: 1rem;
   background: #395032;
   border: transparent;
+  cursor: pointer;
   color: lightgoldenrodyellow;
 }
 .home-heading {
