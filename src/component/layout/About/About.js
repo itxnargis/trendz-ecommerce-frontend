@@ -24,7 +24,7 @@ const About = () => {
           <Typography component="h4" className="intro-text">
             Hi, Myself
           </Typography>
-          <Typography component="h2">Nargis Khatun</Typography>
+          <Typography component="h2" className="name">Nargis Khatun</Typography>
           <Typography component="h3" className="bio">
             And I'm a <span>WEB DEVELOPER</span>
           </Typography>
@@ -37,7 +37,7 @@ const About = () => {
             high-quality results, I'm eager to contribute to exciting projects
             and collaborate with fellow developers.
           </p>
-          <Typography component="h2">Follow me </Typography>
+          <Typography component="h2" className="follow-me">Follow me </Typography>
           <div className="icons">
             <div className="social-icons">
               <a
