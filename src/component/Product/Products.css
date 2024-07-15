@@ -84,7 +84,8 @@
 .PaginationBox {
   display: flex;
   justify-content: center;
-  margin: 6vmax;
+  margin: 4vmax;
+  padding-bottom: 4vmax;
   background: #eee;
 }
 
@@ -137,13 +138,16 @@
 
 .customFontSize {
   font-size: 2.5vmax;
+  background-color: #ccc;
 }
 
 .filterBox {
   width: 10vmax;
   position: absolute;
-  top: 10vmax;
+  top: 13vmax;
   left: 3vmax;
+  padding: 4vmax;
+  background-color: #fff;
 }
 
 .categoryBox {
