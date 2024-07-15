@@ -1,7 +1,6 @@
 import React from "react";
-import { IoLocationOutline, IoMailOutline } from 'react-icons/io5'; // Example icons, import icons as needed
-import { AiFillGithub, AiOutlineTwitter, AiFillLinkedin } from 'react-icons/ai'; // Example icons, import icons as needed
-import { FiArrowRightCircle } from 'react-icons/fi'; // Example icons, import icons as needed
+import { IoLocationOutline, IoMailOutline } from 'react-icons/io5';
+import { AiFillGithub, AiOutlineTwitter, AiFillLinkedin } from 'react-icons/ai';
 import logo from "../../../images/logo.png";
 import "./footer.css";
 
