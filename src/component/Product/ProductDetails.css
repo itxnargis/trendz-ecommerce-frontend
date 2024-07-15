@@ -23,11 +23,10 @@
 }
 
 .carouselImage {
-    width: 100%; /* Ensure the image takes up the full width of the container */
-    height: auto; /* Maintain the aspect ratio */
-    object-fit: contain; /* Ensure the image fits within the container without being cropped */
+    width: 20vmax;
+    height: auto;
+    object-fit: contain;
 }
-
 .detailsBlock-1 > h2{
     color: rgb(54, 54, 54);
     font: 200 1.6vmax "Roboto";
