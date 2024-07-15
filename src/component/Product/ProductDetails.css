@@ -24,8 +24,6 @@
 
 .carouselImage {
     width: 20vmax;
-    height: auto;
-    object-fit: contain;
 }
 .detailsBlock-1 > h2{
     color: rgb(54, 54, 54);
