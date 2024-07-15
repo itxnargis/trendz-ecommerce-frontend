@@ -159,6 +159,7 @@ button {
   flex-wrap: wrap;
   justify-content: center;
   max-width: 100%;
+  background-color: #eee;
 }
 
 .productCard {
@@ -220,8 +221,13 @@ button {
   transform: translateY(-1vmax);
 }
 
-@media screen and (max-width: 600px) {
-
+@media screen and (max-width: 740px) {
+.productCard {
+  width: 40vmax;
+}
+.productCard > img {
+  height: 280px;
+}
   .productCard > p {
       font-size: 1.7vmax;
   }
