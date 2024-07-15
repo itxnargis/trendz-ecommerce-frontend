@@ -37,7 +37,6 @@ const ContactForm = () => {
                             />
                         </div>
                     </div>
-
                     <div className="form-info display">
                         <div className="contact-forms">
                             <label>Email</label>
@@ -51,7 +50,6 @@ const ContactForm = () => {
                             />
                         </div>
                     </div>
-
                     <div className="form-info">
                         <div className="contact-forms">
                             <label>Subject</label>
@@ -63,7 +61,6 @@ const ContactForm = () => {
                             />
                         </div>
                     </div>
-
                     <div className="form-info">
                         <div className="contact-forms">
                             <label>Your Message</label>
@@ -77,7 +74,6 @@ const ContactForm = () => {
                             ></textarea>
                         </div>
                     </div>
-
                     <button className="contact-button" type="submit">
                         <FaEnvelope className="icon" /> Send Now
                     </button>

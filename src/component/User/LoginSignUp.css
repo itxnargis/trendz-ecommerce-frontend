@@ -147,13 +147,13 @@
     transform: translateX(100%);
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
     .LoginSignUpContainer {
-        background-color: white;
+        background-color: #eee;
     }
     .LoginSignUpBox {
-        width: 100vw;
-        height: 95vh;
+        width: 90vw;
+        height: 90vh;
     }
     .login-signup-toggle {
         height: 5vmax;
@@ -164,6 +164,7 @@
     .login-form,
     .signup-form {
         padding: 5vmax;
+        height: 50%;
     }
     .login-form > div > input,
     .signup-form > div > input {
