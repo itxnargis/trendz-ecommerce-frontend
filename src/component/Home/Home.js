@@ -44,8 +44,9 @@ const Home = () => {
                             <FaSignInAlt size={15} />
                             <p>Login</p>
                         </Link>
-              <Search />
+
             </div>
+            <Search />
           </div>
 
 
