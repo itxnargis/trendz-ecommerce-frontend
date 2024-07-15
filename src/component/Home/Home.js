@@ -11,17 +11,14 @@ import { useAlert } from 'react-alert';
 import banner from "../../images/banner.jpg";
 import { Link } from "react-router-dom";
 import logo from "../../images/logo.png";
-
+import { FaSignInAlt } from "react-icons/fa";
 
 const Home = () => {
-
   const alert = useAlert();
   const dispatch = useDispatch();
-
   const { loading, error, products } = useSelector(
     (state) => state.products
   );
-
   useEffect(() => {
     if (error) {
       alert.error(error);
@@ -43,6 +40,10 @@ const Home = () => {
               <a href="#" className="header-logo">
                 <img src={logo} alt="Anon's logo" width="120" height="36" />
               </a>
+              <Link to="/login" className="loginIcon">
+                            <FaSignInAlt size={15} />
+                            <p>Login</p>
+                        </Link>
               <Search />
             </div>
           </div>
