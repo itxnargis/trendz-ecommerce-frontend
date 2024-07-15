@@ -155,6 +155,8 @@ button {
 .container {
   display: flex;
   margin: 3vmax auto;
+  margin-bottom: 0;
+  padding: 6vmax 0;
   width: 95vw;
   flex-wrap: wrap;
   justify-content: center;
@@ -170,7 +172,7 @@ button {
   color: rgb(48, 48, 48);
   margin: .7vmax;
   border-radius: .7rem;
-  border: 2px solid rgba(0, 0, 0, 0.2);
+  border: 2px solid #00000063;
   background: #fff;
   transition: all 0.5s;
   padding: 2vmax 0;

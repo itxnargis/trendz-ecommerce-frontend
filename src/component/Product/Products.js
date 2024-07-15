@@ -166,6 +166,7 @@ const Products = () => {
             ) : (
                 <Fragment>
                     <MetaData title="PRODUCTS --- ECOMMERCE" />
+                    <div className="Product">
                     <h2 className="productsHeading">Products</h2>
                     <div className="underline"></div>
                     <div className="iconsContainer">
@@ -247,6 +248,7 @@ const Products = () => {
                     >
                         {filterContent}
                     </Modal>
+                    </div>
                 </Fragment>
             )}
         </Fragment>
