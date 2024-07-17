@@ -10,8 +10,6 @@ import Loader from "../layout/Loader/Loader";
 import { useAlert } from 'react-alert';
 import banner from "../../images/banner.jpg";
 import { Link } from "react-router-dom";
-import logo from "../../images/logo.png";
-
 
 const Home = () => {
 
@@ -40,14 +38,9 @@ const Home = () => {
 
           <div className="header-main">
             <div className="header-container">
-              <a href="#" className="header-logo">
-                <img src={logo} alt="Anon's logo" width="120" height="36" />
-              </a>
               <Search />
             </div>
           </div>
-
-
           <div class="banner">
             <div class="banner-container">
               <div class="slider-container has-scrollbar">

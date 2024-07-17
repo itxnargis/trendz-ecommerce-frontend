@@ -54,17 +54,12 @@
 }
 
 .header-main {
+  background: #040818;
   padding: 32px 0;
   border-bottom: 1px solid hsl(0, 0%, 93%);
 }
 .header-logo {
   margin-bottom: 20px;
-}
-.header-logo img {
-  margin: auto;
-  display: flex;
-  width: 15rem;
-  height: 3.8rem;
 }
 .header-search-container .search-field {
   font-size: 0.875rem;
@@ -74,10 +69,8 @@
   border: 1px solid hsl(0, 0%, 93%);
   border-radius: 5px;
 }
-
 .banner {
   border-radius: 1rem;
-  padding: 0rem 1rem;
   background: #edeff457;
 }
 .slider-container {
