@@ -1,9 +1,9 @@
 import { React, Fragment, useEffect } from "react";
 import { CgMouse } from "react-icons/cg";
-import Search from "../Product/Search.js";
 import "./Home.css";
 import Product from "./Product.js";
 import MetaData from "../layout/metaData.js";
+import Header from "../layout/Header/Header.js";
 import { clearErrors, getProduct } from "../../actions/productAction";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../layout/Loader/Loader";
@@ -36,11 +36,7 @@ const Home = () => {
         <Fragment>
           <MetaData title="ECOMMERCE" />
 
-          <div className="header-main">
-            <div className="header-container">
-              <Search />
-            </div>
-          </div>
+
           <div class="banner">
             <div class="banner-container">
               <div class="slider-container has-scrollbar">

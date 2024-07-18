@@ -1,42 +1,33 @@
-import React from "react";
-import { ReactNavbar } from "overlay-navbar";
+import React from 'react';
+import Search from "../../Product/Search.js";
+import { FaBars, FaSearch, FaHeart, FaShoppingCart, FaAdn } from 'react-icons/fa';
+import './Header.css';
 import logo from "../../../images/logo.png";
-
-const options = {
-  burgerColorHover: "#eb4034",
-  logo,
-  logoWidth: "20vmax",
-  navColor1: "white",
-  logoHoverSize: "10px",
-  logoHoverColor: "#eb4034",
-  link1Text: "Home",
-  link2Text: "Products",
-  link3Text: "Contact",
-  link4Text: "About",
-  link1Url: "/",
-  link2Url: "/products",
-  link3Url: "/contact",
-  link4Url: "/about",
-  link1Size: "1.3vmax",
-  link1Color: "rgba(35, 35, 35,0.8)",
-  nav1justifyContent: "flex-end",
-  nav2justifyContent: "flex-end",
-  nav3justifyContent: "flex-start",
-  nav4justifyContent: "flex-start",
-  link1ColorHover: "#eb4034",
-  link1Margin: "1vmax",
-  profileIconUrl: "/login",
-  profileIconColor: "rgba(35, 35, 35,0.8)",
-  searchIconColor: "rgba(35, 35, 35,0.8)",
-  cartIconColor: "rgba(35, 35, 35,0.8)",
-  profileIconColorHover: "#eb4034",
-  searchIconColorHover: "#eb4034",
-  cartIconColorHover: "#eb4034",
-  cartIconMargin: "1vmax",
-};
+import { Link } from "react-router-dom";
+import { FaFilter, FaUser } from "react-icons/fa";
 
 const Header = () => {
-  return <ReactNavbar {...options} />;
+  return (
+    <div className='header'>
+      <div className='header-component'>
+        <Link to="#" className="bar-logo"><FaBars /></Link>
+        <div className='links'>
+        <Link to="/" className="link-details">Home</Link>
+        <Link to="/products" className="link-details">Projects</Link>
+        <Link to="/about" className="link-details">About</Link>
+        <Link to="/contact" className="link-details">Contact</Link>
+        </div>
+        <div className="social">
+        <Link to="/login" className="login-icon">
+          <FaUser />
+        </Link>
+        <Link to="/cart" className="cart-icon">
+         <FaShoppingCart />
+        </Link>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Header;

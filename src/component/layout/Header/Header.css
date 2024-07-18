@@ -1,10 +1,80 @@
+.header {
+  background-color: #181717;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  color: #fff;
+  padding: 0;
+  z-index: 1;
+  cursor: pointer;
+}
+.header-component {
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 4rem;
+  font-family: "Roboto";
+}
+.header-component a {
+  text-decoration: none;
+  list-style: none;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  justify-content: center;
+}
+.bar-logo {
+  color: #fff;
+  font-size: 2.4rem;
+}
+.social {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.login-icon, .cart-icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  height: 3.5rem;
+  line-height: 4.5rem;
+  width: 3.5rem;
+  text-align: center;
+  border-radius: 50%;
+  background: #333131;
+  color: white;
+}
+.login-icon:hover,
+.cart-icon:hover {
+  transform: rotate(360deg);
+  background-color: #ccc;
+  color: black;
+}
+.links {
+  display: flex;
+  font-size: 1.5rem;
+  color: black;
+  gap: 2rem;
+}
+.link-details {
+  padding: 0.8rem 0.8rem;
+  border-radius: 0.5rem;
+  width: 7rem;
+}
+.link-details:hover {
+  background-color: #30442a;
+  color: white;
+}
 .speedDial {
-    position: fixed;
-    right: 3vmax;
-    top: 2vmax;
+  position: fixed;
+  right: 3vmax;
+  top: 2vmax;
 }
 .speedDialIcon {
-    width: 56px;
-    height: 56px;
-    border-radius: 100%;
+  width: 56px;
+  height: 56px;
+  border-radius: 100%;
 }
