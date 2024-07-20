@@ -72,6 +72,7 @@
 .banner {
   border-radius: 1rem;
   background: #edeff457;
+  padding-top: 70px;
 }
 .slider-container {
   display: flex;
@@ -93,7 +94,6 @@
 }
 .slider-item .banner-img {
   width: 100%;
-  height: 100%;
   object-fit: cover;
   object-position: right;
 }
@@ -123,6 +123,17 @@
 }
 .banner-text {
   display: none;
+}
+@media (max-width: 768px) {
+  .banner {
+    padding-top: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner {
+    padding-top: 50px;
+  }
 }
 button {
   padding: 0.5rem 2rem;
