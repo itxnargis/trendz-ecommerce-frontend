@@ -1,0 +1,48 @@
+.filter-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  max-width: 400px;
+  background-color: white;
+  padding: 2vmax;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  outline: none;
+}
+
+.category-box {
+  list-style-type: none;
+  padding: 0;
+}
+
+.category-link {
+  cursor: pointer;
+  padding: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.category-link:hover {
+  color: #ff6347;
+}
+
+.filter-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2vmax;
+}
+
+.apply-button,
+.cancel-button {
+  padding: 0.5vmax 2vmax;
+  border: none;
+  background-color: tomato;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.apply-button:hover,
+.cancel-button:hover {
+  background-color: darkred;
+}
