@@ -69,6 +69,7 @@
   border: none;
   background-color: rgba(0, 0, 0, 0.616);
   padding: 0.5vmax;
+  width: 3vmax;
   cursor: pointer;
   color: white;
   transition: all 0.5s;
@@ -80,10 +81,9 @@
 
 .details-block-3-1-1 > input {
   border: none;
-  padding: 0.5vmax;
-  width: 1vmax;
+  padding: .5vmax;
+  width: 2vmax;
   text-align: center;
-  font: 400 0.8vmax "Roboto";
   color: rgba(0, 0, 0, 0.74);
 }
 

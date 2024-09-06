@@ -106,7 +106,7 @@
 }
 
 .banner-title {
-  color: hsl(0, 0%, 13%);
+  color: hsl(53.13deg 51.54% 37.51%);
   font-size: 1.763rem;
   text-transform: uppercase;
   line-height: 1;
@@ -116,7 +116,7 @@
 .shop-button {
   padding: 0.7rem 1.789rem;
   margin-top: .5rem;
-  background: linear-gradient(90deg, hsl(0, 2%, 20%), hsl(0deg 2.39% 43.98%));
+  background: linear-gradient(90deg, hsl(0deg 89.18% 50.42%), #e0590b);
   border: none;
   cursor: pointer;
   display: inline-block;
@@ -325,7 +325,7 @@
 
   .banner-text {
     display: block;
-    color: var(--sonic-silver);
+    color: hsl(0deg 23.15% 29.53%);
     font-size: var(--fs-7);
     font-weight: var(--weight-500);
     margin-bottom: 10px;

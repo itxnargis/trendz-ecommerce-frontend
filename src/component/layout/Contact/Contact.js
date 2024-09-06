@@ -54,6 +54,7 @@ const ContactForm = () => {
                         <div className="contact-forms">
                             <label>Subject</label>
                             <input
+                                className="input-width"
                                 type="text"
                                 placeholder="Enter the subject"
                                 value={subject}
