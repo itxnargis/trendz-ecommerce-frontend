@@ -65,7 +65,6 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  border-radius: 5px;
   overflow: auto hidden;
   scroll-snap-type: inline mandatory;
   overscroll-behavior-inline: contain;
@@ -75,7 +74,6 @@
   position: relative;
   min-width: 100%;
   max-height: 750px;
-  border-radius: 5px;
   overflow: hidden;
   scroll-snap-align: start;
 }
@@ -116,12 +114,29 @@
 }
 
 .shop-button {
-  padding: 0.5rem 2rem;
-  margin-top: 1rem;
-  background: rgb(39, 141, 61);
-  border: transparent;
+  padding: 0.7rem 1.789rem;
+  margin-top: .5rem;
+  background: linear-gradient(90deg, hsl(0, 2%, 20%), hsl(0deg 2.39% 43.98%));
+  border: none;
   cursor: pointer;
-  color: lightgoldenrodyellow;
+  display: inline-block;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-align: center;
+  border-radius: 30px;
+  color: white;
+  text-decoration: none;
+  transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.shop-button:hover {
+  background: linear-gradient(90deg, hsl(0, 2%, 30%), hsl(0, 2%, 40%));
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.featured-product-section {
+  background: #eee;
+  padding: .4rem;
 }
 
 .home-heading {
@@ -139,7 +154,7 @@
   display: flex;
   margin: 3vmax auto;
   margin-bottom: 0;
-  padding: 6vmax 0;
+  padding: 1.5vmax 0;
   width: 100vw;
   flex-wrap: wrap;
   justify-content: center;

@@ -58,12 +58,14 @@ const Home = () => {
             </div>
           </div>
 
-          <h2 className="home-heading">Featured Products</h2>
+          <div className="featured-product-section">
+            <h2 className="home-heading">Featured Products</h2>
 
-          <div className="container" id="container">
-            {products && products.map(product => (
-              <Product key={product._id} product={product} />
-            ))}
+            <div className="container" id="container">
+              {products && products.map(product => (
+                <Product key={product._id} product={product} />
+              ))}
+            </div>
           </div>
         </Fragment>
       )}
