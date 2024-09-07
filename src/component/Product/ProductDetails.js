@@ -155,47 +155,49 @@ const ProductDetails = () => {
                         </div>
                     </div>
 
-                    <h3 className="review-heading">REVIEWS</h3>
+                    <div className="review-section">
+                        <h3 className="review-heading">REVIEWS</h3>
 
-                    <Dialog
-                        aria-labelledby="simple-dialog-title"
-                        open={open}
-                        onClose={submitReviewToggle}
-                    >
-                        <DialogTitle>Submit Review</DialogTitle>
-                        <DialogContent className="submit-dialog">
-                            <Rating
-                                onChange={(e) => setRating(e.target.value)}
-                                value={rating}
-                                size="large"
-                            />
-                            <textarea
-                                className="submit-dialog-text-area"
-                                cols="30"
-                                rows="5"
-                                value={comment}
-                                onChange={(e) => setComment(e.target.value)}
-                            />
-                        </DialogContent>
-                        <DialogActions>
-                            <Button onClick={submitReviewToggle} color="secondary">
-                                Cancel
-                            </Button>
-                            <Button onClick={reviewSubmitHandler} color="primary">
-                                Submit
-                            </Button>
-                        </DialogActions>
-                    </Dialog>
+                        <Dialog
+                            aria-labelledby="simple-dialog-title"
+                            open={open}
+                            onClose={submitReviewToggle}
+                        >
+                            <DialogTitle>Submit Review</DialogTitle>
+                            <DialogContent className="submit-dialog">
+                                <Rating
+                                    onChange={(e) => setRating(e.target.value)}
+                                    value={rating}
+                                    size="large"
+                                />
+                                <textarea
+                                    className="submit-dialog-text-area"
+                                    cols="30"
+                                    rows="5"
+                                    value={comment}
+                                    onChange={(e) => setComment(e.target.value)}
+                                />
+                            </DialogContent>
+                            <DialogActions>
+                                <Button onClick={submitReviewToggle} color="secondary">
+                                    Cancel
+                                </Button>
+                                <Button onClick={reviewSubmitHandler} color="primary">
+                                    Submit
+                                </Button>
+                            </DialogActions>
+                        </Dialog>
 
-                    {product.reviews && product.reviews.length > 0 ? (
-                        <div className="reviews">
-                            {product.reviews.map((review) => (
-                                <ReviewCard key={review._id} review={review} />
-                            ))}
-                        </div>
-                    ) : (
-                        <p className="no-reviews">No Reviews Yet</p>
-                    )}
+                        {product.reviews && product.reviews.length > 0 ? (
+                            <div className="reviews">
+                                {product.reviews.map((review) => (
+                                    <ReviewCard key={review._id} review={review} />
+                                ))}
+                            </div>
+                        ) : (
+                            <p className="no-reviews">No Reviews Yet</p>
+                        )}
+                    </div>
                 </>
             )}
         </>

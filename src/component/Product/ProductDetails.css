@@ -1,6 +1,6 @@
 .product-details {
   display: flex;
-  background-color: rgb(214, 214, 214);
+  background-color: #eee;
   width: 100vw;
   padding: 6vmax;
   box-sizing: border-box;
@@ -14,8 +14,10 @@
   justify-content: space-evenly;
   align-items: center;
   padding: 2vmax;
+  background: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.226);
+  border: 1px solid rgba(56, 56, 56, 0.116);
   box-sizing: border-box;
-  border: 1px solid white;
 }
 
 .product-details > div:last-child {
@@ -27,8 +29,10 @@
 }
 
 .details-block-1 > h2 {
-  color: rgb(54, 54, 54);
-  font: 200 1.6vmax "Roboto";
+  color: black;
+  font-weight: bold;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
 }
 
 .details-block-1 > p {
@@ -47,8 +51,8 @@
 }
 
 .details-block-2-span {
-  font: 200 0.8vmax cursive;
   color: rgba(0, 0, 0, 0.699);
+  font-weight: 400;
 }
 
 .details-block-3 {
@@ -65,6 +69,7 @@
   display: flex;
   align-items: center;
 }
+
 .details-block-3-1-1 button {
   border: none;
   background-color: rgba(0, 0, 0, 0.616);
@@ -81,7 +86,7 @@
 
 .details-block-3-1-1 > input {
   border: none;
-  padding: .5vmax;
+  padding: 0.5vmax;
   width: 2vmax;
   text-align: center;
   color: rgba(0, 0, 0, 0.74);
@@ -114,13 +119,16 @@
 }
 
 .details-block-4 {
-  color: rgba(0, 0, 0, 0.897);
-  font: 500 1.2vmax sans-serif;
+  color: black;
+  font-weight: 500;
+  font-size: 1.2rem;
 }
 
 .details-block-4 > p {
+  font-size: 1rem;
   color: hsl(0, 2%, 20%);
-  font: 500 1.2vmax sans-serif;
+  font-weight: 400;
+  letter-spacing: 1px;
 }
 
 .submit-review {
@@ -135,9 +143,14 @@
   transition: all 0.5s;
   outline: none;
 }
+
 .submit-review:hover {
   background-color: rgb(197, 64, 45);
   transform: scale(1.1);
+}
+
+.review-section {
+  background: #eee;
 }
 
 .review-heading {
@@ -146,16 +159,17 @@
   text-align: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.226);
   padding: 1vmax;
-  padding-top: 10vmax;
   width: 20vmax;
   margin: auto;
   margin-bottom: 4vmax;
 }
+
 .reviews {
   display: flex;
   overflow: auto;
-  margin-bottom: 10vmax;
+  padding-bottom: 10vmax;
 }
+
 .review-card {
   flex: none;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.226);
@@ -164,25 +178,31 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 1vmax 3vmax;
+  margin: 1vmax 6vmax;
+  background: #fff;
   padding: 3vmax;
 }
+
 .review-card > img {
   width: 5vmax;
 }
+
 .review-card > p {
   color: rgba(0, 0, 0, 0.836);
   font: 600 0.9vmax "Roboto";
 }
+
 .review-card > span {
   color: hsl(0, 2%, 20%);
-  font: 300 0.8vmax cursive;
+  font: 300 1.8vmax cursive;
 }
+
 .no-reviews {
   font: 400 1.3vmax "Gill sans";
   text-align: center;
   color: rgba(0, 0, 0, 0.548);
 }
+
 .review-cardComment {
   color: rgba(0, 0, 0, 0.445);
   font: 300 0.8vmax cursive;
@@ -193,33 +213,41 @@
     flex-direction: column;
     height: unset;
   }
+
   .product-details > div:last-child {
     align-items: center;
   }
+
   .details-block-1 > h2 {
-    font-size: 2.8vmax;
     text-align: center;
   }
+
   .details-block-1 > p {
     text-align: center;
     font-size: 1vmax;
   }
+
   .details-block-2 {
     justify-content: center;
   }
+
   .details-block-2 > span {
-    font-size: 1.5vmax;
+    font-size: 2.5vmax;
   }
+
   .details-block-3 > h1 {
     font: 700 3vmax "Franklin Gothic Medium";
     text-align: center;
   }
+
   .details-block-3-1 {
     flex-direction: column;
   }
+
   .details-block-3-1-1 {
     padding: 2vmax 0;
   }
+
   .details-block-3-1-1 > button {
     padding: 1.2vmax;
     width: 4vmax;
@@ -229,34 +257,24 @@
     width: 3vmax;
     font: 400 1.8vmax "Roboto";
   }
+
   .details-block-3-1 > button:last-child {
     font: 500 1.7vmax "Roboto";
     padding: 1.5vmax;
     width: 20vmax;
     margin: 3vmax;
   }
+
   .details-block-3 > p {
     padding: 2.5vmax 0;
     text-align: center;
     font: 400 2vmax "Roboto";
   }
-  .details-block-4 {
-    font: 500 2.5vmax sans-serif;
-  }
-  .details-block-4 > p {
-    font: 300 1.8vmax sans-serif;
-  }
+  
   .submit-review {
     font: 500 1.7vmax "Roboto";
     padding: 1.5vmax;
     width: 20vmax;
     margin: 3vmax 0;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .review-card {
-    box-shadow: 0 0 5px white;
-    border: 1px solid white;
   }
 }
