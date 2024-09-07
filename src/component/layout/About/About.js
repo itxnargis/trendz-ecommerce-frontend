@@ -2,6 +2,7 @@ import React from "react";
 import "./about.css";
 import { Typography, Avatar } from "@material-ui/core";
 import { FaGithub, FaEnvelope, FaTwitter, FaLinkedin } from "react-icons/fa";
+import { MdFileDownload } from "react-icons/md";
 
 const About = () => {
   const visitGithub = () => {
@@ -82,7 +83,7 @@ const About = () => {
           </div>
           <div className="btn-container">
             <a href="CV.pdf" className="button">
-              Resume <i className="fa fa-download"></i>
+              Resume <MdFileDownload />
             </a>
           </div>
         </div>

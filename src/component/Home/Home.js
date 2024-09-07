@@ -48,7 +48,7 @@ const Home = () => {
                     </p>
                     <Link to="/products">
                       <button className="shop-button">
-                        SHOP NOW
+                        SHOP NOW ➔
                       </button>
                     </Link>
 
