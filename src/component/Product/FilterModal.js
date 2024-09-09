@@ -31,12 +31,12 @@ const FilterModal = ({ open, handleClose, applyFilters }) => {
     handleClose();
   };
 
-  const clearFilters = () => {
+  const handleClearFilters = () => {
     setPrice([0, 25000]);
     setCategory("");
     setRatings(0);
     handleClose();
-    navigate("/products");
+    clearFilters();
   };
 
   return (
@@ -81,7 +81,7 @@ const FilterModal = ({ open, handleClose, applyFilters }) => {
         </fieldset>
         <div className="filter-buttons">
           <button onClick={handleApplyFilters} className="apply-button">Done</button>
-          <button onClick={clearFilters} className="cancel-button">Clear Filters</button>
+          <button onClick={handleClearFilters} className="cancel-button">Clear Filters</button>
         </div>
       </div>
     </Modal>

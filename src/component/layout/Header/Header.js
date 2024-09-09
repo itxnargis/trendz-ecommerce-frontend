@@ -95,7 +95,7 @@ const Header = () => {
         </div>
       </div>
 
-      <FilterModal open={openModal} handleClose={handleCloseModal} applyFilters={applyFilters} />
+      <FilterModal open={openModal} handleClose={handleCloseModal} applyFilters={applyFilters} clearFilters={clearFilters} />
     </header>
   );
 };
