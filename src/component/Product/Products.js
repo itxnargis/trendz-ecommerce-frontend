@@ -27,7 +27,7 @@ const Products = () => {
       alert.error(error);
       dispatch(clearErrors());
     }
-
+    
     const searchParams = new URLSearchParams(location.search);
     const price = [
       Number(searchParams.get('price[gte]') || 0),
@@ -38,7 +38,6 @@ const Products = () => {
 
     dispatch(getProduct(keyword, currentPage, price, category, ratings));
   }, [dispatch, keyword, currentPage, location.search, alert, error]);
-
 
   let count = filteredProductsCount;
 

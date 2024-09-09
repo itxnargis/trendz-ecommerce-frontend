@@ -35,8 +35,8 @@ const FilterModal = ({ open, handleClose, applyFilters }) => {
     setPrice([0, 25000]);
     setCategory("");
     setRatings(0);
-    handleClose();
     clearFilters();
+    handleClose();
   };
 
   return (
