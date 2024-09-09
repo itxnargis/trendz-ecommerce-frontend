@@ -22,12 +22,11 @@ const Header = () => {
   const handleCloseModal = () => {
     setOpenModal(false);
   };
-  
   const closeSidebar = () => {
     setIsOpen(false);
   };
 
-  const applyFilters = (filters) => {
+   const applyFilters = (filters) => {
     const { price, category, ratings } = filters;
 
     const queryParams = new URLSearchParams();

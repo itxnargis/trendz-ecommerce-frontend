@@ -5,7 +5,7 @@ import { clearErrors, getProduct } from "../../actions/productAction";
 import Loader from "../layout/Loader/Loader";
 import Product from "../Home/Product.js";
 import Pagination from "react-js-pagination";
-import { useParams, useLocation, useNavigate } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { useAlert } from "react-alert";
 import MetaData from "../layout/metaData";
 
@@ -13,7 +13,6 @@ const Products = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
   const location = useLocation();
-  const navigate = useNavigate();
 
   const [currentPage, setCurrentPage] = useState(1);
 
