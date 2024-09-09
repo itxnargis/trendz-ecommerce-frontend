@@ -41,12 +41,12 @@ const Header = () => {
     navigate('/products');
   };
 
-  useEffect(() => {
-    const searchParams = new URLSearchParams(location.search);
-    if (searchParams.has('price[gte]') || searchParams.has('category') || searchParams.has('ratings')) {
-      navigate('/', { replace: true });
-    }
-  }, [location.search, navigate]);
+  // useEffect(() => {
+  //   const searchParams = new URLSearchParams(location.search);
+  //   if (searchParams.has('price[gte]') || searchParams.has('category') || searchParams.has('ratings')) {
+  //     navigate('/', { replace: true });
+  //   }
+  // }, [location.search, navigate]);
 
   return (
     <header>

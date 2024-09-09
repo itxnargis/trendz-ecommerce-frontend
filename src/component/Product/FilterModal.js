@@ -16,11 +16,10 @@ const categories = [
   "SmartPhones",
 ];
 
-const FilterModal = ({ open, handleClose, applyFilters }) => {
+const FilterModal = ({ open, handleClose, applyFilters, clearFilters }) => {
   const [price, setPrice] = useState([0, 25000]);
   const [category, setCategory] = useState("");
   const [ratings, setRatings] = useState(0);
-  const navigate = useNavigate();
 
   const priceHandler = (event, newPrice) => setPrice(newPrice);
   const categoryHandler = (category) => setCategory(category);
@@ -28,14 +27,6 @@ const FilterModal = ({ open, handleClose, applyFilters }) => {
 
   const handleApplyFilters = () => {
     applyFilters({ price, category, ratings });
-    handleClose();
-  };
-
-  const handleClearFilters = () => {
-    setPrice([0, 25000]);
-    setCategory("");
-    setRatings(0);
-    clearFilters();
     handleClose();
   };
 
@@ -81,7 +72,7 @@ const FilterModal = ({ open, handleClose, applyFilters }) => {
         </fieldset>
         <div className="filter-buttons">
           <button onClick={handleApplyFilters} className="apply-button">Done</button>
-          <button onClick={handleClearFilters} className="cancel-button">Clear Filters</button>
+          <button onClick={clearFilters} className="cancel-button">Clear Filters</button>
         </div>
       </div>
     </Modal>

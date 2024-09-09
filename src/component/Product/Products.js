@@ -13,6 +13,7 @@ const Products = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
   const location = useLocation();
+  const navigate = useNavigate();
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -27,7 +28,7 @@ const Products = () => {
       alert.error(error);
       dispatch(clearErrors());
     }
-    
+
     const searchParams = new URLSearchParams(location.search);
     const price = [
       Number(searchParams.get('price[gte]') || 0),
@@ -37,7 +38,13 @@ const Products = () => {
     const ratings = Number(searchParams.get('ratings') || 0);
 
     dispatch(getProduct(keyword, currentPage, price, category, ratings));
-  }, [dispatch, keyword, currentPage, location.search, alert, error]);
+
+    if (!searchParams.has('price[gte]') && !searchParams.has('category') && !searchParams.has('ratings')) {
+      navigate('/');
+    }
+
+  }, [dispatch, keyword, currentPage, location.search, alert, error, navigate]);
+
 
   let count = filteredProductsCount;
 
