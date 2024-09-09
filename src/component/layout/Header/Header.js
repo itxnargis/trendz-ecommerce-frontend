@@ -22,7 +22,7 @@ const Header = () => {
   const handleCloseModal = () => {
     setOpenModal(false);
   };
-
+  
   const closeSidebar = () => {
     setIsOpen(false);
   };

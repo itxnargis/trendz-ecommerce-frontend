@@ -20,15 +20,6 @@ const FilterModal = ({ open, handleClose, applyFilters }) => {
   const [category, setCategory] = useState("");
   const [ratings, setRatings] = useState(0);
 
-    // Reset filters when the modal opens
-    useEffect(() => {
-      if (open) {
-        setPrice([0, 25000]);  // Reset to default price
-        setCategory("");       // Reset category
-        setRatings(0);         // Reset ratings
-      }
-    }, [open]);
-
   const priceHandler = (event, newPrice) => {
     setPrice(newPrice);
   };

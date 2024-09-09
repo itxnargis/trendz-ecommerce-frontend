@@ -23,28 +23,23 @@ const Products = () => {
   const setCurrentPageNo = (e) => {
     setCurrentPage(e);
   };
-
   useEffect(() => {
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
     }
 
-    // Extract the filters from the URL query parameters
     const searchParams = new URLSearchParams(location.search);
-    const filters = {
-      price: [
-        Number(searchParams.get('price[gte]')) || 0,
-        Number(searchParams.get('price[lte]')) || 25000
-      ],
-      category: searchParams.get('category') || '',
-      ratings: Number(searchParams.get('ratings')) || 0
-    };
+    const price = [
+      Number(searchParams.get('price[gte]') || 0),
+      Number(searchParams.get('price[lte]') || 25000)
+    ];
+    const category = searchParams.get('category') || '';
+    const ratings = Number(searchParams.get('ratings') || 0);
 
-    // Fetch products based on filters and pagination
-    dispatch(getProduct(keyword, currentPage, filters));
-
+    dispatch(getProduct(keyword, currentPage, price, category, ratings));
   }, [dispatch, keyword, currentPage, location.search, alert, error]);
+
 
   let count = filteredProductsCount;
 
