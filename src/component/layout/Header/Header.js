@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Search from '../../Product/Search.js';
 import { FaBars, FaTimes, FaChevronCircleDown, FaUser, FaShoppingCart } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
@@ -11,17 +11,10 @@ const Header = () => {
   const [openModal, setOpenModal] = useState(false);
   const navigate = useNavigate();
 
-  const toggleSidebar = () => {
-    setIsOpen(!isOpen);
-  };
+  const toggleSidebar = () => setIsOpen(!isOpen);
+  const handleOpenModal = () => setOpenModal(true);
+  const handleCloseModal = () => setOpenModal(false);
 
-  const handleOpenModal = () => {
-    setOpenModal(true);
-  };
-
-  const handleCloseModal = () => {
-    setOpenModal(false);
-  };
   const closeSidebar = () => {
     setIsOpen(false);
   };
@@ -43,6 +36,13 @@ const Header = () => {
 
     navigate(`/products?${queryParams.toString()}`);
   };
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    if (searchParams.has("price[gte]") || searchParams.has("category") || searchParams.has("ratings")) {
+      navigate("/", { replace: true });
+    }
+  }, [location, navigate]);
 
   return (
     <header>

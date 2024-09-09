@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Modal from '@material-ui/core/Modal';
 import Slider from '@material-ui/core/Slider';
 import Typography from '@material-ui/core/Typography';
+import { useNavigate } from 'react-router-dom';
 import './FilterModal.css';
 
 const categories = [
@@ -19,25 +20,14 @@ const FilterModal = ({ open, handleClose, applyFilters }) => {
   const [price, setPrice] = useState([0, 25000]);
   const [category, setCategory] = useState("");
   const [ratings, setRatings] = useState(0);
+  const navigate = useNavigate();
 
-  const priceHandler = (event, newPrice) => {
-    setPrice(newPrice);
-  };
-
-  const categoryHandler = (category) => {
-    setCategory(category);
-  };
-
-  const ratingsHandler = (event, newRating) => {
-    setRatings(newRating);
-  };
+  const priceHandler = (event, newPrice) => setPrice(newPrice);
+  const categoryHandler = (category) => setCategory(category);
+  const ratingsHandler = (event, newRating) => setRatings(newRating);
 
   const handleApplyFilters = () => {
-    applyFilters({
-      price,
-      category,
-      ratings,
-    });
+    applyFilters({ price, category, ratings });
     handleClose();
   };
 
@@ -46,6 +36,8 @@ const FilterModal = ({ open, handleClose, applyFilters }) => {
     setCategory("");
     setRatings(0);
     handleClose();
+
+    navigate("/products");
   };
 
   return (
