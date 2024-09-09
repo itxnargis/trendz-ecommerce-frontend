@@ -5,13 +5,15 @@ import { clearErrors, getProduct } from "../../actions/productAction";
 import Loader from "../layout/Loader/Loader";
 import Product from "../Home/Product.js";
 import Pagination from "react-js-pagination";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { useAlert } from "react-alert";
 import MetaData from "../layout/metaData";
 
 const Products = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -27,8 +29,19 @@ const Products = () => {
       alert.error(error);
       dispatch(clearErrors());
     }
-    dispatch(getProduct(keyword, currentPage));
-  }, [dispatch, keyword, currentPage, alert, error]);
+
+    const searchParams = new URLSearchParams(location.search);
+    const filters = {
+      price: [
+        searchParams.get('price[gte]') || 0,
+        searchParams.get('price[lte]') || 25000
+      ],
+      category: searchParams.get('category') || '',
+      ratings: searchParams.get('ratings') || 0
+    };
+
+    dispatch(getProduct(keyword, currentPage, filters));
+  }, [dispatch, keyword, currentPage, location.search, alert, error]);
 
   let count = filteredProductsCount;
 

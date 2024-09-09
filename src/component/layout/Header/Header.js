@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Search from '../../Product/Search.js';
 import { FaBars, FaTimes, FaChevronCircleDown, FaUser, FaShoppingCart } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import FilterModal from '../../Product/FilterModal';
 import logo from "../../../images/Trendz-logo.png"
 import './Header.css';
@@ -9,6 +9,7 @@ import './Header.css';
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
+  const navigate = useNavigate();
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
@@ -21,8 +22,27 @@ const Header = () => {
   const handleCloseModal = () => {
     setOpenModal(false);
   };
+
   const closeSidebar = () => {
     setIsOpen(false);
+  };
+
+  const applyFilters = (filters) => {
+    const { price, category, ratings } = filters;
+
+    const queryParams = new URLSearchParams();
+    queryParams.set('price[gte]', price[0]);
+    queryParams.set('price[lte]', price[1]);
+
+    if (category) {
+      queryParams.set('category', category);
+    }
+
+    if (ratings > 0) {
+      queryParams.set('ratings', ratings);
+    }
+
+    navigate(`/products?${queryParams.toString()}`);
   };
 
   return (
@@ -72,7 +92,7 @@ const Header = () => {
         </div>
       </div>
 
-      <FilterModal open={openModal} handleClose={handleCloseModal} />
+      <FilterModal open={openModal} handleClose={handleCloseModal} applyFilters={applyFilters} />
     </header>
   );
 };

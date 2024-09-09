@@ -15,7 +15,7 @@ const categories = [
   "SmartPhones",
 ];
 
-const FilterModal = ({ open, handleClose }) => {
+const FilterModal = ({ open, handleClose, applyFilters }) => {
   const [price, setPrice] = useState([0, 25000]);
   const [category, setCategory] = useState("");
   const [ratings, setRatings] = useState(0);
@@ -30,6 +30,15 @@ const FilterModal = ({ open, handleClose }) => {
 
   const ratingsHandler = (event, newRating) => {
     setRatings(newRating);
+  };
+
+  const handleApplyFilters = () => {
+    applyFilters({
+      price,
+      category,
+      ratings,
+    });
+    handleClose();
   };
 
   const clearFilters = () => {
@@ -58,13 +67,13 @@ const FilterModal = ({ open, handleClose }) => {
         />
         <Typography>Categories</Typography>
         <ul className="category-box">
-          {categories.map((category) => (
+          {categories.map((e) => (
             <li
-              className="category-link"
-              key={category}
-              onClick={() => categoryHandler(category)}
+              key={e}
+              className={`category-link ${category === e ? 'filtered-category' : ''}`}
+              onClick={() => categoryHandler(e)}
             >
-              {category}
+              {e}
             </li>
           ))}
         </ul>
@@ -80,7 +89,7 @@ const FilterModal = ({ open, handleClose }) => {
           />
         </fieldset>
         <div className="filter-buttons">
-          <button onClick={handleClose} className="apply-button">Done</button>
+          <button onClick={handleApplyFilters} className="apply-button">Done</button>
           <button onClick={clearFilters} className="cancel-button">Clear Filters</button>
         </div>
       </div>
