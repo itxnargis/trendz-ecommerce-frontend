@@ -37,12 +37,16 @@ const Header = () => {
     navigate(`/products?${queryParams.toString()}`);
   };
 
+  const clearFilters = () => {
+    navigate('/products');
+  };
+
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
-    if (searchParams.has("price[gte]") || searchParams.has("category") || searchParams.has("ratings")) {
-      navigate("/", { replace: true });
+    if (searchParams.has('price[gte]') || searchParams.has('category') || searchParams.has('ratings')) {
+      navigate('/', { replace: true });
     }
-  }, [location, navigate]);
+  }, [location.search, navigate]);
 
   return (
     <header>

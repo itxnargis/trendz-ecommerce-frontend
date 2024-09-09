@@ -36,7 +36,6 @@ const FilterModal = ({ open, handleClose, applyFilters }) => {
     setCategory("");
     setRatings(0);
     handleClose();
-
     navigate("/products");
   };
 
