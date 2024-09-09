@@ -26,6 +26,10 @@
   color: #ff6347;
 }
 
+.filtered-category {
+  color: #ff6347;
+}
+
 .filter-buttons {
   display: flex;
   justify-content: space-between;
