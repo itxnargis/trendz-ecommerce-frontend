@@ -30,17 +30,20 @@ const Products = () => {
       dispatch(clearErrors());
     }
 
+    // Extract the filters from the URL query parameters
     const searchParams = new URLSearchParams(location.search);
     const filters = {
       price: [
-        searchParams.get('price[gte]') || 0,
-        searchParams.get('price[lte]') || 25000
+        Number(searchParams.get('price[gte]')) || 0,
+        Number(searchParams.get('price[lte]')) || 25000
       ],
       category: searchParams.get('category') || '',
-      ratings: searchParams.get('ratings') || 0
+      ratings: Number(searchParams.get('ratings')) || 0
     };
 
+    // Fetch products based on filters and pagination
     dispatch(getProduct(keyword, currentPage, filters));
+
   }, [dispatch, keyword, currentPage, location.search, alert, error]);
 
   let count = filteredProductsCount;
