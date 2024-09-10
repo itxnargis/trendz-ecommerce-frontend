@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Modal from '@material-ui/core/Modal';
 import Slider from '@material-ui/core/Slider';
 import Typography from '@material-ui/core/Typography';
-import { useNavigate } from 'react-router-dom';
 import './FilterModal.css';
 
 const categories = [
@@ -16,17 +15,27 @@ const categories = [
   "SmartPhones",
 ];
 
-const FilterModal = ({ open, handleClose, applyFilters, clearFilters }) => {
+const FilterModal = ({ open, handleClose }) => {
   const [price, setPrice] = useState([0, 25000]);
   const [category, setCategory] = useState("");
   const [ratings, setRatings] = useState(0);
 
-  const priceHandler = (event, newPrice) => setPrice(newPrice);
-  const categoryHandler = (category) => setCategory(category);
-  const ratingsHandler = (event, newRating) => setRatings(newRating);
+  const priceHandler = (event, newPrice) => {
+    setPrice(newPrice);
+  };
 
-  const handleApplyFilters = () => {
-    applyFilters({ price, category, ratings });
+  const categoryHandler = (category) => {
+    setCategory(category);
+  };
+
+  const ratingsHandler = (event, newRating) => {
+    setRatings(newRating);
+  };
+
+  const clearFilters = () => {
+    setPrice([0, 25000]);
+    setCategory("");
+    setRatings(0);
     handleClose();
   };
 
@@ -49,13 +58,13 @@ const FilterModal = ({ open, handleClose, applyFilters, clearFilters }) => {
         />
         <Typography>Categories</Typography>
         <ul className="category-box">
-          {categories.map((e) => (
+          {categories.map((category) => (
             <li
-              key={e}
-              className={`category-link ${category === e ? 'filtered-category' : ''}`}
-              onClick={() => categoryHandler(e)}
+              className="category-link"
+              key={category}
+              onClick={() => categoryHandler(category)}
             >
-              {e}
+              {category}
             </li>
           ))}
         </ul>
@@ -71,7 +80,7 @@ const FilterModal = ({ open, handleClose, applyFilters, clearFilters }) => {
           />
         </fieldset>
         <div className="filter-buttons">
-          <button onClick={handleApplyFilters} className="apply-button">Done</button>
+          <button onClick={handleClose} className="apply-button">Done</button>
           <button onClick={clearFilters} className="cancel-button">Clear Filters</button>
         </div>
       </div>

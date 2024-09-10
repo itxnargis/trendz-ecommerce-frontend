@@ -5,15 +5,13 @@ import { clearErrors, getProduct } from "../../actions/productAction";
 import Loader from "../layout/Loader/Loader";
 import Product from "../Home/Product.js";
 import Pagination from "react-js-pagination";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useAlert } from "react-alert";
 import MetaData from "../layout/metaData";
 
 const Products = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
-  const location = useLocation();
-  const navigate = useNavigate();
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -23,28 +21,14 @@ const Products = () => {
   const setCurrentPageNo = (e) => {
     setCurrentPage(e);
   };
+
   useEffect(() => {
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
     }
-
-    const searchParams = new URLSearchParams(location.search);
-    const price = [
-      Number(searchParams.get('price[gte]') || 0),
-      Number(searchParams.get('price[lte]') || 25000)
-    ];
-    const category = searchParams.get('category') || '';
-    const ratings = Number(searchParams.get('ratings') || 0);
-
-    dispatch(getProduct(keyword, currentPage, price, category, ratings));
-
-    if (!searchParams.has('price[gte]') && !searchParams.has('category') && !searchParams.has('ratings')) {
-      navigate('/');
-    }
-
-  }, [dispatch, keyword, currentPage, location.search, alert, error, navigate]);
-
+    dispatch(getProduct(keyword, currentPage));
+  }, [dispatch, keyword, currentPage, alert, error]);
 
   let count = filteredProductsCount;
 
