@@ -99,12 +99,12 @@ const Footer = () => {
             <div className="footer-bottom">
                 <div className="footer-container">
                     <div className="copyright">
-                        <p>
-                            Copyright &copy; <a href="#">Trendz</a> all rights reserved.
-                        </p>
-                        <p>Designed by <span><a href="https://itxnargis.github.io/personal-portfolio/" title="my-personal-portfolio" target="_blank"
+                    <p>Developed with ❤️ by <span><a href="https://itxnargis.github.io/personal-portfolio/" title="my-personal-portfolio" target="_blank"
                             className="personal-info">
                             Nargis Khatun                                    </a></span></p>
+                    <p>
+                            Copyright &copy; <a href="#">Trendz</a> all rights reserved.
+                        </p>
                     </div>
                 </div>
             </div>

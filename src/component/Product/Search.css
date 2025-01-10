@@ -33,7 +33,7 @@
   border-radius: 0.4rem;
   background-color: tomato;
   border: none;
-  padding: 1vmax 1.6vmax;
+ 
   width: 30%;
   font: 300 1.1vmax "Roboto";
   cursor: pointer;
@@ -51,7 +51,6 @@
   }
 
   .search-container > input[type="text"] {
-    width: 9.7rem;
     padding: 0.94vmax 0.6vmax;
   }
 }

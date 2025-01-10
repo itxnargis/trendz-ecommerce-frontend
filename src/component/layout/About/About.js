@@ -17,18 +17,16 @@ const About = () => {
         <div className="about-info">
           <div>
             <Avatar
-              style={{ width: "10vmax", height: "10vmax", margin: "2vmax 0" }}
+              style={{ width: "6vmax", height: "6vmax", marginBottom: "1vmax" }}
               src=""
               alt="Founder"
             />
           </div>
-          <Typography component="h4" className="intro-text">
-            Hi, Myself
-          </Typography>
-          <Typography component="h2" className="name">Nargis Khatun</Typography>
-          <Typography component="h3" className="bio">
+          <h4 className="intro-text">Hi, Myself</h4>
+          <h2 className="name">Nargis Khatun</h2>
+          <h3 className="bio">
             And I'm a <span>WEB DEVELOPER</span>
-          </Typography>
+          </h3>
           <p className="about-content">
             Aspiring frontend developer with expertise in <b>HTML, CSS</b>,
             JavaScript, Tailwind CSS, React, and C++. Currently pursuing a{" "}
@@ -38,7 +36,7 @@ const About = () => {
             high-quality results, I'm eager to contribute to exciting projects
             and collaborate with fellow developers.
           </p>
-          <Typography component="h2" className="follow-me">Follow me </Typography>
+          <h2 className="follow-me">Follow me</h2>
           <div className="icons">
             <div className="social-icons">
               <a
@@ -82,7 +80,7 @@ const About = () => {
             </div>
           </div>
           <div className="btn-container">
-            <a href="CV.pdf" className="button">
+            <a href="Nargis-CV.pdf" className="button">
               Resume <MdFileDownload />
             </a>
           </div>

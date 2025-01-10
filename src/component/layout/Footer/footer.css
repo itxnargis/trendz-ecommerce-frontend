@@ -99,12 +99,11 @@ footer {
 
 .footer-bottom {
   text-align: center;
-  background: white;
 }
 
 .copyright {
   padding: 1rem;
-  color: #000;
+  color: #fff;
   font-size: var(--fs-8);
   font-weight: var(--weight-500);
   text-transform: capitalize;
@@ -113,11 +112,14 @@ footer {
 
 .copyright a {
   display: inline;
+  color: #fff;
+  text-decoration: none;
 }
 
 .personal-info {
   color: crimson;
   font-size: large;
+  text-decoration: none;
 }
 
 .personal-info:hover {

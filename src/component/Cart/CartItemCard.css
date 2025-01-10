@@ -1,59 +1,118 @@
-.Cart-item-card {
+.cart-item-card {
   display: flex;
-  padding: 1vmax;
-  height: 8vmax;
-  align-items: flex-start;
-  box-sizing: border-box;
-}
-.Cart-item-card > img {
-  width: 5vmax;
+  align-items: center;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
 }
 
-.Cart-item-card > div {
+.cart-item-card:hover {
+  transform: translateY(-2px);
+}
+
+.item-image {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-right: 1rem;
+}
+
+.item-details {
+  flex: 1;
   display: flex;
-  margin: 0.3vmax 1vmax;
   flex-direction: column;
+  margin-left: 3vmax;
 }
 
-.Cart-item-card > div > a {
-  font: 300 0.9vmax cursive;
-  color: rgba(24, 24, 24, 0.815);
+.item-name {
+  font-size: 1.1rem;
+  color: #333;
   text-decoration: none;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
 }
 
-.Cart-item-card > div > span {
-  font: 300 0.9vmax "Roboto";
-  color: rgba(24, 24, 24, 0.815);
-}
-
-.Cart-item-card > div > p {
+.item-name:hover {
   color: tomato;
-  font: 100 0.8vmax "Roboto";
+}
+
+.item-price {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 0.9rem;
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.quantity-btn {
+  border: none;
+  background-color: rgba(0, 0, 0, 0.616);
+  padding: 0.4vmax;
+  width: 2.2vmax;
   cursor: pointer;
+  color: white;
+
+}
+
+.quantity-btn:hover {
+  background-color: #939090;
+}
+
+.quantity {
+  margin: 0 0.5rem;
+  font-size: 1rem;
+}
+
+.input-delete {
+  font-size: .6rem;
+}
+
+.remove-btn {
+  background-color: transparent;
+  border: 1px solid black;
+  color: #000;
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: .3rem .7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border-radius: 999px;
+  text-align: center;
+  transition: color 0.3s ease;
+  margin-top: 1vmax;
+}
+
+.remove-btn:hover {
+  background-color: #dbdbdb;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 @media screen and (max-width: 600px) {
-  .Cart-item-card {
-    padding: 3vmax;
-    height: 25vmax;
-  }
-  .Cart-item-card > img {
-    width: 10vmax;
+  .cart-item-card {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
-  .Cart-item-card > div {
-    margin: 1vmax 2vmax;
+  .item-image {
+    width: 100%;
+    height: 200px;
+    margin-right: 0;
+    margin-bottom: 1rem;
   }
 
-  .Cart-item-card > div > a {
-    font: 300 2vmax cursive;
-  }
-
-  .Cart-item-card > div > span {
-    font: 300 1.9vmax "Roboto";
-  }
-
-  .Cart-item-card > div > p {
-    font: 100 1.8vmax "Roboto";
+  .item-details {
+    width: 100%;
   }
 }
+

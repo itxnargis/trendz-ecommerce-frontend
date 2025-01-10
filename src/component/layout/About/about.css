@@ -19,10 +19,10 @@
 .about-section-container {
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 46%;
   background-color: rgb(255, 255, 255);
   width: 70vw;
-  height: 80vh;
+  height: 70vh;
   transform: translateX(-50%) translateY(-50%);
   box-shadow: -10px 10px 10px rgba(0, 0, 0, 0.192);
   text-align: center;
@@ -38,30 +38,38 @@
   margin: 1vmax;
 }
 
+.about-content {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 1.4rem;
+  max-width: 850px;
+  margin: auto;
+}
+
+.intro-text {
+  font-size: 1.5vmax;
+}
+
 .name {
   font: 600 2.5vmax "Roboto";
   color: #e0590b;
   margin: 1vmax;
 }
 
-.about-content {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+.bio {
+  font-size: 1.8vmax;
+  margin-bottom: 1vmax;
+}
+
+.bio span {
+  color: #e0590b;
+  font-weight: 600;
 }
 
 .follow-me {
   font: 600 2vmax "Roboto";
   color: rgb(19, 18, 18);
-  padding-top: 1rem;
-}
-
-.about-section-container > div {
-  display: flex;
-  width: 100%;
-}
-
-.about-info {
-  display: flex;
-  flex-direction: column;
+  padding-top: 3rem;
+  padding-bottom: 1rem;
 }
 
 #iconLink {
@@ -95,53 +103,18 @@
   box-sizing: border-box;
 }
 
-.about-section-container > div > div > p {
-  color: rgba(0, 0, 0, 0.623);
-  font: 100 1vmax "Roboto";
-}
-
-.about-section-container > div > div > button {
-  margin: 1vmax 0;
-}
-
-.about-section-container > div > div > span {
-  font: 100 1vmax "Roboto";
-  color: rgba(0, 0, 0, 0.616);
-  text-align: center;
-  width: 80%;
-}
-
-.about-section-container2 {
-  border-left: 1px solid rgba(0, 0, 0, 0.116);
-}
-
-.about-section-container2 > h2 {
-  color: rgba(0, 0, 0, 0.623);
-  font: 100 2vmax "Roboto";
-  margin: 2vmax;
-}
-
-.about-section-container2 > a > svg {
-  font-size: 4vmax;
-}
-
-.youtubeSvgIcon {
-  color: tomato;
-}
-
-.instagramSvgIcon {
-  color: rgb(144, 81, 202);
-}
-
-.about-section-container > div > div > p {
-  font: 100 1vmax "Roboto";
-  margin: 1vmax;
+.social-icons {
+  font-size: 1.4rem;
 }
 
 @media screen and (max-width: 600px) {
-  .about-section-container > div > div > p {
-    font: 100 2vmax "Roboto";
-  }
+.about-content {
+  font-size: 1rem;
+}
+.follow-me {
+  padding-top: 2rem;
+  padding-bottom: .1rem;
+}
 
   .about-section-container > div {
     display: block;
@@ -151,27 +124,9 @@
     font: 400 5vmax "Roboto";
   }
 
-  .about-section-container > div > div > p {
-    font: 100 2vmax "Roboto";
-  }
-
-  .about-section-container > div > div > span {
-    font: 100 1.4vmax "Roboto";
-    width: 70%;
-  }
-
-  .about-section-container2 {
-    border-left: none;
-  }
-
-  .about-section-container2 > h2 {
-    font: 100 3vmax "Roboto";
-    margin: 2vmax;
-    color: #e0590b;
-  }
-  
-  .about-section-container2 > a > svg {
-    font-size: 6vmax;
-    margin: 1vmax;
+  .about-section-container {
+    padding: 4vmax;
+    height: 75vh;
+    top: 48%;
   }
 }

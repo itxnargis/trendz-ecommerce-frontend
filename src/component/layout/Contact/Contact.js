@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import "./Contact.css";
-import { FaEnvelope } from 'react-icons/fa';
+import { FaEnvelope, FaUser, FaPen, FaComments } from 'react-icons/fa';
 
 const ContactForm = () => {
     const [fullName, setFullName] = useState('');
@@ -11,6 +11,7 @@ const ContactForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('Form submitted:', { fullName, email, subject, message });
+        alert('Thanks for your message! We\'ll get back to you soon.');
         setFullName('');
         setEmail('');
         setSubject('');
@@ -20,14 +21,19 @@ const ContactForm = () => {
     return (
         <section className="contact-container" id="contact">
             <div className="contact-heading">
-                <h2>Contact Me</h2>
+                <h2>Get in Touch</h2>
+                <p>I'd love to hear from you!</p>
             </div>
             <div className="container-box">
                 <form onSubmit={handleSubmit} className='form'>
                     <div className="form-info">
                         <div className="contact-forms">
-                            <label>Full Name</label>
+                            <label htmlFor="fullName">
+                                <FaUser className="input-icon" />
+                                Full Name
+                            </label>
                             <input
+                                id="fullName"
                                 className="input-width"
                                 type="text"
                                 placeholder="Enter your full name"
@@ -37,10 +43,14 @@ const ContactForm = () => {
                             />
                         </div>
                     </div>
-                    <div className="form-info display">
+                    <div className="form-info">
                         <div className="contact-forms">
-                            <label>Email</label>
+                            <label htmlFor="email">
+                                <FaEnvelope className="input-icon" />
+                                Email
+                            </label>
                             <input
+                                id="email"
                                 className="input-width"
                                 type="email"
                                 placeholder="Enter your email"
@@ -52,8 +62,12 @@ const ContactForm = () => {
                     </div>
                     <div className="form-info">
                         <div className="contact-forms">
-                            <label>Subject</label>
+                            <label htmlFor="subject">
+                            <FaPen className="input-icon" />
+                                Subject
+                            </label>
                             <input
+                                id="subject"
                                 className="input-width"
                                 type="text"
                                 placeholder="Enter the subject"
@@ -64,8 +78,12 @@ const ContactForm = () => {
                     </div>
                     <div className="form-info">
                         <div className="contact-forms">
-                            <label>Your Message</label>
+                            <label htmlFor="message">
+                                <FaComments className="input-icon" />
+                                Your Message
+                            </label>
                             <textarea
+                                id="message"
                                 name="message"
                                 cols="30"
                                 rows="10"
@@ -85,3 +103,4 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
+

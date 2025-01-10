@@ -1,6 +1,6 @@
-import React, { Fragment } from "react";
+import React from "react";
 import "./Cart.css";
-import CartItemCard from "./CartItemCard.js";
+import CartItemCard from "./CartItemCard";
 import { useSelector, useDispatch } from "react-redux";
 import { addItemsToCart, removeItemsFromCart } from "../../actions/cartAction";
 import { Typography } from "@material-ui/core";
@@ -29,68 +29,63 @@ const Cart = () => {
   };
 
   return (
-    <Fragment>
+    <div className="cart-page">
       {cartItems.length === 0 ? (
         <div className="empty-cart">
-          <RemoveShoppingCartIcon />
-
-          <Typography>No Product in Your Cart</Typography>
-          <Link to="/products">View Products</Link>
+          <RemoveShoppingCartIcon className="empty-cart-icon" />
+          <Typography variant="h5">No Products in Your Cart</Typography>
+          <Link to="/products" className="view-products-btn">
+            View Products
+          </Link>
         </div>
       ) : (
-        <Fragment>
-          <div className="cart-page">
-            <div className="cart-header">
-              <p>Product</p>
-              <p>Quantity</p>
-              <p>Subtotal</p>
-            </div>
-
-            {cartItems &&
-              cartItems.map((item) => (
-                <div className="cart-container" key={item.product}>
-                  <CartItemCard item={item} deleteCartItems={deleteCartItems} />
-                  <div className="cart-input">
-                    <button
-                      onClick={() =>
-                        updateQuantity(item.product, item.quantity, item.stock, false)
-                      }
-                    >
-                      -
-                    </button>
-                    <input type="number" value={item.quantity} readOnly />
-                    <button
-                      onClick={() =>
-                        updateQuantity(item.product, item.quantity, item.stock)
-                      }
-                    >
-                      +
-                    </button>
-                  </div>
-                  <p className="cart-subtotal">{`₹${item.price * item.quantity
-                    }`}</p>
-                </div>
+        <>
+          <Typography variant="h4" className="cart-title cart-heading">
+            Your Shopping Cart
+          </Typography>
+          <div className="cart-container">
+            <div className="cart-items">
+              {cartItems.map((item) => (
+                <CartItemCard
+                  key={item.product}
+                  item={item}
+                  deleteCartItems={deleteCartItems}
+                  updateQuantity={updateQuantity}
+                />
               ))}
-
-            <div className="cart-gross-profit">
-              <div></div>
-              <div className="cart-gross-profit-box">
-                <p>Gross Total</p>
-                <p>{`₹${cartItems.reduce(
+            </div>
+            <div className="cart-summary">
+              <Typography variant="h6" className="summary-title">
+                Order Summary
+              </Typography>
+              <div className="summary-item">
+                <span>Subtotal:</span>
+                <span>{`₹${cartItems.reduce(
                   (acc, item) => acc + item.quantity * item.price,
                   0
-                )}`}</p>
+                )}`}</span>
               </div>
-              <div></div>
-              <div className="check-out-btn">
-                <button onClick={checkoutHandler}>Check Out</button>
+              <div className="summary-item">
+                <span>Shipping:</span>
+                <span>Free</span>
               </div>
+              <div className="summary-item total">
+                <span>Total:</span>
+                <span>{`₹${cartItems.reduce(
+                  (acc, item) => acc + item.quantity * item.price,
+                  0
+                )}`}</span>
+              </div>
+              <button className="checkout-btn" onClick={checkoutHandler}>
+                Proceed to Checkout
+              </button>
             </div>
           </div>
-        </Fragment>
+        </>
       )}
-    </Fragment>
+    </div>
   );
 };
 
 export default Cart;
+
