@@ -3,6 +3,8 @@ import Modal from '@material-ui/core/Modal';
 import Slider from '@material-ui/core/Slider';
 import Typography from '@material-ui/core/Typography';
 import './FilterModal.css';
+import { useDispatch } from 'react-redux';
+import { getProduct } from '../../actions/productAction';
 
 const categories = [
   "Laptop",
@@ -16,6 +18,7 @@ const categories = [
 ];
 
 const FilterModal = ({ open, handleClose }) => {
+  const dispatch = useDispatch();
   const [price, setPrice] = useState([0, 25000]);
   const [category, setCategory] = useState("");
   const [ratings, setRatings] = useState(0);
@@ -24,18 +27,24 @@ const FilterModal = ({ open, handleClose }) => {
     setPrice(newPrice);
   };
 
-  const categoryHandler = (category) => {
-    setCategory(category);
+  const categoryHandler = (selectedCategory) => {
+    setCategory(selectedCategory);
   };
 
   const ratingsHandler = (event, newRating) => {
     setRatings(newRating);
   };
 
+  const applyFilters = () => {
+    dispatch(getProduct("", 1, price, category, ratings));
+    handleClose();
+  };
+
   const clearFilters = () => {
     setPrice([0, 25000]);
     setCategory("");
     setRatings(0);
+    dispatch(getProduct("", 1, [0, 25000], "", 0));
     handleClose();
   };
 
@@ -58,13 +67,13 @@ const FilterModal = ({ open, handleClose }) => {
         />
         <Typography>Categories</Typography>
         <ul className="category-box">
-          {categories.map((category) => (
+          {categories.map((cat) => (
             <li
-              className="category-link"
-              key={category}
-              onClick={() => categoryHandler(category)}
+              className={`category-link ${category === cat ? 'active' : ''}`}
+              key={cat}
+              onClick={() => categoryHandler(cat)}
             >
-              {category}
+              {cat}
             </li>
           ))}
         </ul>
@@ -80,7 +89,7 @@ const FilterModal = ({ open, handleClose }) => {
           />
         </fieldset>
         <div className="filter-buttons">
-          <button onClick={handleClose} className="apply-button">Done</button>
+          <button onClick={applyFilters} className="apply-button">Apply Filter</button>
           <button onClick={clearFilters} className="cancel-button">Clear Filters</button>
         </div>
       </div>

@@ -15,15 +15,20 @@
   list-style-type: none;
   padding: 0;
 }
-
 .category-link {
   cursor: pointer;
   padding: 0.5rem 0;
   font-size: 1rem;
+  transition: color 0.3s ease;
 }
 
 .category-link:hover {
   color: #ff6347;
+}
+
+.category-link.active {
+  color: tomato;
+  font-weight: bold;
 }
 
 .filtered-category {
