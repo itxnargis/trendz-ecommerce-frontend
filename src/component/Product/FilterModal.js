@@ -3,6 +3,7 @@ import Modal from '@material-ui/core/Modal';
 import Slider from '@material-ui/core/Slider';
 import Typography from '@material-ui/core/Typography';
 import './FilterModal.css';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getProduct } from '../../actions/productAction';
 
@@ -22,6 +23,7 @@ const FilterModal = ({ open, handleClose }) => {
   const [price, setPrice] = useState([0, 25000]);
   const [category, setCategory] = useState("");
   const [ratings, setRatings] = useState(0);
+  const navigate = useNavigate();
 
   const priceHandler = (event, newPrice) => {
     setPrice(newPrice);
@@ -36,6 +38,7 @@ const FilterModal = ({ open, handleClose }) => {
   };
 
   const applyFilters = () => {
+    navigate('/products')
     dispatch(getProduct("", 1, price, category, ratings));
     handleClose();
   };

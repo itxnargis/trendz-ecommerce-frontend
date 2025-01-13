@@ -30,7 +30,7 @@ const Header = () => {
     <header>
       <div className='header'>
         <div className='header-component'>
-          <img src={logo} alt="payment method" className="logo-img" />
+          <img src={logo} alt="Trendz logo" className="logo-img" />
           <div className='links'>
             <Link to="/" className="link-details">Home</Link>
             <Link to="/products" className="link-details">Products</Link>

@@ -4,8 +4,9 @@ import Rating from '@material-ui/lab/Rating';
 import { useDispatch } from "react-redux";
 import { addItemsToCart } from "../../actions/cartAction";
 import { useAlert } from "react-alert";
+import "./ProductCard.css";
 
-const Product = ({ product }) => {
+const ProductCard = ({ product }) => {
     const dispatch = useDispatch();
     const alert = useAlert();
 
@@ -44,4 +45,4 @@ const Product = ({ product }) => {
     );
 };
 
-export default Product;
+export default ProductCard;

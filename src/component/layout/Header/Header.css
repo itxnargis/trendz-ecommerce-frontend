@@ -41,7 +41,6 @@ header {
 
 .bar-logo {
   color: #fff;
-  /* display: none; */
   font-size: 2.4rem;
 }
 
@@ -70,7 +69,7 @@ header {
 .cart-icon:hover,
 .bar-icon:hover {
   transform: rotate(360deg);
-  background-color: #ccc;
+  background-color: hsla(39,100%,68%,1);;
   color: black;
 }
 
@@ -90,11 +89,30 @@ header {
   border-radius: 0.5rem;
   width: 7rem;
   color: white;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.link-details::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: hsla(39,100%,68%,1);
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out;
 }
 
 .link-details:hover {
-  background-color: rgba(245, 221, 221, 0.884);
-  color: black;
+  color: hsla(39,100%,68%,1);
+}
+
+.link-details:hover::after {
+  visibility: visible;
+  transform: scaleX(1);
 }
 
 .header-bottom {
@@ -137,7 +155,7 @@ header {
 }
 
 .sort-btn:hover {
-  background-color: rgba(245, 221, 221, 0.884);
+  background-color: hsla(39,100%,68%,1);
   color: black;
 }
 
@@ -159,7 +177,7 @@ header {
   right: -300px;
   width: 300px;
   height: 100%;
-  background-color: #fff;
+  background-color: hsl(0, 0%, 100%);
   transition: right 0.3s ease;
   z-index: 2;
 }
@@ -178,14 +196,38 @@ header {
   display: flex;
   flex-direction: column;
   padding: 2rem;
+  align-items: center;
 }
 
 .side-bar-link {
   text-decoration: none;
-  color: #000;
-  font-size: 1rem;
+  font-size: 1.2rem;
   padding: 1rem 0;
   display: flex;
+  width: 7rem;
+  color: rgb(18, 14, 14);
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.side-bar-link::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: hsla(39,100%,68%,1);
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out;
+}
+.side-bar-link:hover {
+  color: hsla(39,100%,68%,1);
+}
+.side-bar-link:hover::after {
+  visibility: visible;
+  transform: scaleX(1);
 }
 
 .close-icon {
