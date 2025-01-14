@@ -1,48 +1,76 @@
-import React, { useState } from "react";
+import { React, Fragment, useEffect } from "react";
+import { CgMouse } from "react-icons/cg";
+import "./Home.css";
+import ProductCard from "./ProductCard.js";
+import MetaData from "../layout/metaData.js";
+import { clearErrors, getProduct } from "../../actions/productAction";
+import { useSelector, useDispatch } from "react-redux";
+import Loader from "../layout/Loader/Loader";
+import { useAlert } from 'react-alert';
+import banner from "../../images/banner.jpg";
 import { Link } from "react-router-dom";
-import Rating from '@material-ui/lab/Rating';
-import { useDispatch } from "react-redux";
-import { addItemsToCart } from "../../actions/cartAction";
-import { useAlert } from "react-alert";
-import "./ProductCard.css"
 
-const ProductCard = ({ product }) => {
-    const dispatch = useDispatch();
-    const alert = useAlert();
+const Home = () => {
 
-    const addToCartHandler = () => {
-        dispatch(addItemsToCart(product._id, 1));
-        alert.success("Product added to cart");
-    };
+  const alert = useAlert();
+  const dispatch = useDispatch();
 
-    const options = {
-        size: "large",
-        value: product.ratings,
-        readOnly: true,
-        precision: 0.5,
-    };
+  const { loading, error, products } = useSelector(
+    (state) => state.products
+  );
 
-    return (
-        <div>
-            <Link className="product-card" to={`/product/${product._id}`}>
-                <div className="image-wrapper">
-                    <img src={product.images[0].url} alt={product.name} />
+  useEffect(() => {
+    if (error) {
+      alert.error(error);
+      dispatch(clearErrors());
+    }
+    dispatch(getProduct());
+  }, [dispatch, error, alert]);
+
+  return (
+    <Fragment>
+      {loading ? (
+        <Loader />
+      ) : (
+        <Fragment>
+          <MetaData title="ECOMMERCE" />
+
+          <div className="banner">
+            <div className="banner-container">
+              <div className="slider-container has-scrollbar">
+                <div className="slider-item">
+                <img src={banner} alt="women's latest fashion sale" className="banner-img" loading="lazy" />
+                  <div className="banner-content">
+                    <p className="banner-subtitle">Trending item</p>
+                    <h2 className="banner-title">Explore latest fashion sale</h2>
+                    <p className="banner-text">
+                      FIND AMAZING PRODUCTS BELOW
+                    </p>
+                    <Link to="/products">
+                      <button className="shop-button">
+                        SHOP NOW ➔
+                      </button>
+                    </Link>
+
+                  </div>
                 </div>
-                <div className="product-description">
-                    <p className="product-brand">{product.brand}</p>
-                    <p className="product-name">{product.name}</p>
-                    <div className="product-rating">
-                        <Rating {...options} />
-                        <span className="product-card-span">({product.numOfReviews} Reviews)</span>
-                    </div>
-                    <span className="product-price">{`Rs ${product.price}`}</span>
-                    <button onClick={addToCartHandler} className="cart-button">
-                        Add to cart
-                    </button>
-                </div>
-            </Link>
-        </div>
-    );
+              </div>
+            </div>
+          </div>
+
+          <div className="featured-product-section">
+            <h2 className="home-heading">Featured Products</h2>
+
+            <div className="container" id="container">
+            {products && products.slice(0, 6).map(product => (
+                <ProductCard key={product._id} product={product} />
+              ))}
+            </div>
+          </div>
+        </Fragment>
+      )}
+    </Fragment>
+  );
 };
 
-export default ProductCard;
+export default Home;

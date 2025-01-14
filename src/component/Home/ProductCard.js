@@ -4,7 +4,7 @@ import Rating from '@material-ui/lab/Rating';
 import { useDispatch } from "react-redux";
 import { addItemsToCart } from "../../actions/cartAction";
 import { useAlert } from "react-alert";
-import "./ProductCard.css";
+import "./ProductCard.css"
 
 const ProductCard = ({ product }) => {
     const dispatch = useDispatch();
