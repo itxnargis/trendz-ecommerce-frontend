@@ -101,3 +101,4 @@ const FilterModal = ({ open, handleClose }) => {
 };
 
 export default FilterModal;
+

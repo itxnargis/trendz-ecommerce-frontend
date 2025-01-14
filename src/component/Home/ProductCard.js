@@ -4,7 +4,7 @@ import Rating from '@material-ui/lab/Rating';
 import { useDispatch } from "react-redux";
 import { addItemsToCart } from "../../actions/cartAction";
 import { useAlert } from "react-alert";
-import "./ProductCard.css"
+import "./Product.css"
 
 const ProductCard = ({ product }) => {
     const dispatch = useDispatch();
@@ -23,7 +23,7 @@ const ProductCard = ({ product }) => {
     };
 
     return (
-        <div>
+        <div> 
             <Link className="product-card" to={`/product/${product._id}`}>
                 <div className="image-wrapper">
                     <img src={product.images[0].url} alt={product.name} />
