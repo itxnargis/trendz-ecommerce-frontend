@@ -252,7 +252,6 @@ header {
   }
 
   .header-bottom-box {
-    justify-content: flex-start;
     padding: 0.1rem 1rem;
   }
 

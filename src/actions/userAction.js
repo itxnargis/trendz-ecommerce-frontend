@@ -136,18 +136,19 @@ export const updatePassword = (passwords) => async (dispatch) => {
 };
 
 // Forgot Password
-export const forgotPassword = (email) => async (dispatch) => {
+export const forgotPassword = (emailData) => async (dispatch) => {
   try {
     dispatch({ type: FORGOT_PASSWORD_REQUEST });
 
     const config = { headers: { "Content-Type": "application/json" } };
-    const { data } = await axios.post(`${BASE_URL}/api/v1/password/forgot`, email, config);
+    const { data } = await axios.post(`${BASE_URL}/api/v1/password/forgot`, emailData, config);
 
     dispatch({ type: FORGOT_PASSWORD_SUCCESS, payload: data.message });
   } catch (error) {
     dispatch({ type: FORGOT_PASSWORD_FAIL, payload: error.response?.data?.message || error.message });
   }
 };
+
 
 // Reset Password
 export const resetPassword = (token, passwords) => async (dispatch) => {
