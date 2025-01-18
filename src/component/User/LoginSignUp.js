@@ -8,6 +8,7 @@ import FaceIcon from "@material-ui/icons/Face";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, login, register } from "../../actions/userAction";
 import { useAlert } from "react-alert";
+import profileImage from "../../images/Profile.png"
 
 const LoginSignUp = () => {
     const dispatch = useDispatch();
@@ -29,7 +30,7 @@ const LoginSignUp = () => {
 
     const { name, email, password } = user;
     const [avatar, setAvatar] = useState("");
-    const [avatarPreview, setAvatarPreview] = useState("./Profile.png");
+    const [avatarPreview, setAvatarPreview] = useState(profileImage);
     const [registerError, setRegisterError] = useState("");
     const loginSubmit = (e) => {
         e.preventDefault();
@@ -71,15 +72,17 @@ const LoginSignUp = () => {
             setUser({ ...user, [e.target.name]: e.target.value });
         }
     };
-    const redirect = location.search ? location.search.split("=")[1] : "/account";
+    const redirect = new URLSearchParams(location.search).get("redirect") || "/account";
+
     useEffect(() => {
-        if (error) {
-            alert.error(error);
-            dispatch(clearErrors());
-        }
-        if (isAuthenticated) {
-            navigate(redirect);
-        }
+      if (error) {
+        alert.error(error);
+        dispatch(clearErrors());
+      }
+
+      if (isAuthenticated) {
+        navigate(redirect);
+      }
     }, [dispatch, error, alert, navigate, isAuthenticated, redirect]);
 
     const resetLoginFields = () => {
@@ -94,7 +97,7 @@ const LoginSignUp = () => {
             password: "",
         });
         setAvatar("");
-        setAvatarPreview("./Profile.png");
+        setAvatarPreview(profileImage);
         setRegisterError("");
     };
 

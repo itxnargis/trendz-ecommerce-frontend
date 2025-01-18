@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { ReactComponent as Logo } from './logo.svg'; 
 import { useSelector, useDispatch } from "react-redux";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';

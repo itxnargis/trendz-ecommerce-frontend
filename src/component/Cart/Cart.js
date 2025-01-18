@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 const Cart = () => {
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
+  const { isAuthenticated } = useSelector((state) => state.user);
   const navigate = useNavigate();
 
   const updateQuantity = (id, quantity, stock, increment = true) => {
@@ -25,7 +26,11 @@ const Cart = () => {
   };
 
   const checkoutHandler = () => {
-    navigate("/login?redirect=shipping");
+    if (isAuthenticated) {
+      navigate("/shipping"); // Directly navigate to shipping if logged in
+    } else {
+      navigate("/login?redirect=shipping"); // Redirect to login with a query parameter
+    }
   };
 
   return (
@@ -88,4 +93,3 @@ const Cart = () => {
 };
 
 export default Cart;
-

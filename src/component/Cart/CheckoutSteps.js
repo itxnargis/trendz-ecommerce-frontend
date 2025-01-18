@@ -41,12 +41,9 @@ const CheckoutSteps = ({ activeStep }) => {
                             icon={item.icon}>
                             {item.label}
                         </StepLabel>
-
                     </Step>
                 ))}
-
             </Stepper>
-
         </Fragment>
     );
 };
