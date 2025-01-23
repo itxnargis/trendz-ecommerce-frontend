@@ -1,90 +1,89 @@
+/* Additional styles for enhanced responsiveness and animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .payment-container {
-  display: grid;
-  place-items: center;
-  background-color: rgb(255, 255, 255);
-  height: 65vh;
-  margin: 2vmax;
+  animation: fadeIn 0.5s ease-out;
 }
 
 .payment-form {
-  width: 22%;
-  height: 100%;
+  transition: all 0.3s ease;
 }
 
-.payment-form > p {
-  font: 400 2vmax "Roboto";
-  color: rgba(0, 0, 0, 0.753);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.13);
-  padding: 1vmax 0;
-  text-align: center;
-  width: 50%;
-  margin: auto;
+.payment-form:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
 
-.payment-form > div {
-  display: flex;
-  align-items: center;
-  margin: 2vmax 0;
+.payment-input-group {
+  transition: all 0.3s ease;
 }
 
-.payment-input {
-  padding: 1vmax 4vmax;
-  padding-right: 1vmax;
-  width: 100%;
-  box-sizing: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.267);
-  border-radius: 4px;
-  outline: none;
-}
-
-.payment-form > div > svg {
-  position: absolute;
-  transform: translateX(1vmax);
-  font-size: 1.6vmax;
-  color: rgba(0, 0, 0, 0.623);
+.payment-input-group:focus-within {
+  transform: scale(1.02);
 }
 
 .payment-form-btn {
-  border: none;
-  background-color: tomato;
-  color: white;
-  font: 300 0.9vmax "Roboto";
-  width: 100%;
-  padding: 0.8vmax;
-  cursor: pointer;
-  transition: all 0.5s;
-  outline: none;
+  transition: all 0.3s ease;
 }
 
-.payment-form-btn:hover {
-  background-color: rgb(179, 66, 46);
+.payment-form-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
+/* Responsive adjustments */
 @media screen and (max-width: 600px) {
+  .payment-container {
+    padding: 2vmax;
+  }
+
   .payment-form {
-    width: 90%;
+    padding: 1.5rem;
   }
 
-  .payment-form > p {
-    font: 400 8vw "Roboto";
-    padding: 4vw 0;
-    width: 60%;
+  .payment-title {
+    font-size: 1.5rem;
   }
 
-  .payment-form > div {
-    margin: 10vw 0;
+  .payment-input-group {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .payment-input {
-    padding: 4vw 10vw;
+    width: 100%;
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .payment-container {
+    background-color: #1a1a1a;
   }
 
-  .payment-form > div > svg {
-    font-size: 6vw;
+  .payment-form {
+    background-color: #2a2a2a;
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
   }
 
+  .payment-title,
+  .payment-input,
   .payment-form-btn {
-    font: 300 4vw "Roboto";
-    padding: 4vw;
+    color: #ffffff;
+  }
+
+  .payment-input-group {
+    background-color: #3a3a3a;
   }
 }

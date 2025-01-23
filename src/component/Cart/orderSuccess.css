@@ -1,43 +1,33 @@
-.ordersuccess {
-  margin: auto;
-  text-align: center;
-  padding: 10vmax;
-  height: 50vh;
+.order-success-details {
+  margin: 2rem;
+}
+.root {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-}
-.ordersuccess > svg {
-  font-size: 7vmax;
-  color: tomato;
-}
-.ordersuccess > p {
-  font-size: 2vmax;
-}
-.ordersuccess > a {
-  background-color: rgb(51, 51, 51);
-  color: white;
-  border: none;
-  padding: 1vmax 3vmax;
-  cursor: pointer;
-  font: 400 1vmax "Roboto";
-  text-decoration: none;
-  margin: 2vmax;
+  justify-content: center;
+  /* min-height: 80vh; */
+  text-align: center;
+  padding: 24px;
 }
 
-@media screen and (max-width: 600px) {
-  .ordersuccess > a {
-    padding: 3vw 6vw;
-    font: 400 4vw "Roboto";
-    margin: 2vmax;
-  }
+.icon {
+  font-size: 5rem;
+  color: #4caf50;
+  margin-bottom: 16px;
+}
 
-  .ordersuccess > svg {
-    font-size: 20vw;
-  }
-  .ordersuccess > p {
-    margin: 2vmax;
-    font-size: 5vw;
-  }
+.title {
+  margin-bottom: 16px;
+}
+
+.button {
+  margin-top: 24px;
+}
+
+.order-success-details {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

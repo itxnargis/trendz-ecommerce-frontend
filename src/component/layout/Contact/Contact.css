@@ -1,5 +1,5 @@
 .contact-container {
-  width: 100%;
+  /* width: 100%; */
   max-width: 100%;
   display: flex;
   flex-direction: column;
@@ -33,7 +33,7 @@
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   padding: 3rem;
-  width: 100%;
+  width: 85%;
   max-width: 800px;
   transition: transform 0.3s ease;
 }
@@ -93,7 +93,7 @@ textarea {
   min-height: 150px;
 }
 
-.contact-button {
+.contact-button-icon {
   margin-top: 1rem;
   background: #e0590b;
   color: #fff;
@@ -114,7 +114,7 @@ textarea {
   transform: translateY(-2px);
 }
 
-.contact-button .icon {
+.contact-icon {
   margin-right: 0.5rem;
 }
 
@@ -146,4 +146,3 @@ textarea {
     font-size: 1rem;
   }
 }
-

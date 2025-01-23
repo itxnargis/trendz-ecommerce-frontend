@@ -1,114 +1,141 @@
-.shipping-details {
-  margin: 4vmax;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
 .shipping-container {
-  width: 100vw;
-  max-width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-}
-
-.shipping-box {
-  background-color: white;
-  width: 25vw;
-  height: 90vh;
-  box-sizing: border-box;
-  overflow: hidden;
-}
-
-.shipping-heading {
-  text-align: center;
-  color: rgba(0, 0, 0, 0.664);
-  font: 400 1.3vmax "Roboto";
-  padding: 1.3vmax;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.205);
-  width: 50%;
-  margin: auto;
+  align-items: center;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-out;
 }
 
 .shipping-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: auto;
-  padding: 2vmax;
-  justify-content: space-evenly;
-  height: 80%;
-  transition: all 0.5s;
-}
-
-.shipping-form > div {
-  display: flex;
   width: 100%;
+  max-width: 500px;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.shipping-form:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.shipping-title {
+  margin-bottom: 2rem;
+  color: #333;
+  text-align: center;
+  font-weight: 700;
+}
+
+.shipping-input-group {
+  display: flex;
   align-items: center;
+  margin-bottom: 1.5rem;
+  background-color: #f0f4f8;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
 }
 
-.shipping-form > div > input,
-.shipping-form > div > select {
-  padding: 1vmax 4vmax;
-  padding-right: 1vmax;
-  width: 100%;
-  box-sizing: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.267);
-  border-radius: 4px;
-  font: 300 0.9vmax cursive;
-  outline: none;
+.shipping-input-group:focus-within {
+  transform: scale(1.02);
 }
 
-.shipping-form > div > svg {
-  position: absolute;
-  transform: translateX(1vmax);
-  font-size: 1.6vmax;
-  color: rgba(0, 0, 0, 0.623);
-}
-
-.shipping-btn {
+.shipping-input {
+  flex: 1;
+  padding: 0.75rem;
+  font-size: 1rem;
   border: none;
-  background-color: tomato;
-  color: white;
-  font: 300 1vmax "Roboto";
-  width: 100%;
-  padding: 1vmax;
-  cursor: pointer;
-  transition: all 0.5s;
+  background-color: transparent;
+}
+
+.shipping-input:focus {
   outline: none;
-  margin: 2vmax;
 }
 
-.shipping-btn:hover {
-  background-color: rgb(179, 66, 46);
+.shipping-form-btn {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #1976d2;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
+.shipping-form-btn:hover:not(:disabled) {
+  background-color: #1565c0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.shipping-form-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Responsive adjustments */
 @media screen and (max-width: 600px) {
-  .shipping-box {
-    width: 100vw;
-    height: 95vh;
-  }
-
-  .shipping-heading {
-    font: 400 6vw "Roboto";
-    padding: 5vw;
+  .shipping-container {
+    padding: 1rem;
   }
 
   .shipping-form {
-    padding: 11vw;
+    padding: 1.5rem;
   }
 
-  .shipping-form > div > input,
-  .shipping-form > div > select {
-    padding: 5vw 10vw;
-    font: 300 4vw cursive;
+  .shipping-title {
+    font-size: 1.5rem;
   }
 
-  .shipping-form > div > svg {
-    font-size: 6vw;
-    transform: translateX(3vw);
+  .shipping-input-group {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
-  .shipping-btn {
-    font: 300 4vw "Roboto";
-    padding: 4vw;
+  .shipping-input {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .shipping-container {
+    background-color: #1a1a1a;
+  }
+
+  .shipping-form {
+    background-color: #2a2a2a;
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+  }
+
+  .shipping-title,
+  .shipping-input,
+  .shipping-form-btn {
+    color: #ffffff;
+  }
+
+  .shipping-input-group {
+    background-color: #3a3a3a;
   }
 }

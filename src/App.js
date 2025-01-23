@@ -40,6 +40,8 @@ import ProductReviews from "./component/Admin/ProductReviews.js";
 import Contact from "./component/layout/Contact/Contact.js";
 import About from "./component/layout/About/About.js";
 import NotFound from "./component/layout/NotFound/NotFound.js";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 
 function App() {
   const dispatch = useDispatch();
@@ -58,10 +60,29 @@ function App() {
         families: ['Roboto', 'Droid Sans', 'Chilanka']
       }
     });
+    store.dispatch(loadUser());
+    getStripeApiKey();
+  }, []);
 
-    dispatch(loadUser());
+  async function getStripeApiKey() {
+    try {
+      const token = localStorage.getItem("token");
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
 
-  }, [dispatch]);
+      const { data } = await axios.get("http://localhost:8000/api/v1/stripeapikey", config);
+      setStripeApiKey(data.stripeApiKey);
+    } catch (error) {
+      console.error("Error fetching Stripe API Key:", error.message);
+    }
+  }
+
+  useEffect(() => {
+    // getStripeApiKey();
+  }, []);
 
   window.addEventListener("contextmenu", (e) => e.preventDefault());
 
@@ -86,7 +107,16 @@ function App() {
           <Route path="/login" element={<LoginSignUp />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/shipping" element={<ProtectedRoute component={Shipping} />} />
-          <Route path="/process/payment" element={<ProtectedRoute component={Payment} />} />
+          <Route path="/process/payment" element={
+            stripeApiKey ? (
+              <Elements stripe={loadStripe(stripeApiKey)}>
+                <ProtectedRoute component={Payment} />
+              </Elements>
+            ) : (
+              <NotFound />
+            )
+          }
+          />
           <Route path="/success" element={<ProtectedRoute component={OrderSuccess} />} />
           <Route path="/orders" element={<ProtectedRoute component={MyOrders} />} />
           <Route path="/order/confirm" element={<ProtectedRoute component={ConfirmOrder} />} />

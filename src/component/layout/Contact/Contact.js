@@ -93,8 +93,8 @@ const ContactForm = () => {
                             ></textarea>
                         </div>
                     </div>
-                    <button className="contact-button" type="submit">
-                        <FaEnvelope className="icon" /> Send Now
+                    <button className="contact-button-icon" type="submit">
+                        <FaEnvelope className="contact-icon" /> Send Now
                     </button>
                 </form>
             </div>
@@ -103,4 +103,3 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
-

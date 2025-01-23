@@ -1,95 +1,128 @@
-import React from "react";
-import "./Cart.css";
-import CartItemCard from "./CartItemCard";
-import { useSelector, useDispatch } from "react-redux";
-import { addItemsToCart, removeItemsFromCart } from "../../actions/cartAction";
-import { Typography } from "@material-ui/core";
-import RemoveShoppingCartIcon from "@material-ui/icons/RemoveShoppingCart";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import React from "react"
+import { useSelector, useDispatch } from "react-redux"
+import { Link, useNavigate } from "react-router-dom"
+import { Typography, Button, Container, Grid, Paper, Box } from "@material-ui/core"
+import { RemoveShoppingCart, ShoppingCart } from "@material-ui/icons"
+import { motion } from "framer-motion"
+import CartItemCard from "./CartItemCard"
+import { addItemsToCart, removeItemsFromCart } from "../../actions/cartAction"
+import "./Cart.css"
 
 const Cart = () => {
-  const dispatch = useDispatch();
-  const { cartItems } = useSelector((state) => state.cart);
-  const { isAuthenticated } = useSelector((state) => state.user);
-  const navigate = useNavigate();
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const { cartItems } = useSelector((state) => state.cart)
+  const { isAuthenticated } = useSelector((state) => state.user)
 
   const updateQuantity = (id, quantity, stock, increment = true) => {
-    const newQty = increment ? quantity + 1 : quantity - 1;
+    const newQty = increment ? quantity + 1 : quantity - 1
     if ((increment && stock > quantity) || (!increment && quantity > 1)) {
-      dispatch(addItemsToCart(id, newQty));
+      dispatch(addItemsToCart(id, newQty))
     }
-  };
+  }
 
   const deleteCartItems = (id) => {
-    dispatch(removeItemsFromCart(id));
-  };
+    dispatch(removeItemsFromCart(id))
+  }
 
   const checkoutHandler = () => {
     if (isAuthenticated) {
-      navigate("/shipping"); // Directly navigate to shipping if logged in
+      navigate("/shipping")
     } else {
-      navigate("/login?redirect=shipping"); // Redirect to login with a query parameter
+      navigate("/login?redirect=shipping")
     }
-  };
+  }
+
+  const subtotal = cartItems.reduce((acc, item) => acc + item.quantity * item.price, 0)
+  const shippingCharges = subtotal > 1000 ? 0 : 200
+  const tax = subtotal * 0.18
+  const totalPrice = subtotal + shippingCharges + tax
+
+  if (cartItems.length === 0) {
+    return (
+      <Container className="cartPage">
+        <motion.div
+          className="emptyCart"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <RemoveShoppingCart className="emptyCartIcon" />
+          <Typography variant="h5" gutterBottom>
+            Your Cart is Empty
+          </Typography>
+          <Button
+            component={Link}
+            to="/products"
+            variant="contained"
+            color="primary"
+            className="viewProductsBtn"
+            startIcon={<ShoppingCart />}
+          >
+            View Products
+          </Button>
+        </motion.div>
+      </Container>
+    )
+  }
 
   return (
-    <div className="cart-page">
-      {cartItems.length === 0 ? (
-        <div className="empty-cart">
-          <RemoveShoppingCartIcon className="empty-cart-icon" />
-          <Typography variant="h5">No Products in Your Cart</Typography>
-          <Link to="/products" className="view-products-btn">
-            View Products
-          </Link>
-        </div>
-      ) : (
-        <>
-          <Typography variant="h4" className="cart-title cart-heading">
-            Your Shopping Cart
-          </Typography>
-          <div className="cart-container">
-            <div className="cart-items">
-              {cartItems.map((item) => (
-                <CartItemCard
-                  key={item.product}
-                  item={item}
-                  deleteCartItems={deleteCartItems}
-                  updateQuantity={updateQuantity}
-                />
-              ))}
-            </div>
-            <div className="cart-summary">
-              <Typography variant="h6" className="summary-title">
-                Order Summary
-              </Typography>
-              <div className="summary-item">
-                <span>Subtotal:</span>
-                <span>{`₹${cartItems.reduce(
-                  (acc, item) => acc + item.quantity * item.price,
-                  0
-                )}`}</span>
-              </div>
-              <div className="summary-item">
-                <span>Shipping:</span>
-                <span>Free</span>
-              </div>
-              <div className="summary-item total">
-                <span>Total:</span>
-                <span>{`₹${cartItems.reduce(
-                  (acc, item) => acc + item.quantity * item.price,
-                  0
-                )}`}</span>
-              </div>
-              <button className="checkout-btn" onClick={checkoutHandler}>
-                Proceed to Checkout
-              </button>
-            </div>
-          </div>
-        </>
-      )}
-    </div>
-  );
-};
+    <Container className="cartPage">
+      <Typography variant="h4" color="primary" className="cartTitle">
+        Your Shopping Cart
+      </Typography>
+      <Grid container spacing={4} className="cartContainer">
+        <Grid item xs={12} md={8}>
+          <motion.div className="cartItems" layout>
+            {cartItems.map((item) => (
+              <motion.div
+                key={item.product}
+                layout
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+              >
+                <CartItemCard item={item} deleteCartItems={deleteCartItems} updateQuantity={updateQuantity} />
+              </motion.div>
+            ))}
+          </motion.div>
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <Paper elevation={3} className="cartSummary">
+            <Typography variant="h6" className="summaryTitle">
+              Order Summary
+            </Typography>
+            <Box className="summaryItem">
+              <Typography>Subtotal:</Typography>
+              <Typography>₹{subtotal.toFixed(2)}</Typography>
+            </Box>
+            <Box className="summaryItem">
+              <Typography>Shipping:</Typography>
+              <Typography>₹{shippingCharges.toFixed(2)}</Typography>
+            </Box>
+            <Box className="summaryItem">
+              <Typography>Tax:</Typography>
+              <Typography>₹{tax.toFixed(2)}</Typography>
+            </Box>
+            <Box className="summaryItem total">
+              <Typography>Total:</Typography>
+              <Typography>₹{totalPrice.toFixed(2)}</Typography>
+            </Box>
+            <Button
+              variant="contained"
+              color="primary"
+              fullWidth
+              className="checkoutBtn"
+              onClick={checkoutHandler}
+            >
+              Proceed to Checkout
+            </Button>
+          </Paper>
+        </Grid>
+      </Grid>
+    </Container>
+  )
+}
 
-export default Cart;
+export default Cart

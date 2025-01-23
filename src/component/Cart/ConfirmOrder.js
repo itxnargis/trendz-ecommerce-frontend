@@ -1,26 +1,56 @@
-import React from "react";
-import CheckoutSteps from "../Cart/CheckoutSteps";
-import { useSelector } from "react-redux";
-import MetaData from "../layout/metaData";
-import "./ConfirmOrder.css";
-import { Link, useNavigate } from "react-router-dom";
-import { Typography, Button, Divider } from "@material-ui/core";
+import React from "react"
+import { useSelector } from "react-redux"
+import { Link, useNavigate } from "react-router-dom"
+import { Typography, Button, Grid, Paper, List, ListItem, ListItemText, Divider, Box } from "@material-ui/core"
+import { makeStyles } from "@material-ui/core/styles"
+import { motion } from "framer-motion"
+import CheckoutSteps from "./CheckoutSteps"
+import MetaData from "../layout/metaData"
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    padding: theme.spacing(3),
+    [theme.breakpoints.down("sm")]: {
+      padding: theme.spacing(2),
+    },
+  },
+  paper: {
+    padding: theme.spacing(3),
+    marginBottom: theme.spacing(3),
+  },
+  title: {
+    marginBottom: theme.spacing(2),
+  },
+  listItem: {
+    padding: theme.spacing(1, 0),
+  },
+  total: {
+    fontWeight: 700,
+  },
+  image: {
+    width: 100,
+    height: 100,
+    objectFit: "contain",
+    marginRight: theme.spacing(2),
+  },
+  orderSummary: {
+    position: "sticky",
+    top: theme.spacing(2),
+  },
+}))
 
 const ConfirmOrder = () => {
-  const { shippingInfo, cartItems } = useSelector((state) => state.cart);
-  const { user } = useSelector((state) => state.user);
-  const navigate = useNavigate();
+  const classes = useStyles()
+  const navigate = useNavigate()
+  const { shippingInfo, cartItems } = useSelector((state) => state.cart)
+  const { user } = useSelector((state) => state.user)
 
-  const subtotal = cartItems.reduce(
-    (acc, item) => acc + item.quantity * item.price,
-    0
-  );
+  const subtotal = cartItems.reduce((acc, item) => acc + item.quantity * item.price, 0)
+  const shippingCharges = subtotal > 1000 ? 0 : 200
+  const tax = subtotal * 0.18
+  const totalPrice = subtotal + shippingCharges + tax
 
-  const shippingCharges = subtotal > 1000 ? 0 : 200;
-  const tax = subtotal * 0.18;
-  const totalPrice = subtotal + tax + shippingCharges;
-
-  const address = `${shippingInfo.address}, ${shippingInfo.city}, ${shippingInfo.state}, ${shippingInfo.pinCode}, ${shippingInfo.country}`;
+  const address = `${shippingInfo.address}, ${shippingInfo.city}, ${shippingInfo.state}, ${shippingInfo.pinCode}, ${shippingInfo.country}`
 
   const proceedToPayment = () => {
     const data = {
@@ -28,89 +58,85 @@ const ConfirmOrder = () => {
       shippingCharges,
       tax,
       totalPrice,
-    };
-    sessionStorage.setItem("orderInfo", JSON.stringify(data));
-    navigate("/process/payment");
-  };
+    }
+    sessionStorage.setItem("orderInfo", JSON.stringify(data))
+    navigate("/process/payment")
+  }
 
   return (
     <>
       <MetaData title="Confirm Order" />
-      <div className="confirm-order-details">
-      <CheckoutSteps activeStep={1} />
-      <div className="confirm-order-page">
-        <div className="confirm-order-container">
-          <div className="confirm-shipping-area">
-            <Typography variant="h6">Shipping Info</Typography>
-            <div className="confirm-shipping-box">
-              <div>
-                <p>Name:</p>
-                <span>{user.name}</span>
-              </div>
-              <div>
-                <p>Phone:</p>
-                <span>{shippingInfo.phoneNo}</span>
-              </div>
-              <div>
-                <p>Address:</p>
-                <span>{address}</span>
-              </div>
-            </div>
-          </div>
-          <Divider className="divider" />
-          <div className="confirm-cart-items">
-            <Typography variant="h6">Your Cart Items:</Typography>
-            <div className="confirm-cart-items-container">
-              {cartItems.map((item) => (
-                <div key={item.product} className="confirm-cart-item">
-                  <img src={item.image || "/placeholder.svg"} alt="Product" />
-                  <div className="item-details">
-                    <Link to={`/product/${item.product}`}>{item.name}</Link>
-                    <span>
-                      {item.quantity} x ₹{item.price} =
-                      <b>₹{item.price * item.quantity}</b>
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-        <div className="order-summary">
-          <Typography variant="h6">Order Summary</Typography>
-          <div>
-            <div>
-              <p>Subtotal:</p>
-              <span>₹{subtotal}</span>
-            </div>
-            <div>
-              <p>Shipping Charges:</p>
-              <span>₹{shippingCharges}</span>
-            </div>
-            <div>
-              <p>GST:</p>
-              <span>₹{tax.toFixed(2)}</span>
-            </div>
-          </div>
-          <div className="order-summary-total">
-            <p>
-              <b>Total:</b>
-            </p>
-            <span>₹{totalPrice.toFixed(2)}</span>
-          </div>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={proceedToPayment}
-            className="proceed-btn"
-          >
-            Proceed To Payment
-          </Button>
-        </div>
-      </div>
-      </div>
+      <motion.div
+        className={classes.root}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <CheckoutSteps activeStep={1} />
+        <Grid container spacing={3}>
+          <Grid item xs={12} md={8}>
+            <Paper className={classes.paper}>
+              <Typography variant="h5" color="primary" gutterBottom className={classes.title}>
+                Shipping Address
+              </Typography>
+              <Typography gutterBottom>{user.name}</Typography>
+              <Typography gutterBottom>{address}</Typography>
+              <Typography gutterBottom>{shippingInfo.phoneNo}</Typography>
+            </Paper>
+            <Paper className={classes.paper}>
+              <Typography variant="h5" color="primary" gutterBottom className={classes.title}>
+                Your Cart Items
+              </Typography>
+              <List disablePadding>
+                {cartItems.map((item) => (
+                  <React.Fragment key={item.product}>
+                    <ListItem className={classes.listItem}>
+                      <img src={item.image || "/placeholder.svg"} alt={item.name} className={classes.image} />
+                      <ListItemText primary={item.name} secondary={`Quantity: ${item.quantity}`} />
+                      <Typography variant="body2">₹{item.price * item.quantity}</Typography>
+                    </ListItem>
+                    <Divider />
+                  </React.Fragment>
+                ))}
+              </List>
+            </Paper>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Paper className={`${classes.paper} ${classes.orderSummary}`}>
+              <Typography variant="h6" gutterBottom className={classes.title}>
+                Order Summary
+              </Typography>
+              <List disablePadding>
+                <ListItem className={classes.listItem}>
+                  <ListItemText primary="Subtotal" />
+                  <Typography variant="subtitle1">₹{subtotal.toFixed(2)}</Typography>
+                </ListItem>
+                <ListItem className={classes.listItem}>
+                  <ListItemText primary="Shipping" />
+                  <Typography variant="subtitle1">₹{shippingCharges.toFixed(2)}</Typography>
+                </ListItem>
+                <ListItem className={classes.listItem}>
+                  <ListItemText primary="Tax" />
+                  <Typography variant="subtitle1">₹{tax.toFixed(2)}</Typography>
+                </ListItem>
+                <ListItem className={classes.listItem}>
+                  <ListItemText primary="Total" />
+                  <Typography variant="subtitle1" className={classes.total}>
+                    ₹{totalPrice.toFixed(2)}
+                  </Typography>
+                </ListItem>
+              </List>
+              <Box mt={3}>
+                <Button variant="contained" color="primary" fullWidth onClick={proceedToPayment}>
+                  Proceed to Payment
+                </Button>
+              </Box>
+            </Paper>
+          </Grid>
+        </Grid>
+      </motion.div>
     </>
-  );
-};
+  )
+}
 
-export default ConfirmOrder;
+export default ConfirmOrder
