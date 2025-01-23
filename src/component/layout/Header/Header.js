@@ -44,7 +44,7 @@ const Header = () => {
             <Link to="/login" className="login-icon">
               <FaUser />
             </Link>
-            <Link to="#" className="bar-icon hidden" onClick={toggleSidebar}>
+            <Link to="#" className="bar-icon" onClick={toggleSidebar}>
               <FaBars />
             </Link>
           </div>

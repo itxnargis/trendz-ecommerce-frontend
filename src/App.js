@@ -63,23 +63,23 @@ function App() {
     store.dispatch(loadUser());
     getStripeApiKey();
   }, []);
-
+  
   async function getStripeApiKey() {
     try {
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem("token"); 
       const config = {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       };
-
+  
       const { data } = await axios.get("http://localhost:8000/api/v1/stripeapikey", config);
       setStripeApiKey(data.stripeApiKey);
     } catch (error) {
-      console.error("Error fetching Stripe API Key:", error.message);
+      console.error("Error fetching Stripe API Key:", error.response?.data || error.message);
     }
   }
-
+  
   useEffect(() => {
     // getStripeApiKey();
   }, []);
@@ -108,15 +108,15 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/shipping" element={<ProtectedRoute component={Shipping} />} />
           <Route path="/process/payment" element={
-            stripeApiKey ? (
-              <Elements stripe={loadStripe(stripeApiKey)}>
-                <ProtectedRoute component={Payment} />
-              </Elements>
-            ) : (
-              <NotFound />
-            )
-          }
-          />
+    stripeApiKey ? (
+      <Elements stripe={loadStripe(stripeApiKey)}>
+        <ProtectedRoute component={Payment} />
+      </Elements>
+    ) : (
+      <NotFound />
+    )
+  }
+/>
           <Route path="/success" element={<ProtectedRoute component={OrderSuccess} />} />
           <Route path="/orders" element={<ProtectedRoute component={MyOrders} />} />
           <Route path="/order/confirm" element={<ProtectedRoute component={ConfirmOrder} />} />

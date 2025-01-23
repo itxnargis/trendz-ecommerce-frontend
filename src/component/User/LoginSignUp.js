@@ -79,7 +79,7 @@ const LoginSignUp = () => {
         alert.error(error);
         dispatch(clearErrors());
       }
-
+  
       if (isAuthenticated) {
         navigate(redirect);
       }

@@ -73,7 +73,8 @@ header {
   color: black;
 }
 
-.hidden {
+
+.header .bar-icon {
   display: none;
 }
 
@@ -249,6 +250,10 @@ header {
 
   .links {
     display: none;
+  }
+
+  .header .bar-icon {
+    display: block;
   }
 
   .header-bottom-box {

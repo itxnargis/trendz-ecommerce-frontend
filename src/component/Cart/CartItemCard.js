@@ -92,3 +92,4 @@ const CartItemCard = ({ item, deleteCartItems, updateQuantity }) => {
 }
 
 export default CartItemCard
+

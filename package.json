@@ -15,6 +15,7 @@
     "axios": "^1.7.2",
     "chart.js": "^4.4.3",
     "country-state-city": "^3.2.1",
+    "lucide-react": "^0.469.0",
     "material-icons": "^1.13.12",
     "overlay-navbar": "^1.2.3",
     "react": "^17.0.2",
@@ -28,6 +29,7 @@
     "react-material-ui-carousel": "^3.4.2",
     "react-rating-stars-component": "^2.2.0",
     "react-redux": "^7.2.9",
+    "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.23.0",
     "react-scripts": "5.0.1",
     "react-star-ratings": "^2.3.0",
@@ -35,6 +37,7 @@
     "redux": "^4.1.2",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
+    "tailwind-merge": "^2.6.0",
     "web-vitals": "^2.1.4",
     "webfontloader": "^1.6.28"
   },
@@ -62,6 +65,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://ecommerce-website-backend-9kfe.onrender.com"
-
+ "proxy": "https://ecommerce-website-backend-9kfe.onrender.com"
 }
