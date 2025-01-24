@@ -126,7 +126,7 @@ const Payment = () => {
             },
           };
 
-      const { data } = await axios.post(`${BASE_URL}api/v1/payment/process`, paymentData, config)
+      const { data } = await axios.post(`${BASE_URL}/api/v1/payment/process`, paymentData, config)
 
       if (!stripe || !elements) return
 
