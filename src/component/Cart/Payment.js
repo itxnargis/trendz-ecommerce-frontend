@@ -15,6 +15,7 @@ import VpnKeyIcon from "@material-ui/icons/VpnKey"
 import LockIcon from "@material-ui/icons/Lock"
 import "./payment.css"
 import { BASE_URL } from "../../url"
+import { getAuthToken } from "../../utils/authUtils"
 
 const useStyles = makeStyles((theme) => ({
   paymentContainer: {
@@ -118,13 +119,12 @@ const Payment = () => {
     setIsProcessing(true)
 
     try {
-      const token = localStorage.getItem("token")
       const config = {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${getAuthToken()}`
+            },
+          };
 
       const { data } = await axios.post(`${BASE_URL}api/v1/payment/process`, paymentData, config)
 

@@ -43,17 +43,13 @@ import NotFound from "./component/layout/NotFound/NotFound.js";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { BASE_URL } from "./url.js";
+import { getAuthToken } from "./utils/authUtils.js";
 
 function App() {
   const dispatch = useDispatch();
   const { isAuthenticated, user } = useSelector((state) => state.user);
 
   const [stripeApiKey, setStripeApiKey] = useState("");
-
-  async function getStripeApiKey() {
-    const { data } = await axios.get("/api/v1/stripeapikey");
-    setStripeApiKey(data.stripeApiKey);
-  }
 
   useEffect(() => {
     WebFont.load({
@@ -67,12 +63,12 @@ function App() {
   
   async function getStripeApiKey() {
     try {
-      const token = localStorage.getItem("token"); 
       const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${getAuthToken()}`
+            },
+          };
   
       const { data } = await axios.get(`${BASE_URL}/api/v1/stripeapikey`, config);
       setStripeApiKey(data.stripeApiKey);
