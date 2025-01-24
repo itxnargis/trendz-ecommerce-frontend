@@ -14,6 +14,7 @@ import EventIcon from "@material-ui/icons/Event"
 import VpnKeyIcon from "@material-ui/icons/VpnKey"
 import LockIcon from "@material-ui/icons/Lock"
 import "./payment.css"
+import { BASE_URL } from "../../url"
 
 const useStyles = makeStyles((theme) => ({
   paymentContainer: {
@@ -125,7 +126,7 @@ const Payment = () => {
         },
       }
 
-      const { data } = await axios.post("http://localhost:8000/api/v1/payment/process", paymentData, config)
+      const { data } = await axios.post(`${BASE_URL}api/v1/payment/process`, paymentData, config)
 
       if (!stripe || !elements) return
 

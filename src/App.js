@@ -42,6 +42,7 @@ import About from "./component/layout/About/About.js";
 import NotFound from "./component/layout/NotFound/NotFound.js";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import { BASE_URL } from "./url.js";
 
 function App() {
   const dispatch = useDispatch();
@@ -73,7 +74,7 @@ function App() {
         },
       };
   
-      const { data } = await axios.get("http://localhost:8000/api/v1/stripeapikey", config);
+      const { data } = await axios.get(`${BASE_URL}/api/v1/stripeapikey`, config);
       setStripeApiKey(data.stripeApiKey);
     } catch (error) {
       console.error("Error fetching Stripe API Key:", error.response?.data || error.message);
