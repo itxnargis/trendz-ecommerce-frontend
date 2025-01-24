@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Search from '../../Product/Search.js';
 import { FaBars, FaTimes, FaChevronCircleDown, FaUser, FaShoppingCart } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import FilterModal from '../../Product/FilterModal';
+import FilterModal from '../../Product/FilterModal.js';
 import logo from "../../../images/Trendz-logo.png"
 import './Header.css';
 

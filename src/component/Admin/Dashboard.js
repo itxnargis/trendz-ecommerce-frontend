@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 import { Typography } from "@material-ui/core";
 import { Doughnut, Line } from "react-chartjs-2";
 import { useSelector, useDispatch } from "react-redux";
-import { getAdminProduct } from "../../actions/productAction";
+import { getAdminProduct } from "../../actions/productAction.js";
 import { getAllOrders } from "../../actions/orderAction.js";
 import { getAllUsers } from "../../actions/userAction.js";
-import MetaData from "../layout/metaData";
+import MetaData from "../layout/metaData.js";
 import { Chart,
   ArcElement,
 CategoryScale,

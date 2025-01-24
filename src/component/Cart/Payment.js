@@ -6,7 +6,7 @@ import { CardNumberElement, CardCvcElement, CardExpiryElement, useStripe, useEle
 import axios from "axios"
 import { createOrder, clearErrors } from "../../actions/orderAction"
 import MetaData from "../layout/metaData"
-import CheckoutSteps from "../Cart/CheckoutSteps"
+import CheckoutSteps from "./CheckoutSteps"
 import { Typography, Button, CircularProgress, Fade, Zoom } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 import CreditCardIcon from "@material-ui/icons/CreditCard"

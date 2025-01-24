@@ -1,13 +1,13 @@
 import React, { useEffect, Fragment, useState } from "react";
 import "./Products.css";
 import { useSelector, useDispatch } from "react-redux";
-import { clearErrors, getProduct } from "../../actions/productAction";
-import Loader from "../layout/Loader/Loader";
+import { clearErrors, getProduct } from "../../actions/productAction.js";
+import Loader from "../layout/Loader/Loader.js";
 import ProductCard from "../Home/ProductCard.js";
 import Pagination from "react-js-pagination";
 import { useParams } from "react-router-dom";
 import { useAlert } from "react-alert";
-import MetaData from "../layout/metaData";
+import MetaData from "../layout/metaData.js";
 import { Typography } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import RemoveShoppingCartIcon from "@material-ui/icons/RemoveShoppingCart";
