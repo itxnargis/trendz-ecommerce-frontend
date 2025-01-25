@@ -37,7 +37,6 @@
     "redux": "^4.1.2",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
-    "tailwind-merge": "^2.6.0",
     "web-vitals": "^2.1.4",
     "webfontloader": "^1.6.28"
   },
@@ -65,5 +64,10 @@
       "last 1 safari version"
     ]
   },
- "proxy": "https://trendz-ecommerce-backend.onrender.com"
+  "proxy": "https://trendz-ecommerce-backend.onrender.com",
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.1",
+    "tailwindcss": "^4.0.0"
+  }
 }

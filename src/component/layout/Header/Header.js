@@ -1,82 +1,133 @@
-import React, { useState } from 'react';
-import Search from '../../Product/Search.js';
-import { FaBars, FaTimes, FaChevronCircleDown, FaUser, FaShoppingCart } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
-import FilterModal from '../../Product/FilterModal.js';
-import logo from "../../../images/Trendz-logo.png"
-import './Header.css';
+import React, { useState, useEffect } from "react"
+import { Link, useLocation } from "react-router-dom"
+import { FaBars, FaTimes, FaChevronDown, FaUser, FaShoppingCart, FaSearch } from "react-icons/fa"
+import { useSelector } from "react-redux"
+import UserOptions from "../Header/UserOptions"
+import Search from "../../Product/Search"
+import FilterModal from "../../Product/FilterModal"
+import "./Header.css"
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [openModal, setOpenModal] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
+  const [openModal, setOpenModal] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const [searchOpen, setSearchOpen] = useState(false)
 
-  const toggleSidebar = () => {
-    setIsOpen(!isOpen);
-  };
+  const location = useLocation()
+  const { isAuthenticated, user } = useSelector((state) => state.user)
+  const { cartItems } = useSelector((state) => state.cart)
 
-  const handleOpenModal = () => {
-    setOpenModal(true);
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY
+      if (offset > 200) {
+        setScrolled(true)
+      } else {
+        setScrolled(false)
+      }
+    }
 
-  const handleCloseModal = () => {
-    setOpenModal(false);
-  };
-  
-  const closeSidebar = () => {
-    setIsOpen(false);
-  };
+    window.addEventListener("scroll", handleScroll)
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+    }
+  }, [])
+
+  const toggleSidebar = () => setIsOpen(!isOpen)
+  const handleOpenModal = () => setOpenModal(true)
+  const handleCloseModal = () => setOpenModal(false)
+  const closeSidebar = () => setIsOpen(false)
 
   return (
-    <header>
-      <div className='header'>
-        <div className='header-component'>
-          <img src={logo} alt="Trendz logo" className="logo-img" />
-          <div className='links'>
-            <Link to="/" className="link-details">Home</Link>
-            <Link to="/products" className="link-details">Products</Link>
-            <Link to="/about" className="link-details">About</Link>
-            <Link to="/contact" className="link-details">Contact</Link>
-          </div>
-          <div className="social">
-            <Link to="/cart" className="cart-icon">
-              <FaShoppingCart />
+    <header className={`header ${scrolled ? "scrolled" : ""}`}>
+      <div className="header-component">
+        <Link to="/" className="logo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" width="120" height="60">
+            <rect x="75" y="40" width="20" height="30" rx="2" fill="#008080" />
+            <path d="M75 40 Q77 30, 85 30 Q93 30, 95 40" fill="none" stroke="#fff" strokeWidth="2" />
+            <text
+              x="110"
+              y="60"
+              fontFamily="Arial, sans-serif"
+              fontSize="36"
+              fill="hsla(39,100%,68%,1)"
+              fontWeight="bold"
+            >
+              Trendz
+            </text>
+            <text x="112" y="85" fontFamily="Arial, sans-serif" fontSize="14" fill="#3f51b5">
+              Find Your Style
+            </text>
+          </svg>
+        </Link>
+
+        <nav className="links">
+          {["Home", "Products", "About", "Contact"].map((item) => (
+            <Link
+              key={item}
+              to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
+              className={`link-details ${location.pathname === (item === "Home" ? "/" : `/${item.toLowerCase()}`) ? "active" : ""}`}
+            >
+              {item}
             </Link>
+          ))}
+        </nav>
+
+        <div className="social">
+          {isAuthenticated ? (
+            <UserOptions user={user} />
+          ) : (
             <Link to="/login" className="login-icon">
               <FaUser />
             </Link>
-            <Link to="#" className="bar-icon" onClick={toggleSidebar}>
-              <FaBars />
-            </Link>
+          )}
+          <Link to="/cart" className="cart-icon">
+            <FaShoppingCart />
+            {cartItems.length > 0 && <span className="cart-badge">{cartItems.length}</span>}
+          </Link>
+          <div className="search">
+            {searchOpen ? (
+              <Search />
+            ) : (
+              <div onClick={() => setSearchOpen(true)}>
+                <FaSearch className="search-icon" />
+              </div>
+            )}
           </div>
-        </div>
-      </div>
-      <div className={`side-bar ${isOpen ? 'open' : ''}`}>
-        <div className='side-bar-content'>
-          <Link to="#" className="close-icon" onClick={toggleSidebar}><FaTimes /></Link>
-          <div className='side-bar-links'>
-            <Link to="/" className="side-bar-link" onClick={closeSidebar}>Home</Link>
-            <Link to="/products" className="side-bar-link" onClick={closeSidebar}>Products</Link>
-            <Link to="/about" className="side-bar-link" onClick={closeSidebar}>About</Link>
-            <Link to="/contact" className="side-bar-link" onClick={closeSidebar}>Contact</Link>
+          <button className="sort-btn" onClick={handleOpenModal}>
+            Sort By <FaChevronDown />
+          </button>
+          <div className="bar-icon" onClick={toggleSidebar}>
+            <FaBars />
           </div>
         </div>
       </div>
 
-      <div className='header-bottom'>
-        <div className='header-bottom-box'>
-          <button className="sort-btn" onClick={handleOpenModal}>
-            Sort By <FaChevronCircleDown />
-          </button>
-          <div className='search'>
-            <Search />
+      <div className={`side-bar ${isOpen ? "open" : ""}`}>
+        <div className="side-bar-content">
+          <div className="close-icon" onClick={toggleSidebar}>
+            <FaTimes />
+          </div>
+          <div className="side-bar-links">
+            {["Home", "Products", "About", "Contact"].map((item) => (
+              <Link
+                key={item}
+                to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
+                className="side-bar-link"
+                onClick={closeSidebar}
+              >
+                {item}
+              </Link>
+            ))}
           </div>
         </div>
       </div>
 
       <FilterModal open={openModal} handleClose={handleCloseModal} />
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
 
