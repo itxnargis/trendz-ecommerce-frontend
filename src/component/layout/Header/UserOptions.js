@@ -1,12 +1,14 @@
-import React, { useState } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useAlert } from "react-alert"
 import { useDispatch } from "react-redux"
 import { logout } from "../../../actions/userAction"
 import { FaUser, FaShoppingCart, FaSignOutAlt, FaClipboardList, FaTachometerAlt } from "react-icons/fa"
+import "./Header.css"
 
 const UserOptions = ({ user }) => {
   const [isOpen, setIsOpen] = useState(false)
+  const menuRef = useRef(null)
   const navigate = useNavigate()
   const alert = useAlert()
   const dispatch = useDispatch()
@@ -25,6 +27,19 @@ const UserOptions = ({ user }) => {
       func: dashboard,
     })
   }
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsOpen(false)
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [])
 
   function dashboard() {
     navigate("/admin/dashboard")
@@ -49,7 +64,7 @@ const UserOptions = ({ user }) => {
   }
 
   return (
-    <div className="user-options">
+    <div className="user-options" ref={menuRef}>
       <img
         src={user.avatar.url ? user.avatar.url : "/Profile.png"}
         alt="Profile"

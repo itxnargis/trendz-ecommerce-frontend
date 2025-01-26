@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import { Link, useLocation } from "react-router-dom"
 import { FaBars, FaTimes, FaChevronDown, FaUser, FaShoppingCart, FaSearch } from "react-icons/fa"
 import { useSelector } from "react-redux"
-import UserOptions from "../Header/UserOptions"
+import UserOptions from "./UserOptions"
 import Search from "../../Product/Search"
 import FilterModal from "../../Product/FilterModal"
 import "./Header.css"
@@ -75,6 +75,9 @@ const Header = () => {
         </nav>
 
         <div className="social">
+          <button className="sort-btn" onClick={handleOpenModal}>
+            Sort By <FaChevronDown />
+          </button>
           {isAuthenticated ? (
             <UserOptions user={user} />
           ) : (
@@ -88,16 +91,13 @@ const Header = () => {
           </Link>
           <div className="search">
             {searchOpen ? (
-              <Search />
+              <Search onClose={() => setSearchOpen(false)} />
             ) : (
               <div onClick={() => setSearchOpen(true)}>
                 <FaSearch className="search-icon" />
               </div>
             )}
           </div>
-          <button className="sort-btn" onClick={handleOpenModal}>
-            Sort By <FaChevronDown />
-          </button>
           <div className="bar-icon" onClick={toggleSidebar}>
             <FaBars />
           </div>

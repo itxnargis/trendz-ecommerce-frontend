@@ -1,37 +1,45 @@
-import React, { useState, Fragment } from "react";
-import "./Search.css";
-import MetaData from "../layout/metaData";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react"
+import { useNavigate } from "react-router-dom"
+import { FaSearch, FaTimes } from "react-icons/fa"
+import "./Search.css"
 
-const Search = () => {
-    const [keyword, setKeyword] = useState("");
-    const navigate = useNavigate();
+const Search = ({ onClose }) => {
+  const [keyword, setKeyword] = useState("")
+  const navigate = useNavigate()
+  const inputRef = useRef(null)
 
-    const searchSubmitHandler = (e) => {
-        e.preventDefault();
-        if (keyword.trim()) {
-            navigate(`/products/${keyword}`);
-        } else {
-            navigate("/products");
-        }
-    };
+  useEffect(() => {
+    inputRef.current.focus()
+  }, [])
 
-    return (
-        <Fragment>
-            <MetaData title="Search A Product -- ECOMMERCE" />
-            <form className="search-box" onSubmit={searchSubmitHandler}>
-                <div className="search-container">
-                    <input
-                        type="text"
-                        placeholder="Search a product..."
-                        onChange={(e) => setKeyword(e.target.value)}
-                    />
-                    <input type="submit" value="Search" />
-                </div>
-            </form>
-        </Fragment>
-    );
-};
+  const searchSubmitHandler = (e) => {
+    e.preventDefault()
+    if (keyword.trim()) {
+      navigate(`/products/${keyword}`)
+    } else {
+      navigate("/products")
+    }
+    onClose()
+  }
 
-export default Search;
+  return (
+    <form className="search-box" onSubmit={searchSubmitHandler}>
+      <div className="search-container">
+        <FaSearch className="searching" />
+        <input
+          type="text"
+          ref={inputRef}
+          placeholder="Search products..."
+          onChange={(e) => setKeyword(e.target.value)}
+          value={keyword}
+        />
+        <button type="button" className="close-search" onClick={onClose}>
+          <FaTimes />
+        </button>
+      </div>
+    </form>
+  )
+}
+
+export default Search
 

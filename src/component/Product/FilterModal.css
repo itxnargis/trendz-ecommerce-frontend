@@ -3,18 +3,46 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 80vw;
+  width: 90%;
   max-width: 400px;
-  background-color: white;
-  padding: 2vmax;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  padding: 2rem;
+  border-radius: 8px;
   outline: none;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.filter-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.close-modal {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-modal:hover {
+  color: var(--accent-color);
 }
 
 .category-box {
   list-style-type: none;
   padding: 0;
+  margin: 1rem 0;
 }
+
 .category-link {
   cursor: pointer;
   padding: 0.5rem 0;
@@ -23,35 +51,58 @@
 }
 
 .category-link:hover {
-  color: #ff6347;
+  color: var(--accent-color);
 }
 
 .category-link.active {
-  color: tomato;
+  color: var(--accent-color);
   font-weight: bold;
-}
-
-.filtered-category {
-  color: #ff6347;
 }
 
 .filter-buttons {
   display: flex;
   justify-content: space-between;
-  margin-top: 2vmax;
+  margin-top: 2rem;
 }
 
 .apply-button,
-.cancel-button {
-  padding: 0.5vmax 2vmax;
+.clear-button {
+  padding: 0.5rem 1rem;
   border: none;
-  background-color: tomato;
-  color: white;
+  border-radius: 4px;
   cursor: pointer;
-  border-radius: 5px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.apply-button {
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+}
+
+.clear-button {
+  background-color: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--text-color);
 }
 
 .apply-button:hover,
-.cancel-button:hover {
-  background-color: darkred;
+.clear-button:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 480px) {
+  .filter-content {
+    padding: 1.5rem;
+  }
+
+  .filter-buttons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .apply-button,
+  .clear-button {
+    width: 100%;
+  }
 }
