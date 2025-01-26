@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Rating from '@material-ui/lab/Rating';
 import { useDispatch } from "react-redux";
 import { addItemsToCart } from "../../actions/cartAction";
+import { FaShoppingCart } from "react-icons/fa";
 import { useAlert } from "react-alert";
 import "./Product.css"
 
@@ -32,12 +33,12 @@ const ProductCard = ({ product }) => {
                     <p className="product-brand">{product.brand}</p>
                     <p className="product-name">{product.name}</p>
                     <div className="product-rating">
-                        <Rating {...options} />
+                        <Rating {...options}/>
                         <span className="product-card-span">({product.numOfReviews} Reviews)</span>
                     </div>
                     <span className="product-price">{`Rs ${product.price}`}</span>
                     <button onClick={addToCartHandler} className="cart-button">
-                        Add to cart
+                      <FaShoppingCart />  Add to cart
                     </button>
                 </div>
             </Link>

@@ -45,11 +45,12 @@ const Products = () => {
       ) : (
         <Fragment>
           <MetaData title="PRODUCTS --- ECOMMERCE" />
-          <div className="featured-product-section">
+          <div className="product-section">
             {products && products.length > 0 ? (
               <>
-                <h2 className="home-heading">Products</h2>
-                <div className="underline"></div>
+               <Typography variant="h4" color="#000" className="product-title">
+                       Products
+                     </Typography>
                 <div className="products" id="product">
                   {products.map((product) => (
                     <ProductCard key={product._id} product={product} />

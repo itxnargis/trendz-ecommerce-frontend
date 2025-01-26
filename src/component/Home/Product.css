@@ -1,19 +1,15 @@
 
 .featured-product-section {
-  background: #eee;
-  padding: .4rem;
+  background: #fff;
+  padding: 4rem;
 }
 
-.home-heading {
-  text-align: center;
-  font-family: "Roboto";
-  font-size: 1.4vmax;
-  border-bottom: 3px solid rgba(255, 99, 71, .1);
-  width: 20vmax;
-  padding: 1vmax;
-  margin: 5vmax auto;
-  color: rgba(0, 0, 0, 0.7);
-  box-shadow: 0 4px 8px 0 rgba(237, 137, 76, 0.2), 0 6px 20px 0 rgba(185, 118, 56, 0)
+.features-title {
+  /* margin-bottom: 22px; */
+  position: relative;
+  display: flex;
+  margin-top: 4rem;
+  justify-content: center;
 }
 
 .container {
@@ -24,7 +20,7 @@
   flex-wrap: wrap;
   justify-content: center;
   max-width: 100%;
-  background-color: #eee;
+  background-color: #fff;
 }
 
 .product-card {
@@ -36,7 +32,7 @@
   color: rgb(248, 245, 245);
   margin: 1vmax;
   border-radius: 0.7rem;
-  background: whitesmoke;
+  background: #192330;
   transition: all 0.5s;
   overflow: hidden;
 }
@@ -64,7 +60,7 @@
 }
 
 .product-brand {
-  color: black;
+  color: white;
   font-weight: bold;
   font-size: 1.5rem;
   letter-spacing: 1px;
@@ -72,7 +68,7 @@
 
 .product-name {
   font-size: 1rem;
-  color: hsl(0, 2%, 20%);
+  color: hsl(0, 5%, 96%);
   font-weight: 400;
   letter-spacing: 1px;
   margin-bottom: 0.4rem;
@@ -87,6 +83,7 @@
 .product-rating {
   display: flex;
   align-items: center;
+  color: white;
 }
 
 .product-cardSpan {
@@ -113,7 +110,7 @@
 }
 
 .product-price {
-  color: black;
+  color: rgb(245, 240, 240);
   font-size: 1.2rem;
   font-weight: 600;
 }
@@ -126,12 +123,12 @@
   padding: 0.7rem 0;
   letter-spacing: 2px;
   font: 300 1.1rem "Roboto";
-  background: rgb(15, 15, 15);
+  background: cornflowerblue;
   color: white;
 }
 
 .cart-button:hover {
-  background: #1b1b1b;
+  background: rgb(106, 142, 208);
 }
 
 .product-card:hover {

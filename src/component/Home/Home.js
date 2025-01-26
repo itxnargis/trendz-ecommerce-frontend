@@ -1,6 +1,7 @@
 import { React, Fragment, useEffect } from "react";
 import { CgMouse } from "react-icons/cg";
 import "./Home.css";
+import { Typography } from "@material-ui/core"
 import ProductCard from "./ProductCard.js";
 import MetaData from "../layout/metaData.js";
 import { clearErrors, getProduct } from "../../actions/productAction.js";
@@ -59,8 +60,9 @@ const Home = () => {
           </div>
 
           <div className="featured-product-section">
-            <h2 className="home-heading">Featured Products</h2>
-
+          <Typography variant="h4" color="#000" className="features-title">
+        Featured Products
+      </Typography>
             <div className="container" id="container">
             {products && products.slice(0, 6).map(product => (
                 <ProductCard key={product._id} product={product} />
