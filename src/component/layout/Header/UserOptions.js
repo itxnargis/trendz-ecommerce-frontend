@@ -43,21 +43,26 @@ const UserOptions = ({ user }) => {
 
   function dashboard() {
     navigate("/admin/dashboard")
+    setIsOpen(false);
   }
 
   function orders() {
     navigate("/orders")
+    setIsOpen(false);
   }
 
   function account() {
+    setIsOpen(false);
     navigate("/account")
   }
 
   function cart() {
+    setIsOpen(false);
     navigate("/cart")
   }
 
   function logoutUser() {
+    setIsOpen(false);
     dispatch(logout())
     alert.success("Logout Successfully")
     navigate("/")

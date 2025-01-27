@@ -16,7 +16,7 @@
   padding: 2rem;
   min-height: 100vh;
   animation: fadeIn 0.5s ease-out;
-  margin: 5rem;
+  margin-top: 5rem;
 }
 
 .order-details-container {
@@ -156,7 +156,7 @@
   }
 
   .order-details-title {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 
   .order-details-section-title {

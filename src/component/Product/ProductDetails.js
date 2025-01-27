@@ -74,7 +74,7 @@ const ProductDetails = () => {
         dispatch(getProductDetails(id))
     }, [dispatch, id, error, alert, reviewError, success])
 
-    const options = {
+    const option = {
         size: "large",
         value: product.ratings,
         readOnly: true,
@@ -110,7 +110,7 @@ const ProductDetails = () => {
                                 <p className="products-id">Product # {product._id}</p>
 
                                 <div className="products-rating">
-                                    <Rating {...options} />
+                                    <Rating {...option} />
                                     <span>({product.numOfReviews} Reviews)</span>
                                 </div>
 
