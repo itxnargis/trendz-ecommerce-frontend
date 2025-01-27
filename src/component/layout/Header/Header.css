@@ -12,7 +12,7 @@
   top: 0;
   width: 100%;
   z-index: 1000;
-  height: var(--header-height);
+  /* height: var(--header-height); */
   background-color: var(--primary-color);
   color: var(--text-color);
   transition: all var(--transition-speed) ease;
@@ -214,9 +214,6 @@
 }
 
 @media (max-width: 480px) {
-  .header-component {
-    padding: 0 0.5rem;
-  }
 
   .logo svg {
     width: 100px;
@@ -224,7 +221,7 @@
   }
 
   .social {
-    gap: 1rem;
+    gap: 1.5rem;
   }
 
   .cart-icon,
@@ -286,9 +283,9 @@
 
 @media (max-width: 768px) {
   .avatar {
-    width: 32px;
-    height: 32px;
-  }
+    width: 20px;
+    height: 20px;
+}
 
   .options-menu {
     right: -50%;

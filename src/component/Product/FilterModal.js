@@ -50,18 +50,19 @@ const FilterModal = ({ open, handleClose }) => {
           <FaTimes />
         </button>
        <h1 className="filter-heading">Filters</h1>
-        <Typography id="price-range-slider" gutterBottom>
+        <Typography id="price-range-slider" color="primary" className="custom-typography" gutterBottom>
           Price Range
         </Typography>
         <Slider
           value={price}
+          className="custom-slider"
           onChange={priceHandler}
           valueLabelDisplay="auto"
           aria-labelledby="price-range-slider"
           min={0}
           max={25000}
         />
-        <Typography id="categories" gutterBottom>
+        <Typography id="categories" color="primary" className="custom-typography" gutterBottom>
           Categories
         </Typography>
         <ul className="category-box">
@@ -75,7 +76,7 @@ const FilterModal = ({ open, handleClose }) => {
             </li>
           ))}
         </ul>
-        <Typography id="ratings-slider" gutterBottom>
+        <Typography id="ratings-slider" color="primary" className="custom-typography" gutterBottom>
           Ratings Above
         </Typography>
         <Slider

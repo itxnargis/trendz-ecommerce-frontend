@@ -1,89 +1,29 @@
-import React, { Fragment, useEffect } from "react";
-import { DataGrid } from "@material-ui/data-grid";
-import "./myOrders.css";
-import { useSelector, useDispatch } from "react-redux";
-import { clearErrors, myOrders } from "../../actions/orderAction";
-import Loader from "../layout/Loader/Loader";
-import { Link } from "react-router-dom";
-import { useAlert } from "react-alert";
-import Typography from "@material-ui/core/Typography";
-import MetaData from "../layout/metaData";
-import LaunchIcon from "@material-ui/icons/Launch";
+import React, { Fragment, useEffect } from "react"
+import "./myOrders.css"
+import { useSelector, useDispatch } from "react-redux"
+import { clearErrors, myOrders } from "../../actions/orderAction"
+import Loader from "../layout/Loader/Loader"
+import { Link } from "react-router-dom"
+import { useAlert } from "react-alert"
+import Typography from "@material-ui/core/Typography"
+import MetaData from "../layout/metaData"
+import LaunchIcon from "@material-ui/icons/Launch"
 
 const MyOrders = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
+  const alert = useAlert()
 
-  const alert = useAlert();
-
-  const { loading, error, orders } = useSelector((state) => state.myOrders);
-  const { user } = useSelector((state) => state.user);
-
-  const columns = [
-    { field: "id", headerName: "Order ID", minWidth: 300, flex: 1 },
-
-    {
-      field: "status",
-      headerName: "Status",
-      minWidth: 150,
-      flex: 0.5,
-      cellClassName: (params) => {
-        return params.getValue(params.id, "status") === "Delivered"
-          ? "greenColor"
-          : "redColor";
-      },
-    },
-    {
-      field: "itemsQty",
-      headerName: "Items Qty",
-      type: "number",
-      minWidth: 150,
-      flex: 0.3,
-    },
-
-    {
-      field: "amount",
-      headerName: "Amount",
-      type: "number",
-      minWidth: 270,
-      flex: 0.5,
-    },
-
-    {
-      field: "actions",
-      flex: 0.3,
-      headerName: "Actions",
-      minWidth: 150,
-      type: "number",
-      sortable: false,
-      renderCell: (params) => {
-        return (
-          <Link to={`/order/${params.getValue(params.id, "id")}`}>
-            <LaunchIcon />
-          </Link>
-        );
-      },
-    },
-  ];
-  const rows = [];
-
-  orders &&
-    orders.forEach((item, index) => {
-      rows.push({
-        itemsQty: item.orderItems.length,
-        id: item._id,
-        status: item.orderStatus,
-        amount: item.totalPrice,
-      });
-    });
+  const { loading, error, orders } = useSelector((state) => state.myOrders)
+  const { user } = useSelector((state) => state.user)
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
-      dispatch(clearErrors());
+      alert.error(error)
+      dispatch(clearErrors())
     }
 
-    dispatch(myOrders());
-  }, [dispatch, alert, error]);
+    dispatch(myOrders())
+  }, [dispatch, alert, error])
 
   return (
     <Fragment>
@@ -93,20 +33,49 @@ const MyOrders = () => {
         <Loader />
       ) : (
         <div className="my-orders-page">
-          <DataGrid
-            rows={rows}
-            columns={columns}
-            pageSize={10}
-            disableSelectionOnClick
-            className="my-orders-table"
-            autoHeight
-          />
-
-          <Typography id="m-orders-heading">{user.name}'s Orders</Typography>
+          <div className="my-orders-container">
+            <h1 className="my-orders-title">{user.name}'s Orders</h1>
+            <table className="my-orders-table">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Status</th>
+                  <th>Items Qty</th>
+                  <th>Amount</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody className="order-process">
+                {orders &&
+                  orders.map((item) => (
+                    <tr key={item._id}>
+                      <td>{item._id}</td>
+                      <td>
+                        <span
+                          className={`order-status ${
+                            item.orderStatus && item.orderStatus === "Delivered" ? "delivered" : "processing"
+                          }`}
+                        >
+                          {item.orderStatus && item.orderStatus}
+                        </span>
+                      </td>
+                      <td>{item.orderItems.length}</td>
+                      <td>₹{item.totalPrice}</td>
+                      <td>
+                        <Link to={`/order/${item._id}`} className="order-action">
+                          <LaunchIcon /> View
+                        </Link>
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
     </Fragment>
-  );
-};
+  )
+}
 
-export default MyOrders;
+export default MyOrders
+

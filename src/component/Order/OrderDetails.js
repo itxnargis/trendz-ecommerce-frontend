@@ -1,27 +1,30 @@
-import React, { Fragment, useEffect } from "react";
-import "./orderDetails.css";
-import { useSelector, useDispatch } from "react-redux";
-import MetaData from "../layout/metaData";
-import { Link } from "react-router-dom";
-import { Typography } from "@material-ui/core";
-import { getOrderDetails, clearErrors } from "../../actions/orderAction";
-import Loader from "../layout/Loader/Loader";
-import { useAlert } from "react-alert";
+import React, { Fragment, useEffect } from "react"
+import "./orderDetails.css"
+import { useSelector, useDispatch } from "react-redux"
+import MetaData from "../layout/metaData"
+import { Link } from "react-router-dom"
+import { Typography } from "@material-ui/core"
+import { getOrderDetails, clearErrors } from "../../actions/orderAction"
+import Loader from "../layout/Loader/Loader"
+import { useAlert } from "react-alert"
+import { useParams } from "react-router"
 
-const OrderDetails = ({ match }) => {
-  const { order, error, loading } = useSelector((state) => state.orderDetails);
+const OrderDetails = () => {
+  const { order, error, loading } = useSelector((state) => state.orderDetails)
+  const { id } = useParams()
 
-  const dispatch = useDispatch();
-  const alert = useAlert();
+  const dispatch = useDispatch()
+  const alert = useAlert()
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
-      dispatch(clearErrors());
+      alert.error(error)
+      dispatch(clearErrors())
     }
 
-    dispatch(getOrderDetails(match.params.id));
-  }, [dispatch, alert, error, match.params.id]);
+    dispatch(getOrderDetails(id))
+  }, [dispatch, alert, error, id])
+
   return (
     <Fragment>
       {loading ? (
@@ -31,92 +34,90 @@ const OrderDetails = ({ match }) => {
           <MetaData title="Order Details" />
           <div className="order-details-page">
             <div className="order-details-container">
-              <Typography component="h1">
-                Order #{order && order._id}
-              </Typography>
-              <Typography>Shipping Info</Typography>
-              <div className="order-details-container-box">
-                <div>
-                  <p>Name:</p>
-                  <span>{order.user && order.user.name}</span>
-                </div>
-                <div>
-                  <p>Phone:</p>
-                  <span>
-                    {order.shippingInfo && order.shippingInfo.phoneNo}
-                  </span>
-                </div>
-                <div>
-                  <p>Address:</p>
-                  <span>
-                    {order.shippingInfo &&
-                      `${order.shippingInfo.address}, ${order.shippingInfo.city}, ${order.shippingInfo.state}, ${order.shippingInfo.pinCode}, ${order.shippingInfo.country}`}
-                  </span>
-                </div>
-              </div>
-              <Typography>Payment</Typography>
-              <div className="order-details-container-box">
-                <div>
-                  <p
-                    className={
-                      order.paymentInfo &&
-                      order.paymentInfo.status === "succeeded"
-                        ? "greenColor"
-                        : "redColor"
-                    }
-                  >
-                    {order.paymentInfo &&
-                    order.paymentInfo.status === "succeeded"
-                      ? "PAID"
-                      : "NOT PAID"}
-                  </p>
-                </div>
+              <h1 className="order-details-title">Order #{order && order._id}</h1>
 
-                <div>
-                  <p>Amount:</p>
-                  <span>{order.totalPrice && order.totalPrice}</span>
+              <div className="order-details-section">
+                <h2 className="order-details-section-title">Shipping Info</h2>
+                <div className="order-details-info">
+                  <div className="order-details-info-item">
+                    <p className="order-details-info-label">Name:</p>
+                    <p className="order-details-info-value">{order.user && order.user.name}</p>
+                  </div>
+                  <div className="order-details-info-item">
+                    <p className="order-details-info-label">Phone:</p>
+                    <p className="order-details-info-value">{order.shippingInfo && order.shippingInfo.phoneNo}</p>
+                  </div>
+                  <div className="order-details-info-item">
+                    <p className="order-details-info-label">Address:</p>
+                    <p className="order-details-info-value">
+                      {order.shippingInfo &&
+                        `${order.shippingInfo.address}, ${order.shippingInfo.city}, ${order.shippingInfo.state}, ${order.shippingInfo.pinCode}, ${order.shippingInfo.country}`}
+                    </p>
+                  </div>
                 </div>
               </div>
 
-              <Typography>Order Status</Typography>
-              <div className="order-details-container-box">
-                <div>
-                  <p
-                    className={
-                      order.orderStatus && order.orderStatus === "Delivered"
-                        ? "greenColor"
-                        : "redColor"
-                    }
-                  >
-                    {order.orderStatus && order.orderStatus}
-                  </p>
+              <div className="order-details-section">
+                <h2 className="order-details-section-title">Payment</h2>
+                <div className="order-details-info">
+                  <div className="order-details-info-item">
+                    <p className="order-details-info-label">Status:</p>
+                    <p
+                      className={`order-details-status ${
+                        order.paymentInfo && order.paymentInfo.status === "succeeded" ? "delivered" : "processing"
+                      }`}
+                    >
+                      {order.paymentInfo && order.paymentInfo.status === "succeeded" ? "PAID" : "NOT PAID"}
+                    </p>
+                  </div>
+                  <div className="order-details-info-item">
+                    <p className="order-details-info-label">Amount:</p>
+                    <p className="order-details-info-value">₹{order.totalPrice && order.totalPrice}</p>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div className="order-details-cart-items">
-              <Typography>Order Items:</Typography>
-              <div className="order-details-cart-items-container">
-                {order.orderItems &&
-                  order.orderItems.map((item) => (
-                    <div key={item.product}>
-                      <img src={item.image} alt="Product" />
-                      <Link to={`/product/${item.product}`}>
-                        {item.name}
-                      </Link>{" "}
-                      <span>
-                        {item.quantity} X ₹{item.price} ={" "}
-                        <b>₹{item.price * item.quantity}</b>
-                      </span>
-                    </div>
-                  ))}
+              <div className="order-details-section">
+                <h2 className="order-details-section-title">Order Status</h2>
+                <p
+                  className={`order-details-status ${
+                    order.orderStatus && order.orderStatus === "Delivered" ? "delivered" : "processing"
+                  }`}
+                >
+                  {order.orderStatus && order.orderStatus}
+                </p>
+              </div>
+
+              <div className="order-details-section">
+                <h2 className="order-details-section-title">Order Items</h2>
+                <div className="order-details-items">
+                  {order.orderItems &&
+                    order.orderItems.map((item) => (
+                      <div key={item.product} className="order-details-item">
+                        <img
+                          src={item.image || "/placeholder.svg"}
+                          alt="Product"
+                          className="order-details-item-image"
+                        />
+                        <div className="order-details-item-info">
+                          <Link to={`/product/${item.product}`} className="order-details-item-name">
+                            {item.name}
+                          </Link>
+                          <span className="order-details-item-price">
+                            {item.quantity} X ₹{item.price} = <b>₹{item.price * item.quantity}</b>
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+                </div>
               </div>
             </div>
           </div>
         </Fragment>
       )}
     </Fragment>
-  );
-};
+  )
+}
 
-export default OrderDetails;
+export default OrderDetails
+

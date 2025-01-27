@@ -1,80 +1,184 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .my-orders-page {
-    width: 100vw;
-    max-width: 100%;
-    padding: 0 7vmax;
-    box-sizing: border-box;
-    background-color: rgb(235, 235, 235);
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  min-height: 100vh;
+  animation: fadeIn 0.5s ease-out;
+  margin: 5rem;
+}
+
+.my-orders-container {
+  width: 100%;
+  max-width: 1200px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow-x: auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+.my-orders-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.my-orders-title {
+  font-size: 2rem;
+  color: #3f51b5;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.my-orders-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 1rem;
+}
+
+.my-orders-table th,
+.my-orders-table td {
+  padding: 1rem;
+  text-align: left;
+}
+
+.my-orders-table th {
+  background-color: #3f51b5;
+  color: #ffffff;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-right: 1px solid #c3bfbf;
+}
+
+.my-orders-table tr {
+  background-color: #f0f4f8;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.my-orders-table tr:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: cornflowerblue;
+  color: white;
+}
+/* 
+.my-orders-table td {
+  border-top: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+} */
+
+.my-orders-table td:first-child {
+  border-left: 1px solid #e0e0e0;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.my-orders-table td:last-child {
+  border-right: 1px solid #e0e0e0;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.order-status {
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.order-status.delivered {
+  background-color: #4caf50;
+  color: white;
+}
+
+.order-status.processing {
+  background-color: #ff9800;
+  color: white;
+}
+
+.order-action {
+  color: #3f51b5;
+  text-decoration: none;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.order-action:hover {
+  color: white;
+}
+
+@media screen and (max-width: 768px) {
+  .my-orders-page {
+    padding: 1rem;
   }
 
-  #my-orders-heading {
-    text-align: center;
-    font: 400 1.2vmax "Roboto";
-    padding: 0.5vmax;
-    box-sizing: border-box;
-    color: rgb(255, 255, 255);
-    transition: all 0.5s;
-    background-color: rgb(44, 44, 44);
+  .my-orders-title {
+    font-size: 1.5rem;
   }
 
   .my-orders-table {
-    background-color: white;
+    font-size: 0.9rem;
   }
 
-  .my-orders-table div {
-    font: 300 1vmax "Roboto";
-    color: rgba(0, 0, 0, 0.678);
-    border: none;
+  .my-orders-table th,
+  .my-orders-table td {
+    padding: 0.75rem;
   }
 
-  .my-orders-table a {
-    color: rgba(0, 0, 0, 0.527);
-    transition: all 0.5s;
+  .order-status {
+    padding: 0.3rem 0.75rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* @media (prefers-color-scheme: dark) {
+  .my-orders-page {
+    background-color: #1a1a1a;
   }
 
-  .my-orders-table a:hover {
-    color: tomato;
+  .my-orders-container {
+    background-color: #2a2a2a;
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
   }
 
-  .MuiDataGrid-columnHeader {
-    background-color: tomato;
-    padding: 1vmax !important;
+  .my-orders-title {
+    color: #7986cb;
   }
 
-  .MuiDataGrid-columnHeader div {
-    color: rgb(255, 255, 255);
-    font: 500 1.1vmax "Roboto" !important;
+  .my-orders-table th {
+    background-color: #3f51b5;
+    border: transparent;
   }
 
-  .MuiDataGrid-iconSeparator {
-    display: none !important;
+  .my-orders-table tr {
+    background-color: #f0f4f8;
   }
 
-  @media screen and (max-width: 600px) {
-    .my-orders-page {
-      padding: 0;
-      height: 93vh;
-    }
-
-    #my-orders-heading {
-      font: 400 2.2vmax "Roboto";
-      padding: 4vw;
-    }
-
-    .my-orders-table div {
-      font: 300 4vw "Roboto";
-    }
-
-    .MuiDataGrid-columnHeader {
-      padding: 20px !important;
-    }
-
-    .MuiDataGrid-columnHeader div {
-      font: 500 5vw "Roboto" !important;
-    }
+  .my-orders-table td {
+    border-color: #424242;
   }
+
+  .order-action {
+    color: #7986cb;
+  }
+
+  .order-action:hover {
+    color: #9fa8da;
+  }
+} */
+

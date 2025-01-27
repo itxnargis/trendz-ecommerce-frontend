@@ -14,7 +14,9 @@
 
 .search-container {
   position: relative;
+  display: flex;
   width: 80%;
+  flex-direction: row;
   max-width: 600px;
 }
 
@@ -45,13 +47,14 @@
 
 .close-search {
   position: absolute;
-  right: -4rem;
+  right: 0;
   top: 50%;
   transform: translateY(-50%);
   background: none;
   border: none;
   color: var(--text-color);
   font-size: 1.2rem;
+  padding-right: 1rem;
   cursor: pointer;
   transition: color 0.3s ease;
 }
@@ -67,7 +70,6 @@
 
   .search-container input[type="text"] {
     font-size: 1rem;
-    padding: 0.8rem 2.5rem 0.8rem 2.5rem;
+    /* padding: 0.8rem 2.5rem 0.8rem 2.5rem; */
   }
 }
-

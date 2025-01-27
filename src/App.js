@@ -123,7 +123,7 @@ function App() {
           <Route path="/admin/product" element={<ProtectedRoute isAdmin={true} component={NewProduct} />} />
           <Route path="/admin/product/:id" element={<ProtectedRoute isAdmin={true} component={UpdateProduct} />} />
           <Route path="/admin/orders" element={<ProtectedRoute isAdmin={true} component={OrderList} />} />
-          <Route path="/admin/orders/:id" element={<ProtectedRoute isAdmin={true} component={ProcessOrder} />} />
+          <Route path="/admin/order/:id" element={<ProtectedRoute isAdmin={true} component={ProcessOrder} />} />
           <Route path="/admin/users" element={<ProtectedRoute isAdmin={true} component={UsersList} />} />
           <Route path="/admin/users/:id" element={<ProtectedRoute isAdmin={true} component={UpdateUser} />} />
           <Route path="/admin/reviews" element={<ProtectedRoute isAdmin={true} component={ProductReviews} />} />

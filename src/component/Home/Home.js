@@ -8,7 +8,7 @@ import { clearErrors, getProduct } from "../../actions/productAction.js";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../layout/Loader/Loader.js";
 import { useAlert } from 'react-alert';
-import banner from "../../images/banner.jpg";
+import banner from "../../assets/banner.jpg"
 import { Link } from "react-router-dom";
 
 const Home = () => {
