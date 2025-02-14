@@ -17,9 +17,9 @@ For the backend, visit: **[Ecommerce Backend](https://github.com/itxnargis/trend
 ![Demo Screenshot](https://trendz-ecommerce-tau.vercel.app/ecommerce.png)
 
 
-## Table of Contents
+## 📜 Table of Contents
 
-- [Live Demo](#livedemo)
+- [🚀 Live Demo](#-live-demo)
 - [✨ Features](#features)
 - [🛠 Technologies Used](#technologies-used)
 - [🚀 Installation](#installation)
