@@ -1,22 +1,33 @@
-# Ecommerce Website Frontend
+# 🛒 E-commerce Website Frontend – Shop Smarter, Faster, & Easier!
 
-This is the frontend part of an Ecommerce website built using React and Redux. The frontend communicates with the backend to display products, manage user authentication, handle orders, and more.
+🚀 Experience seamless online shopping with our modern, high-performance e-commerce platform!
+Built with React & Redux, this frontend delivers a sleek, interactive, and efficient shopping experience. Whether you're browsing products, managing your cart, or handling orders, everything is smooth and user-friendly.
+
+## 🚀 Live Demo
+🔗 **[View Live Project](https://trendz-ecommerce-tau.vercel.app/)**  
+
+📢 **Important!**  
+This repository contains only the **frontend** code.  
+For the backend, visit: **[Ecommerce Backend](https://github.com/itxnargis/trendz-ecommerce-backend)**.  
+
+---
+
+## Screenshot
+
+![Demo Screenshot](https://trendz-ecommerce-tau.vercel.app/ecommerce.png)
+
 
 ## Table of Contents
 
-- [Demo](#demo)
-- [Features](#features)
-- [Technologies Used](#technologies-used)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+- [Live Demo](#livedemo)
+- [✨ Features](#features)
+- [🛠 Technologies Used](#technologies-used)
+- [🚀 Installation](#installation)
+- [🕹 Usage](#usage)
+- [🤝 Contributing](#contributing)
+- [📄 License](#license)
 
-## Demo
-
-![Demo Screenshot](link-to-screenshot)
-
-## Features
+## ✨ Features
 
 - User Authentication
 - Product Search and Filtering
@@ -25,7 +36,7 @@ This is the frontend part of an Ecommerce website built using React and Redux. T
 - Admin Dashboard for Managing Products, Orders, and Users
 - Responsive Design
 
-## Technologies Used
+## 🛠 Technologies Used
 
 - React
 - Redux
@@ -35,15 +46,15 @@ This is the frontend part of an Ecommerce website built using React and Redux. T
 - React Icons
 - React Alert
 
-## Installation
+## 🚀 Installation
 
 To run this project locally, follow these steps:
 
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/itxnargis/Ecommerce-Website-Frontend.git
-   cd Ecommerce-Website-Frontend
+   git clone https://github.com/itxnargis/trendz-ecommerce-frontend.git
+   cd trendz-ecommerce-frontend
 
    
 2. **Install dependencies:**
@@ -72,7 +83,7 @@ To run this project locally, follow these steps:
    Navigate to http://localhost:3000 to see the application running.
    ```
 
-## Usage
+## 🕹 Usage
 
 - Home Page: Browse featured products and search for specific items.
 - Product Details: View detailed information about a product, including reviews and ratings.
@@ -80,7 +91,7 @@ To run this project locally, follow these steps:
 - Authentication: Register and log in to your account.
 - Admin Dashboard: Manage products, orders, and users (available for admin users).**
 
-## Contributing
+## 🤝 Contributing
 
 Contributions are welcome! Please follow these steps to contribute:
 
@@ -91,7 +102,5 @@ Contributions are welcome! Please follow these steps to contribute:
 - Push to the branch (git push origin feature-branch).
 - Open a pull request.
 
-## License
-
-Feel free to copy and paste this into your `README.md` file and customize it as needed.
-
+## 📄 License
+Distributed under the **MIT License**. See [LICENSE](./LICENSE) for details.
