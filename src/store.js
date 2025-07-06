@@ -1,52 +1,57 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { newProductReducer,
+import {
+    newProductReducer,
     newReviewReducer,
     productDetailsReducer,
     productReducer,
     productReviewsReducer,
     productsReducer,
     reviewReducer,
-   } from "./reducers/productReducer";
+} from "./reducers/productReducer";
 
-import { allUsersReducer,
+import {
+    allUsersReducer,
     forgotPasswordReducer,
     profileReducer,
     userDetailsReducer,
-    userReducer, }
+    userReducer,
+}
     from "./reducers/userReducer";
 
 import { cartReducer }
-from "./reducers/cartReducer";
+    from "./reducers/cartReducer";
 
-import { allOrdersReducer,
+import {
+    allOrdersReducer,
     myOrdersReducer,
     newOrderReducer,
     orderDetailsReducer,
-    orderReducer, }
+    orderReducer,
+}
     from "./reducers/orderReducer";
 
 
 const reducer = combineReducers({
     products: productsReducer,
-  productDetails: productDetailsReducer,
-  user: userReducer,
-  profile: profileReducer,
-  forgotPassword: forgotPasswordReducer,
-  cart: cartReducer,
-  newOrder: newOrderReducer,
-  myOrders: myOrdersReducer,
-  orderDetails: orderDetailsReducer,
-  newReview: newReviewReducer,
-  newProduct: newProductReducer,
-  product: productReducer,
-  allOrders: allOrdersReducer,
-  order: orderReducer,
-  allUsers: allUsersReducer,
-  userDetails: userDetailsReducer,
-  productReviews: productReviewsReducer,
-  review: reviewReducer,
+    productDetails: productDetailsReducer,
+    user: userReducer,
+    profile: profileReducer,
+    forgotPassword: forgotPasswordReducer,
+    cart: cartReducer,
+    newOrder: newOrderReducer,
+    myOrders: myOrdersReducer,
+    orderDetails: orderDetailsReducer,
+    newReview: newReviewReducer,
+    newProduct: newProductReducer,
+    product: productReducer,
+    allOrders: allOrdersReducer,
+    order: orderReducer,
+    allUsers: allUsersReducer,
+    userDetails: userDetailsReducer,
+    productReviews: productReviewsReducer,
+    review: reviewReducer,
 });
 
 let initialState = {
@@ -55,7 +60,7 @@ let initialState = {
         cartItems: localStorage.getItem("cartItems")
             ? JSON.parse(localStorage.getItem("cartItems"))
             : [],
-            shoppingInfo: localStorage.getItem("shippingInfo")
+        shoppingInfo: localStorage.getItem("shippingInfo")
             ? JSON.parse(localStorage.getItem("shippingInfo"))
             : {},
     },

@@ -11,6 +11,7 @@ import MetaData from "../layout/metaData.js";
 import { Typography } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import RemoveShoppingCartIcon from "@material-ui/icons/RemoveShoppingCart";
+import LazyLoad from "react-lazyload";
 
 const Products = () => {
   const dispatch = useDispatch();
@@ -21,7 +22,15 @@ const Products = () => {
   const [category, setCategory] = useState("");
   const [ratings, setRatings] = useState(0);
 
-  const { products, loading, error, productsCount, resultPerPage, filteredProductsCount } = useSelector((state) => state.products);
+  const {
+    products,
+    loading,
+    error,
+    productsCount,
+    resultPerPage,
+    filteredProductsCount,
+  } = useSelector((state) => state.products);
+
   const { keyword } = useParams();
 
   const setCurrentPageNo = (e) => {
@@ -40,22 +49,26 @@ const Products = () => {
 
   return (
     <Fragment>
+      <MetaData title="PRODUCTS --- ECOMMERCE" />
       {loading ? (
         <Loader />
       ) : (
         <Fragment>
-          <MetaData title="PRODUCTS --- ECOMMERCE" />
           <div className="product-section">
             {products && products.length > 0 ? (
               <>
-               <Typography variant="h4" color="#000" className="product-title">
-                       Products
-                     </Typography>
+                <Typography variant="h4" color="#000" className="product-title">
+                  Products
+                </Typography>
+
                 <div className="products" id="product">
                   {products.map((product) => (
-                    <ProductCard key={product._id} product={product} />
+                    <LazyLoad height={300} offset={100} once key={product._id}>
+                      <ProductCard product={product} />
+                    </LazyLoad>
                   ))}
                 </div>
+
                 {resultPerPage < count && (
                   <div className="pagination-box">
                     <Pagination
@@ -78,8 +91,7 @@ const Products = () => {
             ) : (
               <div className="empty-cart">
                 <RemoveShoppingCartIcon className="empty-cart-icon" />
-              <h2 className="empty-product">No products available</h2>
-
+                <h2 className="empty-product">No products available</h2>
                 <Link to="/products" className="view-products-btn">
                   View All Products
                 </Link>
